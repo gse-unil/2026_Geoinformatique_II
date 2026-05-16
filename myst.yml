@@ -9,16 +9,22 @@ project:
   # github:
   toc:
     - file: content/index
-    - file: 'tps/tp01.ipynb'
+    - file: 'tps/tp01.md'
       title: TP1
-    - file: 'tps/tp01-py.ipynb'
-      title: TP1 Python (draft)
-    - file: tps/tp-py01.ipynb
-      title: TP1 Python
-    - file: tps/tp-py02.ipynb
-      title: TP2 Python
-    - file: 'tps/tp02'
+      children: 
+        - file: 'tps/tp01.ipynb'
+          title: TP1 QGIS
+        - file: 'tps/tp01-py.ipynb'
+          title: TP1 Python (draft)
+        - file: tps/tp-py01.ipynb
+          title: TP1 Python
+    - file: 'tps/tp02.md'
       title: TP2
+      children:
+        - file: 'tps/tp02-qgis.md'
+          title: TP2 QGIS
+        - file: 'tps/tp-py02.ipynb'
+          title: TP2 Python
     - file: 'tps/tp05.md'
       title: TP5 (Portfolio)
     
