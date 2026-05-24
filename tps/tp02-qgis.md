@@ -18,15 +18,51 @@ Pour la partie suivante, télécharge les données du TP depuis OneDrive sur ta 
 
 ## 2\. Requêtes attributaires et requêtes spatiales
 
-Lorsque l’on travaille avec des fichiers de données volumineux, il est indispensable de pouvoir sélectionner les informations qui nous intéressent. Cela est possible en interrogeant les fichiers avec des [requêtes SQL](https://docs.qgis.org/3.40/fr/docs/user_manual/expressions/expression.html). Elles peuvent être de nature [attributaire](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/attribute_table.html#working-with-the-attribute-table) – e.g., sélectionne les bâtiments qui ont au moins cinq étages – ou [spatiale](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/qgis_gui.html#edit) – e.g., sélectionne les bâtiments qui se trouve dans la région métropolitaine de Montréal. Dans cette partie du TP, tu vas te familiariser avec les requêtes SQL, qui sont particulièrement utiles pour extraire ces informations. Dans l’exercice suivant, on va effectuer à nouveau quelques tâches sur les requêtes (cf. [TP3](https://wp.unil.ch/dawn/sig_tp3/)).
+Lorsque l’on travaille avec des fichiers de données volumineux, il est indispensable de pouvoir sélectionner les informations qui nous intéressent. Cela est possible en interrogeant les fichiers avec des [requêtes SQL](https://docs.qgis.org/3.40/fr/docs/user_manual/expressions/expression.html). Elles peuvent être de nature [attributaire](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/attribute_table.html#working-with-the-attribute-table) – e.g., sélectionne les bâtiments qui ont au moins cinq étages – ou [spatiale](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/qgis_gui.html#edit) – e.g., sélectionne les bâtiments qui se trouve dans la région métropolitaine de Montréal. Dans cette partie du TP, tu vas te familiariser avec les requêtes SQL, qui sont particulièrement utiles pour extraire ces informations. Dans l’exercice suivant, on va effectuer à nouveau quelques tâches sur les requêtes dans le cadre de ce cours.
 
-Ouvre un nouveau projet et nomme-le à ta discrétion. Ensuite, charge la geopackage  « Geology\_VD.gdb » dans ton projet et importe toutes les couches présentes. À l’aide de l’outil [Select By Attributes](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/attribute_table.html#filtering-features), dans la couche « geology\_VD », sélectionne la « Nappe de Morcles (Chaine des Aravis incl.) »
+Ouvre un nouveau projet et nomme-le à ta discrétion. Ensuite, charge le geopackage  « tp2.gpkg » dans ton explorateur et importe toutes les couches suivantes : `Communes`, `geology_VD`, et `LI_Accident_tecto`.
+
+À l’aide de l’outil [Select Features by Value](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/attribute_table.html#filtering-features), dans la couche « geology\_VD », sélectionne la « Nappe de Morcles (Chaine des Aravis incl.) »
+
+Lorsque la sélection fonctionne :
+* zoome sur les entités sélectionnées ;
+* observe leur répartition spatiale ;
+* vérifie combien d’objets ont été sélectionnés.
 
 <details>
 <summary>Astuce</summary>
-Explore d’abord la table attributaire pour comprendre le champ qui contient la description tectonique du polygone représenté (dans ce cas d’ordre 3).
+Explore d’abord la table attributaire pour comprendre le champ qui contient la description tectonique du polygone représenté (dans ce cas LEG_TEC_3).
 </details>
 <br>
+
+<details>
+<summary>Solution</summary>
+<iframe src=https://wp.unil.ch/dawn/files/2022/10/nappe_morclessss.mp4></iframe>
+</details>
+<br>
+
+Maintenant on passe aux [expressions](https://docs.qgis.org/3.44/en/docs/user_manual/expressions/expression.html). Les expressions permettent de construire des requêtes plus précises dans QGIS. Elles sont utilisées dans les sélections, les filtres et les calculs attributaires:
+
+* **Sélections simples** : Sélectionner une unité précise
+
+```sql
+"LEG_TEC_3" = 'Nappe de Morcles (Chaine des Aravis incl.)'
+```
+
+* **Sélections multiples** : Sélectionner plusieurs types d’accidents tectoniques
+
+```sql
+"PRODUCTIV" IN (
+  'Peu productifs, dans les moraines',
+  'Productif, a productivite variable ou faible'
+)
+```
+
+* **Sélection par intervalle** : Sélectionner les entités dont la surface est comprise entre 600 et 700 mˆ2
+
+```sql
+"AREA" >= 300 AND "AREA" <= 1000
+```
 
 <details>
 <summary>Solution</summary>
@@ -38,7 +74,12 @@ Tu peux maintenant répondre aux 5 premières questions du quiz moodle (premièr
 
 ---
 
-Bienvenu.e à nouveau! Maintenant, tu apprendras à effectuer une requête basée sur les caractéristiques spatiales d’une entité. Charge dans ton projet le fichier « Communes ». Sélectionne les accidents tectoniques de type « Chevauchement principal alpin (certain) » ou « (probable) ». Pour terminer, effectue requête spatiale pour ne retenir, parmi les accidents tectoniques sélectionnés, seulement ceux qui se trouvent sur le territoire vaudois (représenté par la couche « Communes »). Pour ce-faire, découvre à travers la documentation en ligne comment utiliser l’outil [Sélection par localisation](https://docs.qgis.org/3.40/en/docs/user_manual/processing_algs/qgis/vectorselection.html#extract-by-location).
+Bienvenu.e à nouveau! Maintenant, tu apprendras à effectuer une requête basée sur les caractéristiques spatiales d’une entité.
+
+* Charge dans ton projet le fichier « Communes ».
+* Sélectionne les accidents tectoniques de type « Chevauchement principal alpin (certain) » ou « (probable) ».
+* Pour terminer, effectue requête spatiale pour ne retenir, parmi les accidents tectoniques sélectionnés, seulement ceux qui se trouvent sur le territoire vaudois (représenté par la couche « Communes »).
+  * Pour ce-faire, découvre à travers la documentation en ligne comment utiliser l’outil [Sélection par localisation](https://docs.qgis.org/3.40/en/docs/user_manual/processing_algs/qgis/vectorselection.html#extract-by-location).
 
 <details>
 <summary>Astuce</summary>
@@ -51,7 +92,6 @@ Utilise le Selection Type « Select subset from the current selection »
 <iframe src=https://wp.unil.ch/dawn/files/2022/10/nappes_vaud.mp4></iframe>
 </details>
 <br>
-
 
 ## 3\. Jointures et Relations
 
