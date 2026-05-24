@@ -29,7 +29,7 @@ project:
       title: TP3
       children:
         - file: 'tps/tp03-qgis.md'
-          title: TP2 QGIS
+          title: TP3 QGIS
         - file: 'tps/tp-py03.ipynb'
           title: TP3 Python
     - file: 'tps/tp05.md'
