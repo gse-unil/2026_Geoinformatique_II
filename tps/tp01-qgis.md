@@ -63,6 +63,16 @@ Télécharge les données du TP sur ta machine virtuelle en utilisant [cet hyper
 <img src=https://wp.unil.ch/dawn/files/2022/09/TP1_2.gif>
 </details>
 
+:::{note} Installer QGIS localement
+Si tu préfères travailler directement sur ton propre ordinateur plutôt que sur une machine virtuelle UNIL, tu peux installer QGIS localement.
+
+1. Télécharge QGIS depuis le site officiel : <https://qgis.org/fr/site/forusers/download.html>
+2. Choisis la version adaptée à ton système d’exploitation (Windows, macOS ou Linux).
+3. Lance l’installateur téléchargé.
+4. Garde les options d’installation par défaut.
+5. Une fois l’installation terminée, ouvre QGIS Desktop.
+:::
+
 3b) Ouvre un _nouveau projet vide_ pour te familiariser avec l’interface de QGIS.
 
 <details>
