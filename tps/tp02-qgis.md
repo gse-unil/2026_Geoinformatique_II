@@ -1,7 +1,3 @@
-# Requêtes attributaires
-
-#TODO!
-
 # Sélection, jointures et relations
 
 [almost ready - needs alternative to `relates`]
@@ -14,7 +10,7 @@ Ce TP n’aurait pas été possible sans les ressources listées ci-dessous:
 
 ## 1\. Télécharger les données du TP
 
-Pour la partie suivante, télécharge les données du TP depuis OneDrive sur ta machine virtuelle en utilisant [cet hyperlien](https://unils-my.sharepoint.com/:f:/g/personal/tom_beucler_unil_ch/Ett_32gi9rBEq6Sq0OPY5VIB0n5U2Y_3cpc-uX05fA3DtA?e=gm2gkF).
+Pour la partie suivante, télécharge les données du TP depuis OneDrive sur ta machine virtuelle en utilisant [cet hyperlien](https://unils-my.sharepoint.com/:f:/g/personal/ayoub_fatihi_unil_ch/IgDD5wH1DzKtTp1vLVbGrsfoAWbEkhSnB92HPaI1e0EiBu0?e=4EmmQr).
 
 ## 2\. Requêtes attributaires et requêtes spatiales
 
@@ -101,11 +97,11 @@ Les données que nous utilisons peuvent provenir de sources différentes. Il est
 
 ### 3.1 Jointures de tables attributaires
 
-Ce type de jointure est le plus utilisé. Une [jointure attributaire](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/joins_relations.html#joining-features-between-two-layers) ajoute des données d’une table à une autre table, à la suite des colonnes existantes. L’opération se base sur un champ (ou attribut) commun aux deux tables appelé clé ou identifiant. Le nom ou la valeur de chaque entité du champ clé doit être le même d’une table à l’autre. En revanche, on peut joindre indifféremment des tables d’attributs appartenant à des couches de nature différente (couches géographiques, table Excel (\*.xls), table au format DBF (\*.dbf), texte ASCII en colonnes (\*.txt), Microsoft Access (\*.accdb), etc.
+Ce type de jointure est le plus utilisé. Une [jointure attributaire](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/joins_relations.html#joining-features-between-two-layers) ajoute des données d’une table à une autre table, à la suite des colonnes existantes. L’opération se base sur un champ (ou attribut) commun aux deux tables appelé clé ou identifiant. Le nom ou la valeur de chaque entité du champ clé doit être le même d’une table à l’autre. En revanche, on peut joindre indifféremment des tables d’attributs appartenant à des couches de nature différente (couches géographiques, table Excel (\*.xls), table au format DBF (\*.dbf), texte ASCII en colonnes (\*.txt), Microsoft Access (\*.accdb), etc.)
 
 Pour apprendre à effectuer une jointure spatiale, on te propose une table comportant le nombre de véhicules pour 1’000 habitants par commune en 2010. L’objectif de l’exercice est de joindre cette table à la couche des communes pour pouvoir visualiser spatialement l’ensemble des données.
 
-Pour cet exercice, charge la géodatabase « VoituresTourisme\_VD.gdb » dans ton projet et importe toutes les couches présentes. À l’aide de [Jointures](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/joins_relations.html#joining-features-between-two-layers) à partir des propriétés de la couche, effectue la jointure attributaire entre la couche « Communes\_VD » et la table « VoituresPlus » en utilisant les champs « NAME » et « Communes » comme constituants de la clé primaire.
+Pour cet exercice, charge les couches `Communes` et `VoiturePlus` . À l’aide de [Jointures](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/joins_relations.html#joining-features-between-two-layers) à partir des propriétés de la couche, effectue la jointure attributaire entre la couche « Communes\_VD » et la table « VoituresPlus » en utilisant les champs « NAME » et « Communes » comme constituants de la clé primaire.
 
 <details>
 <summary>Solution</summary>
@@ -121,7 +117,7 @@ Contrairement aux jointures attributaires, qui peuvent être effectuées dans to
 
 Pour illustrer l’utilisation des jointures spatiales, tu vas déterminer le nom de la commune sur laquelle se trouve chaque bâtiment du campus de l’UNIL.
 
-Pour cet exercice, charge la géodatabase « Campus.gdb » dans ton projet et importe toutes les couches présentes. À l’aide de l’outil `Join attributes by location` effectue une jointure spatiale sur la couche des bâtiments de l’UNIL en choisissant comme couche à joindre (contenant l’information spatiale) la couche « Communes\_VD ».
+Pour cet exercice, charge la couche « BatimentsUNIL » dans ton projet. À l’aide de l’outil `Join attributes by location` effectue une jointure spatiale sur la couche des bâtiments de l’UNIL en choisissant comme couche à joindre (contenant l’information spatiale) la couche « Communes ».
 
 <details>
 <summary>Solution</summary>
@@ -133,18 +129,45 @@ Bravo! Tu peux maintenant continuer sur le quiz moodle (question 8).
 
 ### 3.3 Relations
 
-Les [relations](https://docs.qgis.org/3.40/en/docs/user_manual/working_with_vector/joins_relations.html#setting-relations-between-multiple-layers) reposent également sur l’existence d’un champ commun aux tables à lier, mais, cette fois-ci, aucune donnée n’est annexée dans la table de la couche de base. Les relations permettent des liens de type « plusieurs à plusieurs » (souvent symbolisé « n à n »).
+Les [relations](https://docs.qgis.org/3.44/en/docs/user_manual/working_with_vector/joins_relations.html#setting-relations-between-multiple-layers) reposent également sur l'existence d'un champ commun aux tables à lier, mais, cette fois-ci, aucune donnée n'est annexée dans la table de la couche de base. Contrairement aux jointures attributaires (un-à-un), les relations permettent des liens de type **un-à-plusieurs (1-N)** ou **plusieurs-à-plusieurs (N-N)**, ce qui les rend bien plus flexibles pour représenter la réalité du terrain.
 
-Par exemple, imaginez que vous disposiez d’une couche de parcelles et d’une table de leur(s) propriétaire(s) : plusieurs propriétaires pouvant posséder conjointement des parcelles. Avec une relation, la sélection d’une des parcelles dans la couche des parcelles entrainerait automatiquement la sélection de tous les propriétaires se partageant ladite parcelle. Une simple jointure attributaire ne retiendrait qu’un seul propriétaire par bâtiment. Néanmoins, les relations nécessitent généralement l’utilisation d’une table intermédiaire qui stocke des « clés étrangères », c’est-à-dire l’information permettant de répondre à une question du type : quelle(s) parcelle(s) appartien(nen)t à quel(s) propriétaire(s) ?
+Pour ces exercices, charge la géodatabase « Cadastres » dans ton projet. Elle contient trois tables : `Parcelles`, `Proprietaires`, et `Proprietaire_Parcelle` (table intermédiaire reliant les deux premières via les champs `NO_IMM` et `NO_PROPRI`).
 
-Le but de cet exercice est de visualiser, pour une parcelle appartenant à plusieurs propriétaires, la liste des propriétaires. Pour ce-faire, il est nécessaire de [créer une relation](https://docs.qgis.org/3.40/en/docs/user_manual/working_with_vector/joins_relations.html#setting-relations-between-multiple-layers) entre les données des bases (« Parcelles » et « Propriétaires ») et la table intermédiaire. Pour ce faire, charge la géodatabase « Cadastres », ouvre la table « Proprietaire\_Parcelle », à l’aide de [Jointures](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/joins_relations.html#joining-features-between-two-layers) à partir des propriétés de la couche, crée 2 jointures.
+#### 3.3.1 Relations un-à-plusieurs (1-N)
 
-1. La première jointure doit relier la couche « Parcelles » à la table « Propriétaire\_Parcelle » sur la base du champ « NO\_IMM ».
-2. La deuxièmedoit relier la table des propriétaires à la table « Propriétaire\_Parcelle » sur la base du champ « NO\_PROPRI ».
+Une relation 1-N permet d'associer **une entité parente** à **plusieurs entités enfants**. Dans notre exemple, une parcelle peut apparaître plusieurs fois dans la table `Proprietaire_Parcelle` — une fois par propriétaire qui la détient. La couche `Parcelles` est donc la couche **parente** (clé primaire `NO_IMM`), et `Proprietaire_Parcelle` est la couche **enfant** (clé étrangère `NO_IMM`).
 
-<!-- Depuis la couche « Parcelles », il est désormais possible d’avoir accès aux informations liées à ces relation en cliquant une parcelle et en explorant le pop-up qui s’ouvre. Pour [afficher les données associées](https://pro.arcgis.com/fr/pro-app/latest/help/data/tables/view-related-data.htm), il suffit de sélectionner une entité dans un tableaux et – depuis le menu latéral – cliquer sur « Related Data ». -->
+Pour créer cette relation dans QGIS :
 
-[No such thing in QGIS, only joins are used and you can use queries as in previous lessons to find the info you are looking for]
+1. **Double-clique** sur la couche `Parcelles` dans le panneau des couches pour ouvrir ses **Propriétés**, puis navigue vers l'onglet **Jointures**.
+2. Clique sur le bouton **+** en bas du panneau pour ajouter une nouvelle jointure, et remplis les paramètres suivants :
+   * **Couche de jointure** : `Proprietaire_Parcelle`
+   * **Champ de jointure** : `NO_IMM`
+   * **Champ cible** : `NO_IMM`
+3. Valide avec **OK**, puis ferme les propriétés de la couche.
+4. Ouvre la **table attributaire** de la couche `Parcelles` (clic droit sur la couche > **Ouvrir la table attributaire**). Tu constateras que les colonnes de `Proprietaire_Parcelle` ont été ajoutées à la suite de celles de `Parcelles` pour chaque parcelle correspondante. Explore les lignes pour vérifier que les données des propriétaires apparaissent bien.
+
+<details>
+<summary>Solution</summary>
+<iframe src=https://wp.unil.ch/dawn/files/2022/10/relations.mp4></iframe>
+</details>
+<br>
+
+#### 3.3.2 Relations plusieurs-à-plusieurs (N-N)
+
+Lorsque plusieurs entités d'une couche peuvent être associées à plusieurs entités d'une autre, on parle de relation N-N. Dans notre exemple : plusieurs propriétaires peuvent posséder conjointement une même parcelle, et un même propriétaire peut détenir plusieurs parcelles. Une simple jointure attributaire ne retiendrait qu'un seul propriétaire par parcelle. La relation N-N s'appuie sur la **table intermédiaire** `Proprietaire_Parcelle` pour naviguer dans les deux sens.
+
+Le but de cet exercice est de visualiser, pour une parcelle appartenant à plusieurs propriétaires, la liste complète de ces propriétaires. Pour ce faire, il faut créer **deux relations** en chaîne à partir des propriétés du projet :
+
+1. Ouvre **Projet > Propriétés > Relations**, puis clique sur **+** pour créer la première relation (déjà définie en 3.3.1 si tu l'as faite) :
+   * **Couche référencée** : `Parcelles`, champ `NO_IMM`
+   * **Couche référençante** : `Proprietaire_Parcelle`, champ `NO_IMM`
+   * Nom : `Parcelles_vers_PP`
+2. Crée une deuxième relation :
+   * **Couche référencée** : `Proprietaires`, champ `NO_PROPRI`
+   * **Couche référençante** : `Proprietaire_Parcelle`, champ `NO_PROPRI`
+   * Nom : `Proprietaires_vers_PP`
+3. Active l'outil **Identifier les entités** et clique sur une parcelle. Dans le panneau qui s'ouvre, développe la section **Parcelles_vers_PP** : tu verras la liste des entrées de la table intermédiaire, et pour chacune, les informations du propriétaire associé via la deuxième relation.
 
 <details>
 <summary>Solution</summary>
@@ -153,9 +176,3 @@ Le but de cet exercice est de visualiser, pour une parcelle appartenant à plusi
 <br>
 
 Youhou! Tu peux maintenant finir le quiz moodle.
-
-Félicitations, le TP est terminé ! Tu es désormais prêt.e à créer un projet à partir de zéro. C’est ce que tu feras la semaine prochaine lors du TP5, c’est-à-dire :
-
-<!-- ![](https://wp.unil.ch/dawn/files/2022/10/showtime.jpg) -->
-
-<!-- _“[It’s Showtime](https://knowyourmeme.com/memes/its-showtime)” par shevyrolet_ -->
