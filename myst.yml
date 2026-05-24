@@ -25,6 +25,13 @@ project:
           title: TP2 QGIS
         - file: 'tps/tp-py02.ipynb'
           title: TP2 Python
+    - file: 'tps/tp03.md'
+      title: TP3
+      children:
+        - file: 'tps/tp03-qgis.md'
+          title: TP2 QGIS
+        - file: 'tps/tp-py03.ipynb'
+          title: TP3 Python
     - file: 'tps/tp05.md'
       title: TP5 (Portfolio)
     
