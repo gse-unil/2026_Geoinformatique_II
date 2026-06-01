@@ -33,7 +33,7 @@ project:
         - file: 'tps/tp-py03.ipynb'
           title: TP3 Python
     - file: 'tps/tp05.md'
-      title: TP5 (Portfolio)
+      title: Portfolio
     
 site:
   template: book-theme
