@@ -1,3 +1,5 @@
 _build/
 *.gpkg
 cantons*
+# MyST build outputs
+_build
