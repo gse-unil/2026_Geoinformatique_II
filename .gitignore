@@ -1,5 +1,6 @@
 _build/
 *.gpkg
 cantons*
+*.tif
 # MyST build outputs
 _build
