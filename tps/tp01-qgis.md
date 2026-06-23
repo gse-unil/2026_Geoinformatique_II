@@ -85,19 +85,19 @@ Si tu préfères travailler directement sur ton propre ordinateur plutôt que su
 <details>
 <summary>Solution</summary>
 <br>
-Les cordonnées du Géopolis sont: ~ 46.5265078, 6.5794063
+Les coordonnées du Géopolis sont : ~ 46.5265078, 6.5794063
 </details>
 
 ## 4\. Visualiser des couches géographiques
 
-Maintenant que tout est bien installé, nous sommes enfin prêt à charger et manipuler nos données géographiques! Nous allons travailler sur une carte contenant les lacs, les villes, les routes, et la topographie suisse.
+Maintenant que tout est bien installé, nous sommes enfin prêts à charger et manipuler nos données géographiques ! Nous allons travailler sur une carte contenant les lacs, les villes, les routes et la topographie suisse.
 
 ![](https://wp.unil.ch/dawn/files/2022/09/Lausanne-1024x576.jpeg)
 
 Aerial view of Leman lake – Lausanne city in Switzerland  
 Par [Samuel B.](https://stock.adobe.com/ch_fr/contributor/200820058/samuel-b?load_type=author&prev_url=detail)
 
-4a) Ouvre le projet nommé `tp1_main_prj` ([fichier de projet](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/project_files.html#working-with-project-files)) situé dans le geopackage `tp1.geopackage` après le connecter à partir de l'explorateur. Prends la bonne habitude dès maintenant de consulter la documentation de QGIS en ligne, par exemple en utilisant [cet hyperlien](https://docs.qgis.org/3.40/en/docs/training_manual/index.html).
+4a) Ouvre le projet nommé `tp1_main_prj` ([fichier de projet](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/project_files.html#working-with-project-files)) situé dans le geopackage `tp1.geopackage` après l’avoir ajouté depuis l’explorateur. Prends la bonne habitude dès maintenant de consulter la documentation de QGIS en ligne, par exemple en utilisant [cet hyperlien](https://docs.qgis.org/3.40/en/docs/training_manual/index.html).
 
 <details>
 <summary>Solution</summary>
@@ -147,14 +147,14 @@ Par [angkanasu](https://stock.adobe.com/ch_fr/contributor/204890139/angkanasu?l
 <img src=https://wp.unil.ch/dawn/files/2022/09/TP1_10.gif>
 </details>
 
-6b) Fait apparaître le nom des villes sur la carte en utilisant l’[Onglet Étiquettes](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/vector_properties.html#labels-properties) à partir de la fenêtre propriétés de la couche “Towns” pour faire apparaître le champ “ID1”. N’hésite pas à personaliser ta carte!
+6b) Fais apparaître le nom des villes sur la carte en utilisant l’[onglet Étiquettes](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/vector_properties.html#labels-properties) à partir de la fenêtre des propriétés de la couche “Towns” pour afficher le champ “ID1”. N’hésite pas à personnaliser ta carte !
 
 <details>
 <summary>Solution</summary>
 <img src=https://wp.unil.ch/dawn/files/2022/09/TP1_11.gif>
 </details>
 
-6c) Affiche le nom des lacs suisse avec une taille de police plus petite que pour les villes.
+6c) Affiche le nom des lacs suisses avec une taille de police plus petite que pour les villes.
 
 <details>
 <summary>Solution</summary>
@@ -189,7 +189,7 @@ Par [angkanasu](https://stock.adobe.com/ch_fr/contributor/204890139/angkanasu?l
 <img src=https://wp.unil.ch/dawn/files/2022/09/TP1_16.gif>
 </details>
 
-6h) Ajuste l’ordre des couches en les glissant les unes par dessus les autres pour mettre en valeur les informations qui t’intéressent le plus.
+6h) Ajuste l’ordre des couches en les glissant les unes par-dessus les autres pour mettre en valeur les informations qui t’intéressent le plus.
 
 <details>
 <summary>Solution</summary>
@@ -210,11 +210,9 @@ Les couleurs ont été mises à jour.
 Voir réponse à la question 5c
 </details>
 
-## 7\. Calculer la distance entre 2 éléments
-
 ## 7. Calculer la distance entre 2 éléments
 
-7a) Activer le _snapping_
+7a) Active le _snapping_
 Avant de mesurer précisément une distance, il est utile d’activer le **snapping** afin que le curseur “s’accroche” automatiquement aux villes ou aux objets géographiques.
 
 1. Ouvre le menu **Projet > Options de snapping…** (ou clique sur l’icône aimant 🧲 dans la barre d’outils).
@@ -244,7 +242,7 @@ Nous allons maintenant utiliser l’outil de mesure de QGIS.
 
 <details>
 <summary>Solution</summary>
-<img src=[https://wp.unil.ch/dawn/files/2022/09/TP1_20.gif>](https://wp.unil.ch/dawn/files/2022/09/TP1_20.gif>)
+<img src=https://wp.unil.ch/dawn/files/2022/09/TP1_20.gif>
 Exemples de distances :
 * Lausanne ↔ Genève : ~ 51.307 km
 </details>
@@ -287,7 +285,7 @@ Tu peux ajouter (ou effacer) des champs dans une table attributaire. Les champs 
 
 Il est possible de calculer des valeurs de champs grâce à deux outils auxquels tu peux accéder avec un clic droit sur le champ en question:
 
-* “[Field Calculator](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/attribute_table.html#using-the-field-calculator)”: Utilise une formule à entrer pour effectuer un calculs généraux (multiplication, addition, etc.) ou relatives à la géométrie des objets (surface, périmètre, centroïde, etc.)
+* “[Field Calculator](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/attribute_table.html#using-the-field-calculator)” : utilise une formule à entrer pour effectuer des calculs généraux (multiplication, addition, etc.) ou relatifs à la géométrie des objets (surface, périmètre, centroïde, etc.).
 
 8c) Utilise “Field Calculator” pour créer un nouveau champ avec la longueur des routes suisses dans la table attributaire de la couche “Roads”.
 
@@ -308,7 +306,7 @@ Il est possible de calculer des valeurs de champs grâce à deux outils auxquels
 
 Dans cet exercice, tu vas afficher et explorer différentes projections cartographiques afin d’étudier les distorsions induites au niveau de la direction, des surfaces et des distances.
 
-Ouvre le projet nommé `tp1_crs_prj` ([fichier de projet](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/project_files.html#working-with-project-files)) situé dans le geopackage `tp1.geopackage` après le connecter à partir de l'explorateur. QGIS devrait te proposer une carte du monde depuis l’espace avec des cercles verts ([les ellipses de Tissot](https://en.wikipedia.org/wiki/Tissot%27s_indicatrix)).
+Ouvre le projet nommé `tp1_crs_prj` ([fichier de projet](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/project_files.html#working-with-project-files)) situé dans le geopackage `tp1.geopackage` après l’avoir ajouté depuis l’explorateur. QGIS devrait te proposer une carte du monde depuis l’espace avec des cercles verts ([les ellipses de Tissot](https://en.wikipedia.org/wiki/Tissot%27s_indicatrix)).
 
 Maintenant, réponds aux questions du “Quiz\_TP1” sur Moodle. Tu peux reprendre le test autant de fois que tu le souhaites.
 

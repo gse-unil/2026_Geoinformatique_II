@@ -72,7 +72,7 @@ Nomme les couches de sortie de manière logique (e.g., `Communes\_FNOS`, `Batime
 </details>
 <br>
 
-2c) Une fois le périmètre de la zone d’étude délimité, on peut découper les autres couches dans ce périmètre. Pour ce faire, utilise l’outil de géotraitement [Couper](hhttps://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#clip).
+2c) Une fois le périmètre de la zone d’étude délimité, on peut découper les autres couches dans ce périmètre. Pour ce faire, utilise l’outil de géotraitement [Couper](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#clip).
 
 <details>
 <summary>Solution</summary>
@@ -147,11 +147,11 @@ Dans cette partie, tu vas enfin définir la zone d’interface habitat-forêt (W
 
 **Bravo !** Tu as ainsi réalisé ton premier projet en utilisant des outils de géotraitement ! ⚒️ Il ne te reste plus qu’à:
 
-5a) passer dans la [_Print Layout_](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#overview-of-the-print-layout) et faire une jolie mise en page de ta carte. N’oublie pas d’afficher les élements essentiels d’habillage cartographiques (nom, date, légende, échelle, flèche du nord, bon usage de la palette des couleurs, etc…). La source des donnée est _[swisstopo](https://www.swisstopo.admin.ch/)_ (VECTOR200).
+5a) Passe dans la [_Print Layout_](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#overview-of-the-print-layout) et fais une jolie mise en page de ta carte. N’oublie pas d’afficher les éléments essentiels d’habillage cartographique (nom, date, légende, échelle, flèche du nord, bon usage de la palette des couleurs, etc.). Les sources des données sont _[swisstopo](https://www.swisstopo.admin.ch/)_ (VECTOR200).
 
 5b) Enfin, pour la remise des fichiers sur Moodle **rends ta carte (magnifique) au format .pdf** ([exportation en PDF](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#export-settings)) **sous** [Rendu\_TP3\_Carte\_PDF](https://moodle.unil.ch/mod/assign/view.php?id=1736942) **en la nommant de la manière suivante : _nom\_prénom\_TP3_**
 
-5c) **geopackage (.gpkg)** sous [Projet\_TP3](https://moodle.unil.ch/mod/quiz/view.php?id=1736941) en le nommant de la manière suivante : _nom_\__prénom_\__TP3_., et contenant ton  **projet** (en utilisant la méthode `Project> Save To > Geopackage`) ainsi que toute les couches utilisées.
+5c) **geopackage (.gpkg)** sous [Projet\_TP3](https://moodle.unil.ch/mod/quiz/view.php?id=1736941), en le nommant de la manière suivante : _nom_\__prénom_\__TP3_., et contenant ton **projet** (en utilisant la méthode `Project > Save To > Geopackage`) ainsi que toutes les couches utilisées.
 
 5d) et répond aux dernières questions du [Quiz\_TP3](https://moodle.unil.ch/mod/quiz/view.php?id=1736940).
 

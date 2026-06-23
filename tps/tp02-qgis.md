@@ -14,7 +14,7 @@ Pour la partie suivante, télécharge les données du TP depuis OneDrive sur ta 
 
 ## 2\. Requêtes attributaires et requêtes spatiales
 
-Lorsque l’on travaille avec des fichiers de données volumineux, il est indispensable de pouvoir sélectionner les informations qui nous intéressent. Cela est possible en interrogeant les fichiers avec des [requêtes SQL](https://docs.qgis.org/3.40/fr/docs/user_manual/expressions/expression.html). Elles peuvent être de nature [attributaire](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/attribute_table.html#working-with-the-attribute-table) – e.g., sélectionne les bâtiments qui ont au moins cinq étages – ou [spatiale](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/qgis_gui.html#edit) – e.g., sélectionne les bâtiments qui se trouve dans la région métropolitaine de Montréal. Dans cette partie du TP, tu vas te familiariser avec les requêtes SQL, qui sont particulièrement utiles pour extraire ces informations. Dans l’exercice suivant, on va effectuer à nouveau quelques tâches sur les requêtes dans le cadre de ce cours.
+Lorsque l’on travaille avec des fichiers de données volumineux, il est indispensable de pouvoir sélectionner les informations qui nous intéressent. Cela est possible en interrogeant les fichiers avec des [requêtes SQL](https://docs.qgis.org/3.40/fr/docs/user_manual/expressions/expression.html). Elles peuvent être de nature [attributaire](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/attribute_table.html#working-with-the-attribute-table) – e.g., sélectionne les bâtiments qui ont au moins cinq étages – ou [spatiale](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/qgis_gui.html#edit) – e.g., sélectionne les bâtiments qui se trouvent dans la région métropolitaine de Montréal. Dans cette partie du TP, tu vas te familiariser avec les requêtes SQL, qui sont particulièrement utiles pour extraire ces informations. Dans l’exercice suivant, on va effectuer à nouveau quelques tâches sur les requêtes dans le cadre de ce cours.
 
 Ouvre un nouveau projet et nomme-le à ta discrétion. Ensuite, charge le geopackage  « tp2.gpkg » dans ton explorateur et importe toutes les couches suivantes : `Communes`, `geology_VD`, et `LI_Accident_tecto`.
 
@@ -70,12 +70,12 @@ Tu peux maintenant répondre aux 5 premières questions du quiz moodle (premièr
 
 ---
 
-Bienvenu.e à nouveau! Maintenant, tu apprendras à effectuer une requête basée sur les caractéristiques spatiales d’une entité.
+Bienvenue à nouveau ! Maintenant, tu apprendras à effectuer une requête basée sur les caractéristiques spatiales d’une entité.
 
 * Charge dans ton projet le fichier « Communes ».
 * Sélectionne les accidents tectoniques de type « Chevauchement principal alpin (certain) » ou « (probable) ».
-* Pour terminer, effectue requête spatiale pour ne retenir, parmi les accidents tectoniques sélectionnés, seulement ceux qui se trouvent sur le territoire vaudois (représenté par la couche « Communes »).
-  * Pour ce-faire, découvre à travers la documentation en ligne comment utiliser l’outil [Sélection par localisation](https://docs.qgis.org/3.40/en/docs/user_manual/processing_algs/qgis/vectorselection.html#extract-by-location).
+* Pour terminer, effectue une requête spatiale pour ne retenir, parmi les accidents tectoniques sélectionnés, que ceux qui se trouvent sur le territoire vaudois (représenté par la couche « Communes »).
+  * Pour ce faire, découvre dans la documentation en ligne comment utiliser l’outil [Sélection par localisation](https://docs.qgis.org/3.40/en/docs/user_manual/processing_algs/qgis/vectorselection.html#extract-by-location).
 
 <details>
 <summary>Astuce</summary>
@@ -115,7 +115,7 @@ Tu peux maintenant répondre à la question 7 (deuxième page du quiz).
 
 Contrairement aux jointures attributaires, qui peuvent être effectuées dans tous les systèmes de gestion de bases de données, les [jointures spatiales](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectorgeneral.html#join-attributes-by-location) sont propres aux SIG. Elles permettent de mettre en relation des couches de données géographiques sur la base de leurs géométries et de la localisation des leurs entités spatiales.
 
-Pour illustrer l’utilisation des jointures spatiales, tu vas déterminer le nom de la commune sur laquelle se trouve chaque bâtiment du campus de l’UNIL.
+Pour illustrer l’utilisation des jointures spatiales, tu vas déterminer le nom de la commune sur laquelle se trouvent les bâtiments du campus de l’UNIL.
 
 Pour cet exercice, charge la couche « BatimentsUNIL » dans ton projet. À l’aide de l’outil `Join attributes by location` effectue une jointure spatiale sur la couche des bâtiments de l’UNIL en choisissant comme couche à joindre (contenant l’information spatiale) la couche « Communes ».
 

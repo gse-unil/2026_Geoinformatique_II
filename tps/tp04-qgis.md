@@ -20,7 +20,7 @@ Ce TP n’aurait pas été possible sans les ressources listées ci-dessous:
 
 1c) Vérifie que le [système de référence](https://pro.arcgis.com/fr/pro-app/latest/help/mapping/properties/specify-a-coordinate-system.htm) pour ton projet est bien: (EPSG: 2056 - CH1903+ LV95). Tu peux maintenant commencer le TP.
 
-1d) Prends le temps d’explorer les métadonnées des couches (on parle de métadonnées, mais il s’agit, dans QGIS, des informations de la couche [ongler Information sous Propriétés de la couche {double-clicke la couche}]) et réponds aux premières questions sur le quiz Moodle. Choisis bien les métadonnées de la **bande 4** pour répondre aux questions.
+1d) Prends le temps d’explorer les métadonnées des couches (on parle de métadonnées, mais il s’agit, dans QGIS, des informations de la couche [onglet Information sous Propriétés de la couche {double-clique la couche}]) et réponds aux premières questions sur le quiz Moodle. Choisis bien les métadonnées de la **bande 4** pour répondre aux questions.
 
 Pour la suite du quiz Moodle, nous allons travailler sur les [bandes](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_properties.html#raster-properties-dialog) spectrales qui apparaissent comme 7 couches séparées. Afin d’effectuer les opérations d’analyse d’image, il faudra les fusionner dans un fichier multibandes unique. Pour ce faire, il existe un outil nommé [Raster > Miscellaneous > Merge](https://docs.qgis.org/3.44/fr/docs/training_manual/rasters/data_manipulation.html#merging-rasters).
 
@@ -41,13 +41,13 @@ Pour la suite du quiz Moodle, nous allons travailler sur les [bandes](https://do
 
 2a) Pour commencer, il faut uniquement visualiser la couche multibandes que tu viens de créer, en décochant toutes les autres couches depuis la fenêtre [Couches](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/qgis_gui.html#layer). Cela évitera que QGIS ne doive rafraîchir toutes les couches à chaque fois que tu bouges sur la carte.
 
-2b) Ouvre l'onglet de symbologie dand la fenêtre des propriétés la couche multibandes (double-clicke la couche) et essaye les différentes combinaisons de bandes comme bandes rouge, verte et bleue.
+2b) Ouvre l'onglet de symbologie dans la fenêtre des propriétés de la couche multibandes (double-clique la couche) et essaie les différentes combinaisons de bandes rouge, verte et bleue.
 
-2c) Après t’être familiarisé.e avec le fonctionnement des bandes, essaye de reproduire les compositions du tableau ci-dessous, qui indique la composition recommandée pour les images Landsat.
+2c) Après t’être familiarisé·e avec le fonctionnement des bandes, essaie de reproduire les compositions du tableau ci-dessous, qui indique les compositions recommandées pour les images Landsat.
 
 ![](https://wp.unil.ch/dawn/files/2022/11/Schermata-2022-11-11-alle-16.22.28-1024x285.png)
 
-Des opérations peuvent être effectuées sur les différentes bandes de façon à mettre en évidence certains éléments. Dans le menu "Raster", tu trouveras l’outil [Caclculatrice raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator) qui te permet de faire différentes analyse basées sur les images multibandes.
+Des opérations peuvent être effectuées sur les différentes bandes de façon à mettre en évidence certains éléments. Dans le menu "Raster", tu trouveras l’outil [Calculatrice raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator) qui te permet de faire différentes analyses basées sur les images multibandes.
 
 Une des fonctions qui peuvent être appliquées à un raster multibandes est le calcul du NDVI. Cet index de végétation normalisé (“Normalized Difference Vegetation Index”) met en évidence la couverture végétale sur le territoire. Il est très utilisé en agriculture et sylviculture pour connaître l’état de santé des plantes, comme le montre l’image ci-dessous.
 
@@ -61,7 +61,7 @@ Sur QGIS le calcul de cet indicateur est automatique, et effectué grâce à la 
 
 Où R désigne la réflectance spectrale dans la bande rouge (la bande 3 dans le TP) et PIR (ou NIR, Near InfraRed en anglais) indique la réflectance spectrale dans la bande du Proche-Infrarouge (la bande 4).
 
-2d) Applique la fonction NDVI dans la [Caclculatrice raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator) .
+2d) Applique la fonction NDVI dans la [Calculatrice raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator).
 
 2e) Explore désormais les autres rendus possibles dans le menu des fonctions raster, et réponds aux questions de la deuxième page du quiz Moodle.
 #TODO! [this is not available in qgis]
@@ -84,7 +84,7 @@ La fonction qui permet de faire cette différenciation en se basant uniquement s
 
 L’erreur principale qu’on retrouve est due à la similitude entre les longueurs d’ondes émises par les sols nus et les sols anthropiques (les zones urbaines). Ainsi, on retrouve des pixels classés comme “aires urbaines” en haute montagne à la place d’une classification comme “sols nus”.
 
-Pour corriger ces erreurs, on va utiliser une seconde fois la [Caclculatrice Raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator).
+Pour corriger ces erreurs, on va utiliser une seconde fois la [Calculatrice raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator).
 
 3b) Ouvre l’outil en question et essaye de trouver l’expression qui te permet de modifier les valeurs erronées dont on a parlé avant (lis d’abord la suite avant de t’y attaquer). En pratique, il faudra créer une requête permettant de modifier l’affectation des pixels classés comme “zone urbaine” et situés au-dessus de 1’400 mètres d’altitude en les classants comme “sols nus”.
 
@@ -104,7 +104,7 @@ Il existe aussi des fonctions conditionnelles, qui s’appliquent uniquement dan
 
 Les requêtes ci-dessus ont une seule condition, mais on peut très bien indiquer plusieurs conditions à remplir avec le symbole “&”.
 
-_if ( ( “MNT25\_Ticino@1” > 600) & (“MapTicino1990\_8classes@1” == 7) , 4 , “MapTicino1990\_8classes@1” )_ : cette requête modifie la classification des pixels 7 (“ombres”) en pixels 4 (“neige”) si l’altitude est supérieure à 600 mètres. Donc : “si le MNT indique une valeur supérieure à 600 m, et que le pixel appartient à la classes 7 “Ombres”, alors assigne la valeur du pixel à 4 (“neige”). Si une des condition n’est pas remplie, laisse la valeur d’origine”.
+_if ( ( “MNT25\_Ticino@1” > 600) & (“MapTicino1990\_8classes@1” == 7) , 4 , “MapTicino1990\_8classes@1” )_ : cette requête modifie la classification des pixels 7 (“ombres”) en pixels 4 (“neige”) si l’altitude est supérieure à 600 mètres. Donc : “si le MNT indique une valeur supérieure à 600 m, et que le pixel appartient à la classe 7 “Ombres”, alors assigne la valeur du pixel à 4 (“neige”). Si une des conditions n’est pas remplie, laisse la valeur d’origine”.
 
 ⚠️ C’est une requête de ce type qui te permettra d’effectuer le reclassement des pixels ayant la valeur 6 “Aires urbaines” et situés au-dessus de 1’400 mètres d’altitude en pixels avec valeur 5 “Sols nus”.
 
@@ -150,7 +150,7 @@ Pour prédire l’altitude en tout point de l’espace géographique Suisse on u
 4c) Cherche cet outil dans la [boîte à outil de traitements](https://docs.qgis.org/3.40/fr/docs/user_manual/processing/toolbox.html).
 
 4d) Grâce à cet outil, estime le MNT à partir des données Swisstopo.
-* Coche `Utiliser la coordonnée Z pour l'interpolation` et puis ajoute le en clickant le plus vert
+* Coche `Utiliser la coordonnée Z pour l'interpolation`, puis ajoute-la en cliquant sur le plus vert.
 * Pixel size: 900
 
 ![alt text](<assets/idw.png>)
