@@ -2,5 +2,6 @@ _build/
 *.gpkg
 cantons*
 *.tif
+*.csv
 # MyST build outputs
 _build
