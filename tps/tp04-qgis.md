@@ -48,13 +48,13 @@ Pour la suite du quiz Moodle, nous allons travailler sur les [bandes](https://do
 
 2a) Pour commencer, il faut uniquement visualiser la couche multibandes que tu viens de créer, en décochant toutes les autres couches depuis la fenêtre [Couches](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/qgis_gui.html#layer). Cela évitera que QGIS ne doive rafraîchir toutes les couches à chaque fois que tu bouges sur la carte.
 
-2b) Ouvre l'onglet de symbologie dand la fenêtre des propriétés la couche multibandes (double-clicke la couche) et essaye les différentes combinaisons de bandes comme bandes rouge, verte et bleue.
+2b) Ouvre l'onglet de symbologie dans la fenêtre des propriétés de la couche multibandes (double-clique la couche) et essaye les différentes combinaisons de bandes comme bandes rouge, verte et bleue.
 
 2c) Après t’être familiarisé.e avec le fonctionnement des bandes, essaye de reproduire les compositions du tableau ci-dessous, qui indique la composition recommandée pour les images Landsat.
 
 ![](https://wp.unil.ch/dawn/files/2022/11/Schermata-2022-11-11-alle-16.22.28-1024x285.png)
 
-Des opérations peuvent être effectuées sur les différentes bandes de façon à mettre en évidence certains éléments. Dans le menu "Raster", tu trouveras l’outil [Caclculatrice raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator) qui te permet de faire différentes analyse basées sur les images multibandes.
+Des opérations peuvent être effectuées sur les différentes bandes de façon à mettre en évidence certains éléments. Dans le menu "Raster", tu trouveras l’outil [Calculatrice raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator) qui te permet de faire différentes analyse basées sur les images multibandes.
 
 Une des fonctions qui peuvent être appliquées à un raster multibandes est le calcul du NDVI. Cet index de végétation normalisé (“Normalized Difference Vegetation Index”) met en évidence la couverture végétale sur le territoire. Il est très utilisé en agriculture et sylviculture pour connaître l’état de santé des plantes, comme le montre l’image ci-dessous.
 
@@ -68,7 +68,7 @@ Sur QGIS le calcul de cet indicateur est automatique, et effectué grâce à la 
 
 Où R désigne la réflectance spectrale dans la bande rouge (la bande 3 dans le TP) et PIR (ou NIR, Near InfraRed en anglais) indique la réflectance spectrale dans la bande du Proche-Infrarouge (la bande 4).
 
-2d) Applique la fonction NDVI dans la [Caclculatrice raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator) .
+2d) Applique la fonction NDVI dans la [Calculatrice raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator) .
 
 2e) Explore désormais les autres outils d'analyse raster disponibles dans la [Boîte à outils de traitements](https://docs.qgis.org/3.40/fr/docs/user_manual/processing/toolbox.html) (menu `Traitement > Boîte à outils`), notamment sous la catégorie `Raster Analysis`. Par exemple, QGIS propose un algorithme [NDVI](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/rasteranalysis.html#id2) prêt à l'emploi. Réponds ensuite aux questions de la deuxième page du quiz Moodle.
 
@@ -89,7 +89,7 @@ La fonction qui permet de faire cette différenciation en se basant uniquement s
 
 L’erreur principale qu’on retrouve est due à la similitude entre les longueurs d’ondes émises par les sols nus et les sols anthropiques (les zones urbaines). Ainsi, on retrouve des pixels classés comme “aires urbaines” en haute montagne à la place d’une classification comme “sols nus”.
 
-Pour corriger ces erreurs, on va utiliser une seconde fois la [Caclculatrice Raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator).
+Pour corriger ces erreurs, on va utiliser une seconde fois la [Calculatrice Raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator).
 
 3a) Ouvre l’outil en question et essaye de trouver l’expression qui te permet de modifier les valeurs erronées dont on a parlé avant (lis d’abord la suite avant de t’y attaquer). En pratique, il faudra créer une requête permettant de modifier l’affectation des pixels classés comme “zone urbaine” et situés au-dessus de 1’400 mètres d’altitude en les classants comme “sols nus”.
 
