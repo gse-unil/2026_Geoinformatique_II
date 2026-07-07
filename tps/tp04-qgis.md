@@ -1,5 +1,5 @@
 # TP4 : Opérations Raster
-[almost ready ~80%]
+
 ## Introduction
 
 Au cours de ce TP, tu vas te familiariser avec certains outils de géotraitement pour les données au format raster (=image). Tu travailleras avec des données satellites au format raster (provenant de la [NASA](https://www.nasa.gov/)), une couche thématique raster qui identifie les classes d’occupations du sol (créée par nos soins avec les données satellites de la NASA) et enfin un MNT (modèle numérique de terrain) que tu extrapoleras (grâce à la méthode de l’IDW “Inverse Distance Weighting”) à partir de données ponctuelles disponibles sur Swisstopo.
@@ -10,7 +10,7 @@ Ce TP n’aurait pas été possible sans les ressources listées ci-dessous:
 
 ## 1\. Téléchargement des données du TP et exploration des métadonnées
 
-1a) Télécharge à [cet hyperlien](https://unils-my.sharepoint.com/:f:/g/personal/ayoub_fatihi_unil_ch/IgDD5wH1DzKtTp1vLVbGrsfoAWbEkhSnB92HPaI1e0EiBu0?e=4EmmQr) un projet ArcGIS qui contient déjà les couches nécessaires ainsi qu’une mise en page finale de la carte que tu pourras utiliser pour l’habillage.
+1a) Télécharge à [cet hyperlien](https://unils-my.sharepoint.com/:f:/g/personal/ayoub_fatihi_unil_ch/IgDD5wH1DzKtTp1vLVbGrsfoAWbEkhSnB92HPaI1e0EiBu0?e=4EmmQr) un dossier qui contient déjà les couches nécessaires ainsi qu'une mise en page finale de la carte que tu pourras utiliser pour l'habillage.
 
 1b) Ouvre le dossier compressé `zip` que tu viens de télécharger. Il contient les couches raster que nous allons utiliser :
 
@@ -18,7 +18,7 @@ Ce TP n’aurait pas été possible sans les ressources listées ci-dessous:
 * Landsat4\_1990\_194028\_bx.tif : les 7 bandes spectrales individuelles collectées par le satellite Landsat 4 de la NASA (b1: Bleu ; b2:Vert ; b3: Rouge ; b4: Proche infrarouge ; b5: Infrarouge moyen -1 ; b6: Thermique ; b7: Infrarouge moyen -2).
 * MNT\_Ticino.tif : un modèle numérique de terrain du Canton Tessin. Nota bene : ce n’est pas ce MNT qu’il faudra utiliser pour la carte finale ! Cette couche nous servira uniquement comme base de calcul.
 
-1c) Vérifie que le [système de référence](https://pro.arcgis.com/fr/pro-app/latest/help/mapping/properties/specify-a-coordinate-system.htm) pour ton projet est bien: (EPSG: 2056 - CH1903+ LV95). Tu peux maintenant commencer le TP.
+1c) Vérifie que le [système de référence](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_projections/working_with_projections.html#project-coordinate-reference-system) pour ton projet est bien: (EPSG: 2056 - CH1903+ LV95). Tu peux maintenant commencer le TP.
 
 1d) Prends le temps d’explorer les métadonnées des couches (on parle de métadonnées, mais il s’agit, dans QGIS, des informations de la couche [ongler Information sous Propriétés de la couche {double-clicke la couche}]) et réponds aux premières questions sur le quiz Moodle. Choisis bien les métadonnées de la **bande 4** pour répondre aux questions.
 
@@ -26,8 +26,7 @@ Pour la suite du quiz Moodle, nous allons travailler sur les [bandes](https://do
 
 1e) Une fois le menu de l’outil ouvert, sélectionne les fichiers qui correspondent à chaque bande **en ordre croissant** (de b1 à b7). Et coche `Place each input file in a separate layer`.
 
-1f) Sauvegarde la nouvelle image satellitaire comme fichier `.tif`
-#TODO! [this is a limitation of geopackage you can not do more than 4 bands for one file] {is it really necessary to do this merge??}
+1f) Sauvegarde la nouvelle image satellitaire comme fichier `.tif` (GeoTIFF). C'est ce raster multibandes que tu utiliseras pour toute la suite du TP.
 
 1g) Explore la visualisation de ta nouvelle image satellitaire, en essayant différent combinaisons.
 
@@ -63,8 +62,7 @@ Où R désigne la réflectance spectrale dans la bande rouge (la bande 3 dans le
 
 2d) Applique la fonction NDVI dans la [Caclculatrice raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator) .
 
-2e) Explore désormais les autres rendus possibles dans le menu des fonctions raster, et réponds aux questions de la deuxième page du quiz Moodle.
-#TODO! [this is not available in qgis]
+2e) Explore désormais les autres outils d'analyse raster disponibles dans la [Boîte à outils de traitements](https://docs.qgis.org/3.40/fr/docs/user_manual/processing/toolbox.html) (menu `Traitement > Boîte à outils`), notamment sous la catégorie `Raster Analysis`. Par exemple, QGIS propose un algorithme [NDVI](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/rasteranalysis.html#id2) prêt à l'emploi. Réponds ensuite aux questions de la deuxième page du quiz Moodle.
 
 <details>
 <summary>Solution NDVI</summary>
@@ -76,7 +74,6 @@ Où R désigne la réflectance spectrale dans la bande rouge (la bande 3 dans le
 2f) Sauvegarde bien la nouvelle couche du NDVI dans ta géodatabase ! Tu devras utiliser ce rendu à la fin du travail.
 
 ## 3\. Correction du raster
-#TODO! [change steps numbering as 3a) is deleted]
 
 Le raster “MapTicino1990\_8classes.tif” est une cartographie de l’occupation du sol au Tessin en 1990. Les données sont recueillies par le satellite Landsat 4 de la NASA, et ensuite analysées de sorte à créer 8 classes d’occupation du sol : “Forêt”, “Prés”, “Eau”, “Neige”, “Sols nus”, “Aires urbaines”, “Nuages”, “Ombres”.
 
@@ -86,7 +83,7 @@ L’erreur principale qu’on retrouve est due à la similitude entre les longue
 
 Pour corriger ces erreurs, on va utiliser une seconde fois la [Caclculatrice Raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator).
 
-3b) Ouvre l’outil en question et essaye de trouver l’expression qui te permet de modifier les valeurs erronées dont on a parlé avant (lis d’abord la suite avant de t’y attaquer). En pratique, il faudra créer une requête permettant de modifier l’affectation des pixels classés comme “zone urbaine” et situés au-dessus de 1’400 mètres d’altitude en les classants comme “sols nus”.
+3a) Ouvre l’outil en question et essaye de trouver l’expression qui te permet de modifier les valeurs erronées dont on a parlé avant (lis d’abord la suite avant de t’y attaquer). En pratique, il faudra créer une requête permettant de modifier l’affectation des pixels classés comme “zone urbaine” et situés au-dessus de 1’400 mètres d’altitude en les classants comme “sols nus”.
 
 **⚠️** Utilise les variables ainsi que les opérateurs offerts par l’outil. Tu pourrais écrire toi-même le tout, mais il arrive que les symboles ne soient pas identiques, ce qui pourrait engendrer une erreur. En outre, si tu fais une erreur minime dans l’écriture des couches, l’outil produira un autre message d’erreur.
 
@@ -108,7 +105,7 @@ _if ( ( “MNT25\_Ticino@1” > 600) & (“MapTicino1990\_8classes@1” == 7) , 
 
 ⚠️ C’est une requête de ce type qui te permettra d’effectuer le reclassement des pixels ayant la valeur 6 “Aires urbaines” et situés au-dessus de 1’400 mètres d’altitude en pixels avec valeur 5 “Sols nus”.
 
-3c) Effectue la requête, puis, une fois la requête effectuée, sauvegarde le résultat dans une nouvelle couche que tu nommeras avec la mention “ReClass” (ex. ReClass\_MapTicino1990\_8classes).
+3b) Effectue la requête, puis, une fois la requête effectuée, sauvegarde le résultat dans une nouvelle couche que tu nommeras avec la mention “ReClass” (ex. ReClass\_MapTicino1990\_8classes).
 
 Garde cette couche dans ton géopackage car elle te sera redemandée plus tard pour le rendu final.
 
@@ -153,8 +150,6 @@ Pour prédire l’altitude en tout point de l’espace géographique Suisse on u
 * Coche `Utiliser la coordonnée Z pour l'interpolation` et puis ajoute le en clickant le plus vert
 * Pixel size: 900
 
-![alt text](<assets/idw.png>)
-
 <details>
 <summary>Solution</summary>
 <img src=https://wp.unil.ch/dawn/files/2022/11/Enregistrement-20221115_180606.gif>
@@ -164,42 +159,23 @@ Pour prédire l’altitude en tout point de l’espace géographique Suisse on u
 4e) Finalement, génère une représentation 3D de la surface du MNT grâce à l’outil _Hillshade_ ([Ombrage](https://docs.qgis.org/3.40/fr/docs/training_manual/rasters/terrain_analysis.html#follow-along-calculating-a-hillshade)) sous `Raster > Analysis > Ombrage`.
 
 ## 5\. Créer les trois cartes de résultats
-#TODO! [make layouts]
-Il ne te reste plus qu’à rendre tes résultats sur Moodle. Pour ce faire, nous avons préparé trois layouts : **NDVI**, **occup\_sol**, et **IDW**, avec lesquels tu peux exporter les rasters respectifs au format `.pdf`.
 
-5a) Pour chaque layout, fais correspondre l’information présente sur la carte à son titre sans oublier le fond de carte.
-Conseil : Pour modifier la couche affichée dans une [mises en page](https://pro.arcgis.com/fr/pro-app/latest/help/layouts/layouts-in-arcgis-pro.htm) (Layout), il te suffit d’activer la carte et sélectionner, désélectionner ou ajouter (Map > Add Data) les bonnes couches dans la [fenêtre contenu](https://pro.arcgis.com/fr/pro-app/latest/help/mapping/map-authoring/contents-pane.htm) (Contents).
+Il ne te reste plus qu’à rendre tes résultats sur Moodle. Pour ce faire, crée trois [mises en page](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#overview-of-the-print-layout) (_Print Layouts_) : **NDVI**, **occup\_sol**, et **IDW**, avec lesquelles tu pourras exporter les rasters respectifs au format `.pdf`.
 
-5b) Pour la carte concernant l’occupation du sol, insère une [légende](https://pro.arcgis.com/fr/pro-app/latest/help/layouts/add-a-legend.htm) qui illustre les 8 classes.
+5a) Pour chaque mise en page, fais correspondre l’information présente sur la carte à son titre. Pour modifier les couches affichées, il te suffit d’activer/désactiver les couches dans le panneau [Couches](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/qgis_gui.html#layer) de ton projet avant d'ajouter la carte à la mise en page. Tu peux aussi créer plusieurs [thèmes de couches](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/qgis_gui.html#layer-themes) si tu souhaites basculer rapidement entre les trois rendus.
 
-5c) Finalement, pour chaque carte, indique l’auteur.e en utilisant ton nom, ton prénom, ainsi que les **sources des données**.
+5b) Pour la carte concernant l’occupation du sol, insère une [légende](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_legend.html) qui illustre les 8 classes. Utilise un [rendu de classification paletté](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_properties.html#paletted-rendering) sur la couche `ReClass\_MapTicino1990\_8classes` pour que chaque classe ait sa propre couleur.
+
+5c) Finalement, pour chaque carte, ajoute les éléments d'habillage cartographique essentiels : [échelle](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_scalebar.html), [flèche du nord](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_arrow.html), titre, ainsi que ton nom, prénom et les **sources des données** (NASA Landsat 4, Swisstopo).
 
 ## 6\. Rendus et paquetage du projet
-#TODO! [rewrite]
-6a) Tu peux d’ores et déjà soumettre les trois rasters au format .pdf sur Moodle: [Rendus\_Cartes\_TP7](https://moodle.unil.ch/mod/assign/view.php?id=1736952). N’oublie pas le format du rendu : **_nom\_prenom\_cartes\_TP7.pdf_** (tu peux consulter la grille d’évaluation sur Moodle).
 
-6b) Crée un paquetage de projet à partager en suivant les instructions [à ce lien](https://pro.arcgis.com/fr/pro-app/latest/help/sharing/overview/project-package.htm).
+6a) Tu peux d’ores et déjà soumettre les trois cartes au format `.pdf` sur Moodle : [Rendus\_Cartes\_TP4](https://moodle.unil.ch/mod/assign/view.php?id=1736952). N’oublie pas le format du rendu : **_nom\_prenom\_cartes\_TP4.pdf_** (tu peux consulter la grille d’évaluation sur Moodle). Pour exporter une mise en page en PDF, utilise `Projet > Mises en page > Exporter > Exporter au format PDF` ou le bouton équivalent dans la fenêtre du _Print Layout_.
 
-N’oublie pas d’inclure un **résumé** (_summary_) et des **balises** ou mots-clés (_tags_) contenant les métadonnées identifiées précédemment. Tu peux cliquer la case “_Share outside of organization_” et le bouton “_Analyze_” pour optimiser ton paquetage pour un partage public.
+6b) Pour le rendu du projet, rassemble tes rasters de résultats (les fichiers `.tif` : image multibandes, NDVI, reclassement et MNT IDW) dans un dossier unique, puis compresse-le en `.zip`. Nomme l'archive de manière logique (ex. _nom\_prenom\_TP4.zip_).
 
-Il se peut que l’historique (History Items) de ton projet crée une erreur à l’analyse ou pendant le paquetage, tu peux désélectionner cette option si c’est le cas.
+6c) Copie le fichier `.zip` de la machine virtuelle sur ton OneDrive et crée un lien de partage.
 
-<details>
-<summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/10/E1_3.gif>
-</details>
-<br>
+6d) Tu peux maintenant te rendre à nouveau sur Moodle pour soumettre à ce lien : [Rendus\_projet\_TP4](https://moodle.unil.ch/mod/quiz/view.php?id=1736953). N’oublie pas le format du rendu : **_nom\_prenom\_TP4.zip_**
 
-6c) Une fois le projet paqueté, vérifie que le fichier _.ppkx_ que tu viens de créer te permet bien de réouvrir le projet avec la géodatabase complète (par exemple en double-cliquant dessus).
-
-<details>
-<summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/10/E1_4.gif>
-</details>
-<br>
-
-6d) Copie le fichier _.ppkx_ de la machine virtuelle sur ton OneDrive et crée un lien de partage.
-
-6e) Tu peux maintenant te rendre à nouveau sur Moodle pour soumettre à ce lien : [Rendus\_projet\_TP4](https://moodle.unil.ch/mod/quiz/view.php?id=1736953). N’oublie pas le format du rendu : **_nom\_prenom\_TP4.ppkx_**
-
-Félicitations pour avoir terminé le TP et à la semaine prochaine pour la création du portfolio.
+Félicitations pour avoir terminé le TP et à la semaine prochaine pour la création du portfolio !
