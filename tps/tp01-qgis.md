@@ -13,7 +13,8 @@ Nos objectifs pédagogiques sont les suivants:
 6. Éditer l’apparence d’une couche
 7. Calculer la distance entre 2 éléments
 8. Ouvrir et éditer des tables attributaires
-9. Exploration des systèmes de coordonnées et projections
+9. Empaqueter un projet QGIS (geopackage + rasters + zip) pour la remise
+10. Exploration des systèmes de coordonnées et projections
 
 Ce TP n’aurait pas été possible sans les ressources listées ci-dessous:
 
@@ -300,9 +301,46 @@ Il est possible de calculer des valeurs de champs grâce à deux outils auxquels
 <img src=https://wp.unil.ch/dawn/files/2022/09/TP1_22.gif>
 </details>
 
-8e) Effectue une sauvegarde finale de ton projet et rends ton projet au format .qgz sur Moodle avant la semaine prochaine. N’oublie pas de finir de répondre aux questions du “Quiz\_TP1” sur Moodle si tu souhaites obtenir la note maximale.
+8e) Effectue une sauvegarde finale de ton projet. N’oublie pas de finir de répondre aux questions du “Quiz\_TP1” sur Moodle si tu souhaites obtenir la note maximale.
 
-## 9\. Exploration des systèmes de coordonnées et projections
+## 9\. Empaquetage du projet pour la remise
+
+:::{important}
+Pour rendre ton projet sur Moodle, un simple fichier `.qgz` ne suffit pas : il ne contient que les **références** aux couches, pas les données elles-mêmes. Tu dois **empaqueter** ton projet (projet + données) dans un seul fichier `.zip`.
+:::
+
+Voici la marche à suivre, que tu réutiliseras pour tous les TPs :
+
+**9a) Sauvegarde le projet dans un geopackage**
+
+Au lieu d'un fichier `.qgz`, sauvegarde ton projet **dans** un geopackage `.gpkg` : menu `Projet > Sauvegarder vers > Geopackage…`. Donne-lui un nom comme `nom_prenom_TP1.gpkg`. Le projet QGIS et toutes les couches vectorielles seront stockés dans ce fichier unique.
+
+<details>
+<summary>Astuce</summary>
+Le geopackage (<code>.gpkg</code>) est un conteneur : il peut regrouper plusieurs couches vectorielles <strong>et</strong> ton projet QGIS dans un seul fichier. C'est le format recommandé pour la remise.
+</details>
+<br>
+
+**9b) Ajoute les rasters**
+
+Si ton projet utilise des couches **raster** (fichiers `.tif`, `.asc`, etc.), le geopackage ne peut pas les contenir. Place-les dans le même dossier que ton `.gpkg`.
+
+**9c) Compresse le tout en `.zip`**
+
+Sélectionne ton `.gpkg` et les fichiers `.tif` associés, puis compresse-les en un seul fichier `.zip` (clic droit > Compresser, ou `Ctrl+clic > Compresser` sur macOS). Nomme l'archive `nom_prenom_TP1.zip`.
+
+**9d) Dépose le `.zip` sur Moodle** avant la semaine prochaine.
+
+:::{note}
+**Récapitulatif de l'empaquetage :**
+
+1. `Projet > Sauvegarder vers > Geopackage` → fichier `.gpkg` (projet + vecteurs)
+2. Copier les `.tif` à côté du `.gpkg` (s'il y a des rasters)
+3. Sélectionner le tout → compresser en `.zip`
+4. Déposer le `.zip` sur Moodle
+:::
+
+## 10\. Exploration des systèmes de coordonnées et projections
 
 Dans cet exercice, tu vas afficher et explorer différentes projections cartographiques afin d’étudier les distorsions induites au niveau de la direction, des surfaces et des distances.
 
