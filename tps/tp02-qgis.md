@@ -1,6 +1,4 @@
-# Sélection, jointures et relations
-
-[almost ready - needs alternative to `relates`]
+# TP2 : Sélection, jointures et relations
 
 ## Introduction
 
@@ -62,7 +60,7 @@ Maintenant on passe aux [expressions](https://docs.qgis.org/3.44/en/docs/user_ma
 )
 ```
 
-* **Sélection par intervalle** : Sélectionner les entités dont la surface est comprise entre 600 et 700 mˆ2
+* **Sélection par intervalle** : Sélectionner les entités dont la surface est comprise entre 300 et 1000 m²
 
 ```sql
 "AREA" >= 300 AND "AREA" <= 1000
