@@ -8,6 +8,13 @@ Ce TP n’aurait pas été possible sans les ressources listées ci-dessous:
 
 * _TP4 du cours “Géomatique et SIG” du Privat-docent Dr. Marj Tonini_
 
+Nos objectifs pédagogiques sont les suivants:
+
+1. Effectuer des requêtes attributaires (sélection par expression)
+2. Effectuer des requêtes spatiales (sélection par localisation)
+3. Réaliser des jointures attributaires et spatiales entre tables et couches
+4. Comprendre les relations entre tables et couches spatiales
+
 ## 1\. Télécharger les données du TP
 
 Pour la partie suivante, télécharge les données du TP depuis OneDrive sur ta machine virtuelle en utilisant [cet hyperlien](https://unils-my.sharepoint.com/:f:/g/personal/ayoub_fatihi_unil_ch/IgDD5wH1DzKtTp1vLVbGrsfoAWbEkhSnB92HPaI1e0EiBu0?e=4EmmQr).

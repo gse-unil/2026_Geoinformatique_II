@@ -2,7 +2,14 @@
 
 ## Introduction
 
-L’objectif de ce TP est de te montrer comment réaliser des analyses spatiales dans les SIG à partir de géodonnées. Tu apprendras à utiliser les principaux outils de géotraitement pour les opérations SIG de base. Une fois que tu auras expérimenté ces outils, tu seras également capable de les utiliser dans ton propre projet si nécessaire !
+L'objectif de ce TP est de te montrer comment réaliser des analyses spatiales dans les SIG à partir de géodonnées. Tu apprendras à utiliser les principaux outils de géotraitement pour les opérations SIG de base. Une fois que tu auras expérimenté ces outils, tu seras également capable de les utiliser dans ton propre projet si nécessaire !
+
+Nos objectifs pédagogiques sont les suivants:
+
+1. Utiliser les outils de sélection et d'extraction (clip, extraction par masque)
+2. Utiliser les outils de proximité (buffer / zone tampon)
+3. Utiliser les outils de superposition (intersect, union, dissolve)
+4. Construire une chaîne de géotraitements vectoriels sur un cas d'étude concret
 
 Dans les TP précédents, tu as appris à utiliser les outils de gestion des tables attributaires (_Select by attribute_, _Select by location_). Dans ce TP, nous allons apprendre comment utiliser :
 

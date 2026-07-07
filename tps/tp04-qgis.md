@@ -4,6 +4,14 @@
 
 Au cours de ce TP, tu vas te familiariser avec certains outils de géotraitement pour les données au format raster (=image). Tu travailleras avec des données satellites au format raster (provenant de la [NASA](https://www.nasa.gov/)), une couche thématique raster qui identifie les classes d’occupations du sol (créée par nos soins avec les données satellites de la NASA) et enfin un MNT (modèle numérique de terrain) que tu extrapoleras (grâce à la méthode de l’IDW “Inverse Distance Weighting”) à partir de données ponctuelles disponibles sur Swisstopo.
 
+Nos objectifs pédagogiques sont les suivants:
+
+1. Explorer les métadonnées d'un raster (bandes, résolution, CRS)
+2. Fusionner des bandes spectrales raster en un seul fichier multibandes
+3. Utiliser la calculatrice raster pour dériver de nouvelles informations
+4. Effectuer une interpolation spatiale (IDW) à partir de données ponctuelles
+5. Réaliser des cartes thématiques raster et empaqueter le projet QGIS
+
 Ce TP n’aurait pas été possible sans les ressources listées ci-dessous:
 
 * _TP7 du cours “Géomatique et SIG” du Privat-docent Dr. Marj Tonini_
