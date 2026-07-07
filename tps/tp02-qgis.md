@@ -14,6 +14,7 @@ Nos objectifs pédagogiques sont les suivants:
 2. Effectuer des requêtes spatiales (sélection par localisation)
 3. Réaliser des jointures attributaires et spatiales entre tables et couches
 4. Comprendre les relations entre tables et couches spatiales
+5. Créer une mise en page cartographique (_Print Layout_) et exporter une carte au format PDF
 
 ## 1\. Télécharger les données du TP
 
@@ -183,3 +184,55 @@ Le but de cet exercice est de visualiser, pour une parcelle appartenant à plusi
 <br>
 
 Youhou! Tu peux maintenant finir le quiz moodle.
+
+## 4\. Mise en page cartographique : _Print Layout_
+
+Tu as déjà visualisé et stylisé des couches dans QGIS. Maintenant, tu vas apprendre à **mettre en page** ta carte pour l'exporter en PDF — une compétence que tu réutiliseras dans tous les TP suivants et dans ton projet individuel.
+
+:::{important}
+Le [_Print Layout_](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#overview-of-the-print-layout) est l'espace de QGIS dédié à la **mise en page** : c'est ici que tu ajoutes titre, légende, échelle, flèche du nord, et que tu exportes ta carte au format PDF ou image.
+:::
+
+4a) Ouvre un _Print Layout_ : menu `Projet > Nouvelle mise en page` (ou `Ctrl+P`). Donne-lui un nom, par exemple "Carte_VD".
+
+4b) Ajoute une **carte** : clique sur l'outil ![map](https://docs.qgis.org/3.40/en/_images/mActionAddMap.png) _Ajouter une carte_, puis dessine un rectangle dans la page. Ta carte QGIS apparaît dans ce cadre.
+
+<details>
+<summary>Astuce</summary>
+Si ta carte apparaît trop petite ou décalée, utilise l'outil <em>Déplacer le contenu</em> (main 🖐️) pour la recentrer, et la molette pour zoomer/dézoomer à l'intérieur du cadre.
+</details>
+<br>
+
+4c) Ajoute les **éléments d'habillage** essentiels en utilisant les icônes de la barre d'outils latérale :
+
+| Élément | Icône | Où |
+|---------|-------|-----|
+| [Légende](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_legend.html) | ![legend](https://docs.qgis.org/3.40/en/_images/mActionAddLegend.png) | Barre latérale |
+| [Échelle](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_scalebar.html) | ![scalebar](https://docs.qgis.org/3.40/en/_images/mActionScaleBar.png) | Barre latérale |
+| [Flèche du nord](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_arrow.html) | ![arrow](https://docs.qgis.org/3.40/en/_images/mActionArrow.png) | Barre latérale |
+| Titre | ![label](https://docs.qgis.org/3.40/en/_images/mActionLabel.png) | Barre latérale |
+
+<details>
+<summary>Astuce — Titre</summary>
+Le titre est un élément de texte : double-clique dessus pour éditer son contenu dans le panneau de propriétés (onglet <em>Propriétés de l'élément</em>).
+</details>
+<br>
+
+4d) Personnalise ta carte :
+* Ajuste la [légende](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_legend.html) : renomme ou masque les couches inutiles (décoche "Auto-update" et modifie manuellement).
+* Choisis un [style d'échelle](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_scalebar.html) lisible (par exemple "Box" ou "Line Ticks").
+* Vérifie que les **sources des données** sont indiquées (petit texte en bas de la carte).
+
+4e) **Exporte** ta carte au format PDF : menu `Mise en page > Exporter > Exporter au format PDF` (ou l'icône équivalente). Choisis un emplacement sur ton OneDrive.
+
+:::{note}
+**Checklist d'habillage cartographique** — à vérifier avant chaque export de carte dans ce cours :
+
+- ☑ Titre descriptif
+- ☑ Légende lisible et à jour
+- ☑ Échelle graphique
+- ☑ Flèche du nord
+- ☑ Ton nom + date
+- ☑ Source des données
+- ☑ Couleurs cohérentes ([ColorBrewer](https://colorbrewer2.org/) recommandé)
+:::
