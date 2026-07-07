@@ -10,6 +10,7 @@ Nos objectifs pédagogiques sont les suivants:
 2. Utiliser les outils de proximité (buffer / zone tampon)
 3. Utiliser les outils de superposition (intersect, union, dissolve)
 4. Construire une chaîne de géotraitements vectoriels sur un cas d'étude concret
+5. Automatiser une chaîne de géotraitements avec le Model Designer de QGIS
 
 Dans les TP précédents, tu as appris à utiliser les outils de gestion des tables attributaires (_Select by attribute_, _Select by location_). Dans ce TP, nous allons apprendre comment utiliser :
 
@@ -150,7 +151,48 @@ Dans cette partie, tu vas enfin définir la zone d’interface habitat-forêt (W
 
 4c) **Croiser deux couches** : Maintenant il ne nous reste plus qu'à "croiser" la zone tampon de 80 mètres que tu viens de créer avec la couche de la surface forestière pour obtenir la zone d'interface habitat-forêt (WUI). Pour ce faire, utilise l'outil [Intersection](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#intersection) et nomme la couche de sortie _WUI._
 
-## 5\. Soumission du TP
+## 5\. Automatiser avec le Model Designer
+
+Tu viens d'enchaîner plusieurs géotraitements à la main : sélection, fusion, découpe, zones tampons, union, différence, intersection. C'est puissant, mais **répétitif**. QGIS propose un outil visuel pour automatiser ces chaînes : le [Model Designer](https://docs.qgis.org/3.40/fr/docs/user_manual/processing/modeler.html).
+
+:::{important}
+Le **Model Designer** permet de :
+* enchaîner des algorithmes dans un diagramme visuel ;
+* définir des **entrées** réutilisables (couches, paramètres) ;
+* **exécuter** toute la chaîne en un clic ;
+* **partager** le modèle (fichier `.model3`) — utile pour ton projet individuel !
+:::
+
+5a) Ouvre le Model Designer : menu `Traitement > Model Designer` (ou l'icône ![modeler](https://docs.qgis.org/3.44/en/_images/modeler_canvas.png) dans la boîte à outils).
+
+5b) Ajoute les **entrées** (panneau de gauche > _Inputs_) :
+* **Couche vecteur** (polygones) → nomme-la "Districts"
+* **Couche vecteur** (polygones) → nomme-la "Forêt"
+* **Couche vecteur** (polygones) → nomme-la "Bâtiments"
+
+5c) Ajoute les **algorithmes** (panneau _Algorithms_) et relie-les dans l'ordre :
+1. `Sélection par expression` sur "Districts" → filtre les 2 districts
+2. `Fusionner les entités` → un seul polygone
+3. `Couper` : Forêt découpée par le district fusionné
+4. `Zone tampon` (+75m, regroupé) sur "Bâtiments"
+5. `Zone tampon` (–75m) → ZDB
+6. `Zone tampon` (+80m) sur la ZDB → zone de risque
+7. `Différence` : zone de risque moins ZDB
+8. `Intersection` : résultat avec la forêt → **WUI**
+
+<details>
+<summary>Astuce</summary>
+Relie la **sortie** d'un algorithme (cercle rouge) à l'**entrée** du suivant (cercle vert) en cliquant-glissant. Les entrées que tu as définies se connectent aux premiers algorithmes.
+</details>
+<br>
+
+5d) Sauvegarde le modèle (`Modèle > Enregistrer`) en fichier `.model3`, puis **exécute-le** (▶️) en sélectionnant tes couches d'entrée.
+
+:::{note}
+Pas besoin de reconstruire toute la chaîne — l'objectif est de comprendre la logique. Un modèle avec **au moins 3 algorithmes connectés** et une couche de sortie suffit pour ce TP. Tu réutiliseras cette compétence dans ton **projet individuel**.
+:::
+
+## 6\. Soumission du TP
 
 **Bravo !** Tu as ainsi réalisé ton premier projet en utilisant des outils de géotraitement ! ⚒️ Il ne te reste plus qu’à:
 
