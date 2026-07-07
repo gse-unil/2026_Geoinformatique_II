@@ -148,7 +148,7 @@ Dans cette partie, tu vas enfin définir la zone d’interface habitat-forêt (W
 ![](https://wp.unil.ch/dawn/files/2022/10/Incendi.jpg)
 [Source](https://www.britannica.com/science/forest-fire)
 
-4c) **Croiser deux couches** : Maintenant il ne nous reste plus qu’à “croiser” la zone tampon de 80 mètres que tu viens de créer avec la couche de la surface forestière pour obtenir la zone d’interface habitat-forêt (WUI). Pour ce faire, utilise l’outil [Intersection](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#intersection) et nomme la couche de sortie _WUI._
+4c) **Croiser deux couches** : Maintenant il ne nous reste plus qu'à "croiser" la zone tampon de 80 mètres que tu viens de créer avec la couche de la surface forestière pour obtenir la zone d'interface habitat-forêt (WUI). Pour ce faire, utilise l'outil [Intersection](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#intersection) et nomme la couche de sortie _WUI._
 
 ## 5\. Soumission du TP
 
