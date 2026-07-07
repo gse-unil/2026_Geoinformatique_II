@@ -180,7 +180,7 @@ Il ne te reste plus qu’à rendre tes résultats sur Moodle. Pour ce faire, cr�
 
 6a) Tu peux d’ores et déjà soumettre les trois cartes au format `.pdf` sur Moodle : [Rendus\_Cartes\_TP4](https://moodle.unil.ch/mod/assign/view.php?id=1736952). N’oublie pas le format du rendu : **_nom\_prenom\_cartes\_TP4.pdf_** (tu peux consulter la grille d’évaluation sur Moodle). Pour exporter une mise en page en PDF, utilise `Projet > Mises en page > Exporter > Exporter au format PDF` ou le bouton équivalent dans la fenêtre du _Print Layout_.
 
-6b) Pour le rendu du projet, rassemble tes rasters de résultats (les fichiers `.tif` : image multibandes, NDVI, reclassement et MNT IDW) dans un dossier unique, puis compresse-le en `.zip`. Nomme l'archive de manière logique (ex. _nom\_prenom\_TP4.zip_).
+6b) Pour le rendu du projet, empaquette ton projet en suivant la méthode apprise au TP1 (§9) : sauvegarde le projet dans un geopackage, ajoute tes rasters de résultats (les fichiers `.tif` : image multibandes, NDVI, reclassement et MNT IDW), compresse le tout en `.zip`. Nomme l'archive _nom\_prenom\_TP4.zip_.
 
 6c) Copie le fichier `.zip` de la machine virtuelle sur ton OneDrive et crée un lien de partage.
 

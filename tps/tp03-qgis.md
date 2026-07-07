@@ -200,7 +200,7 @@ Pas besoin de reconstruire toute la chaîne — l'objectif est de comprendre la 
 
 6b) Enfin, pour la remise des fichiers sur Moodle **rends ta carte (magnifique) au format .pdf** ([exportation en PDF](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#export-settings)) **sous** [Rendu\_TP3\_Carte\_PDF](https://moodle.unil.ch/mod/assign/view.php?id=1736942) **en la nommant de la manière suivante : _nom\_prénom\_TP3_**
 
-6c) **geopackage (.gpkg)** sous [Projet\_TP3](https://moodle.unil.ch/mod/quiz/view.php?id=1736941) en le nommant de la manière suivante : _nom_\__prénom_\__TP3_., et contenant ton  **projet** (en utilisant la méthode `Project> Save To > Geopackage`) ainsi que toute les couches utilisées.
+6c) **Empaquette ton projet** (projet + couches) en suivant la méthode apprise au TP1 (§9) : sauvegarde le projet dans un geopackage, ajoute les éventuels rasters, compresse le tout en `.zip` et nomme-le _nom\_prénom\_TP3.zip_. Dépose-le sous [Projet\_TP3](https://moodle.unil.ch/mod/quiz/view.php?id=1736941).
 
 6d) et répond aux dernières questions du [Quiz\_TP3](https://moodle.unil.ch/mod/quiz/view.php?id=1736940).
 
