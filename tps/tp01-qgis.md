@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Bienvenue au premier TP du cours de Géomatique et SIG!
+Bienvenue au premier TP du cours de Géoinformatique II!
 Nos objectifs pédagogiques sont les suivants:
 
 1. Utiliser les machines virtuelles de l’UNIL
@@ -212,8 +212,6 @@ Voir réponse à la question 5c
 
 ## 7\. Calculer la distance entre 2 éléments
 
-## 7. Calculer la distance entre 2 éléments
-
 7a) Activer le _snapping_
 Avant de mesurer précisément une distance, il est utile d’activer le **snapping** afin que le curseur “s’accroche” automatiquement aux villes ou aux objets géographiques.
 
@@ -302,7 +300,7 @@ Il est possible de calculer des valeurs de champs grâce à deux outils auxquels
 <img src=https://wp.unil.ch/dawn/files/2022/09/TP1_22.gif>
 </details>
 
-8e) Effectue une sauvegarde finale de ton projet et rends ton projet au format .aprx sur Moodle avant la semaine prochaine. N’oublie pas de finir de répondre aux questions du “Quiz\_TP1” sur Moodle si tu souhaites obtenir la note maximale.
+8e) Effectue une sauvegarde finale de ton projet et rends ton projet au format .qgz sur Moodle avant la semaine prochaine. N’oublie pas de finir de répondre aux questions du “Quiz\_TP1” sur Moodle si tu souhaites obtenir la note maximale.
 
 ## 9\. Exploration des systèmes de coordonnées et projections
 
