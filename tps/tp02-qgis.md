@@ -72,7 +72,7 @@ Maintenant on passe aux [expressions](https://docs.qgis.org/3.44/en/docs/user_ma
 </details>
 <br>
 
-Tu peux maintenant répondre aux 5 premières questions du quiz moodle (première page).
+Tu peux maintenant répondre aux 5 premières questions du quiz moodle (page `TP 2`).
 
 ---
 
@@ -207,7 +207,7 @@ Si ta carte apparaît trop petite ou décalée, utilise l'outil <em>Déplacer le
 |---------|-------|-----|
 | [Légende](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_legend.html) | ![legend](https://docs.qgis.org/3.40/en/_images/mActionAddLegend.png) | Barre latérale |
 | [Échelle](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_scalebar.html) | ![scalebar](https://docs.qgis.org/3.40/en/_images/mActionScaleBar.png) | Barre latérale |
-| [Flèche du nord](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_arrow.html) | ![arrow](https://docs.qgis.org/3.40/en/_images/mActionArrow.png) | Barre latérale |
+| [Flèche du nord](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_arrow.html) | ![arrow](https://docs.qgis.org/3.40/en/_images/mActionAddArrow.png) | Barre latérale |
 | Titre | ![label](https://docs.qgis.org/3.40/en/_images/mActionLabel.png) | Barre latérale |
 
 <details>
