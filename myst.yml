@@ -42,7 +42,7 @@ project:
         - file: 'tps/tp-py04.ipynb'
           title: TP4 Python
     - file: 'tps/tp00.md'
-      title: Projet final
+      title: Projet individuel
     
 site:
   template: book-theme
