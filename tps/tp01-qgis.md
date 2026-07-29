@@ -59,34 +59,29 @@ Télécharge les données du TP sur ta machine virtuelle en utilisant [cet hyper
 
 3a) Ouvre le logiciel QGIS depuis ta machine virtuelle ou localement.
 
-<details>
-<summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/09/TP1_2.gif>
-</details>
-
 :::{note} Installer QGIS localement
 Si tu préfères travailler directement sur ton propre ordinateur plutôt que sur une machine virtuelle UNIL, tu peux installer QGIS localement.
 
 1. Télécharge QGIS depuis le site officiel : <https://qgis.org/fr/site/forusers/download.html>
-2. Choisis la version adaptée à ton système d’exploitation (Windows, macOS ou Linux).
+2. Choisis la version adaptée à ton système d’exploitation (Windows, macOS ou Linux). Version 4+ recommandée.
 3. Lance l’installateur téléchargé.
 4. Garde les options d’installation par défaut.
 5. Une fois l’installation terminée, ouvre QGIS Desktop.
 :::
 
-3b) Ouvre un _nouveau projet vide_ pour te familiariser avec l’interface de QGIS.
+3b) Ouvre un _nouveau projet vide_ ou _OpenStreetMap Basemap_  dans l'onglet `Templates` pour te familiariser avec l’interface de QGIS.
 
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/09/TP1_4.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00001.gif>
 </details>
 
-3c) N’hésite pas à t’amuser avec à ajouter des couches (Explorateur > XYZ Tiles > OpenStreetMap). Et puis, rends-toi au Géopolis. Quelles sont les coordonnées?
+3c) Rends-toi au Géopolis. Quelles sont les coordonnées?
 
 <details>
 <summary>Solution</summary>
 <br>
-Les cordonnées du Géopolis sont: ~ 46.5265078, 6.5794063
+Les cordonnées du Géopolis sont: ~ 732416.60, 5865133.56 (EPSG:3857 - WGS84 / Pseudo-Mercator)
 </details>
 
 ## 4\. Visualiser des couches géographiques
@@ -102,14 +97,14 @@ Par [Samuel B.](https://stock.adobe.com/ch_fr/contributor/200820058/samuel-b?lo
 
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/09/TP1_5.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00002.gif>
 </details>
 
 4b) Explore les propriétés des fichiers [vecteurs](https://docs.qgis.org/3.40/en/docs/user_manual/working_with_vector/vector_properties.html) / [rasters](https://docs.qgis.org/3.40/en/docs/user_manual/working_with_raster/raster_properties.html) de chaque couche en effectuant un clic droit sur chaque couche avant de sélectionner “Properties”.
 
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/09/TP1_7.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00003.gif>
 </details>
 
 4c) Réponds aux questions de la première page du “Quiz\_TP1” sur Moodle en utilisant les propriétés de chaque couche. Chaque réponse est enregistrée, mais tu peux soumettre de nouvelles réponses sans pénalité après avoir reçu du feedback de Moodle.
@@ -141,74 +136,73 @@ Maintenant que nous avons un moyen facile et fiable d’enregistrer notre projet
 Hand drawing Switzerland maps with hand lettering. Illustration. EPS 10.  
 Par [angkanasu](https://stock.adobe.com/ch_fr/contributor/204890139/angkanasu?load_type=author&prev_url=detail)
 
-6a) Ajuste l’étendue de ta carte, par exemple en utilisant la documentation [à ce lien](https://docs.qgis.org/3.40/en/docs/user_manual/print_composer/composer_items/composer_map.html#extents).
+:::{note}
+Ici, nous modifions l'apparence des couches **directement dans la fenêtre cartographique** de QGIS. La création d'une **mise en page** complète (titre, légende, échelle, flèche du nord, export PDF) se fera avec le _Print Layout_ au **TP2**.
+:::
+
+6a) Familiarise-toi avec les outils de [navigation dans la carte](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/qgis_gui.html#map-canvas) : zoome, dézoome et déplace-toi sur la Suisse à l'aide de la souris (molette pour le zoom, clic gauche + glisser pour déplacer).
 
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/09/TP1_10.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00004.gif>
 </details>
 
-6b) Fait apparaître le nom des villes sur la carte en utilisant l’[Onglet Étiquettes](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/vector_properties.html#labels-properties) à partir de la fenêtre propriétés de la couche “Towns” pour faire apparaître le champ “ID1”. N’hésite pas à personaliser ta carte!
+6b) Fait apparaître le nom des villes sur la carte en utilisant l’[Onglet Étiquettes / Labels](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/vector_properties.html#labels-properties) à partir de la fenêtre propriétés de la couche “Towns” pour faire apparaître le champ “ID1”. N’hésite pas à personaliser ta carte!
 
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/09/TP1_11.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00005.gif>
 </details>
 
 6c) Affiche le nom des lacs suisse avec une taille de police plus petite que pour les villes.
 
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/09/TP1_12.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00006.gif>
 </details>
 
-6d) Agrandis la taille des symboles représentant les villes et change leurs couleurs en utilisant l'[Onglet Symbologie](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/vector_properties.html#symbology-properties).
+6d) Agrandis la taille des symboles représentant les villes et change leurs couleurs en utilisant l'[Onglet Symbologie / Symbology](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/vector_properties.html#symbology-properties).
 
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/09/TP1_13.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00007.gif>
 </details>
 
 6e) Épaissis la ligne séparant les cantons et change la couleur de remplissage pour mieux les faire apparaître.
 
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/09/TP1_14.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00008.gif>
 </details>
 
 6f) De même, change la couleur et l’épaisseur des routes pour mieux les faire apparaître.
 
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/09/TP1_15.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00010.gif>
 </details>
 
 6g) Joue avec les propriétés de la couche “HillShadeCH” pour améliorer ta carte, et [modifie sa transparence](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_properties.html#transparency-properties) (par exemple utilise une transparence de 50%).
 
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/09/TP1_16.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00011.gif>
 </details>
 
 6h) Ajuste l’ordre des couches en les glissant les unes par dessus les autres pour mettre en valeur les informations qui t’intéressent le plus.
 
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/09/TP1_17.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00012.gif>
 </details>
 
-6i) Tu peux maintenant réajuster l’[étendue de ta carte](https://pro.arcgis.com/fr/pro-app/latest/help/mapping/properties/set-a-custom-full-extent.htm) pour l’admirer dans toute sa splendeur. Qu’est-ce qui a changé dans ta légende?
-
-<details>
-<summary>Solution</summary>
-Les couleurs ont été mises à jour.
-</details>
-
-6j) N’oublie pas de sauvegarder ton projet et de le transférer sur OneDrive car ce serait dommage de perdre cette belle carte.
+6i) N’oublie pas de sauvegarder ton projet et de le transférer sur OneDrive car ce serait dommage de perdre cette belle carte.
 
 <details>
 <summary>Solution</summary>
 Voir réponse à la question 5c
+
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00012.gif>
 </details>
 
 ## 7\. Calculer la distance entre 2 éléments
@@ -243,7 +237,8 @@ Nous allons maintenant utiliser l’outil de mesure de QGIS.
 
 <details>
 <summary>Solution</summary>
-<img src=[https://wp.unil.ch/dawn/files/2022/09/TP1_20.gif>](https://wp.unil.ch/dawn/files/2022/09/TP1_20.gif>)
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00013.gif>
+
 Exemples de distances :
 * Lausanne ↔ Genève : ~ 51.307 km
 </details>
@@ -267,14 +262,7 @@ Pour rendre tout cela plus concret, jouons de suite avec ces tables attributaire
 
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/09/TP1_19.gif>
-</details>
-
-8b) En utilisant l’[outil de mesure](https://docs.qgis.org/3.40/fr/docs/user_manual/map_views/map_view.html#measuring) calcule les distances entre les villes indiquées sur Moodle.
-
-<details>
-<summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/09/TP1_20.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00014.gif>
 </details>
 
 Tu peux ajouter (ou effacer) des champs dans une table attributaire. Les champs peuvent être de type différent:
@@ -288,20 +276,20 @@ Il est possible de calculer des valeurs de champs grâce à deux outils auxquels
 
 * “[Field Calculator](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/attribute_table.html#using-the-field-calculator)”: Utilise une formule à entrer pour effectuer un calculs généraux (multiplication, addition, etc.) ou relatives à la géométrie des objets (surface, périmètre, centroïde, etc.)
 
-8c) Utilise “Field Calculator” pour créer un nouveau champ avec la longueur des routes suisses dans la table attributaire de la couche “Roads”.
+8b) Utilise “Field Calculator” pour créer un nouveau champ avec la longueur des routes suisses dans la table attributaire de la couche “Roads”. Vérifie que le mode **Édition** est activé.
 
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/09/TP1_21.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00015.gif>
 </details>
 
-8d) Examine les [statistiques](https://docs.qgis.org/3.40/fr/docs/training_manual/vector_analysis/spatial_statistics.html#follow-along-basic-statistics) de la longueur des routes.
+8c) Examine les [statistiques](https://docs.qgis.org/3.40/fr/docs/training_manual/vector_analysis/spatial_statistics.html#follow-along-basic-statistics) de la longueur des routes.
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/09/TP1_22.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00016.gif>
 </details>
 
-8e) Effectue une sauvegarde finale de ton projet. N’oublie pas de finir de répondre aux questions du “Quiz\_TP1” sur Moodle si tu souhaites obtenir la note maximale.
+8d) Effectue une sauvegarde finale de ton projet. N’oublie pas de finir de répondre aux questions du “Quiz\_TP1” sur Moodle si tu souhaites obtenir la note maximale.
 
 ## 9\. Empaquetage du projet pour la remise
 
@@ -321,7 +309,7 @@ Le geopackage (<code>.gpkg</code>) est un conteneur : il peut regrouper plusieur
 </details>
 <br>
 
-**9b) Ajoute les rasters**
+**9b) Ajoute les rasters** (si applicable)
 
 Si ton projet utilise des couches **raster** (fichiers `.tif`, `.asc`, etc.), le geopackage ne peut pas les contenir. Place-les dans le même dossier que ton `.gpkg`.
 
@@ -359,5 +347,5 @@ Projection à essayer:
 
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/09/TP2_new_projection-7.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00017.gif>
 </details>
