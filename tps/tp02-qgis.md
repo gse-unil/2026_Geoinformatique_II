@@ -39,7 +39,7 @@ Explore d’abord la table attributaire pour comprendre le champ qui contient la
 
 <details>
 <summary>Solution</summary>
-<iframe src=https://wp.unil.ch/dawn/files/2022/10/nappe_morclessss.mp4></iframe>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp2/tp2-00001.gif>
 </details>
 <br>
 
@@ -68,7 +68,7 @@ Maintenant on passe aux [expressions](https://docs.qgis.org/3.44/en/docs/user_ma
 
 <details>
 <summary>Solution</summary>
-<iframe src=https://wp.unil.ch/dawn/files/2022/10/nappe_morclessss.mp4></iframe>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp2/tp2-00002.gif>
 </details>
 <br>
 
@@ -91,7 +91,7 @@ Utilise le Selection Type « Select subset from the current selection »
 
 <details>
 <summary>Solution</summary>
-<iframe src=https://wp.unil.ch/dawn/files/2022/10/nappes_vaud.mp4></iframe>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp2/tp2-00003.gif>
 </details>
 <br>
 
@@ -111,7 +111,7 @@ Pour cet exercice, charge les couches `Communes` et `VoiturePlus` . À l’aide 
 
 <details>
 <summary>Solution</summary>
-<iframe src=https://wp.unil.ch/dawn/files/2022/10/join-1.mp4></iframe>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp2/tp2-00004.gif>
 </details>
 <br>
 
@@ -127,7 +127,7 @@ Pour cet exercice, charge la couche « BatimentsUNIL » dans ton projet. À l’
 
 <details>
 <summary>Solution</summary>
-<iframe src=https://wp.unil.ch/dawn/files/2022/10/spatial_join.mp4></iframe>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp2/tp2-00005.gif>
 </details>
 <br>
 
@@ -155,7 +155,7 @@ Pour créer cette relation dans QGIS :
 
 <details>
 <summary>Solution</summary>
-<iframe src=https://wp.unil.ch/dawn/files/2022/10/relations.mp4></iframe>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp2/tp2-00006.gif>
 </details>
 <br>
 
@@ -177,7 +177,7 @@ Le but de cet exercice est de visualiser, pour une parcelle appartenant à plusi
 
 <details>
 <summary>Solution</summary>
-<iframe src=https://wp.unil.ch/dawn/files/2022/10/relations.mp4></iframe>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp2/tp2-00007.gif>
 </details>
 <br>
 
@@ -234,3 +234,9 @@ Le titre est un élément de texte : double-clique dessus pour éditer son conte
 - ☑ Source des données
 - ☑ Couleurs cohérentes ([ColorBrewer](https://colorbrewer2.org/) recommandé)
 :::
+
+<details>
+<summary>Solution</summary>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp2/tp2-00008.gif>
+</details>
+<br>
