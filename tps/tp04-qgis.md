@@ -1,18 +1,18 @@
-# TP4 : Opérations Raster
+# TP4 : Opérations raster
 
 ## Introduction
 
-Au cours de ce TP, tu vas te familiariser avec certains outils de géotraitement pour les données au format raster (=image). Tu travailleras avec des données satellites au format raster (provenant de la [NASA](https://www.nasa.gov/)), une couche thématique raster qui identifie les classes d’occupations du sol (créée par nos soins avec les données satellites de la NASA) et enfin un MNT (modèle numérique de terrain) que tu extrapoleras (grâce à la méthode de l’IDW “Inverse Distance Weighting”) à partir de données ponctuelles disponibles sur Swisstopo.
+Au cours de ce TP, tu vas découvrir plusieurs traitements de données raster. Tu travailleras avec des images satellitaires de la [NASA](https://www.nasa.gov/), une classification de l'occupation du sol dérivée de ces images et un modèle numérique de terrain (MNT) que tu interpoleras par pondération inverse de la distance (IDW) à partir de points de swisstopo.
 
-Nos objectifs pédagogiques sont les suivants:
+Nos objectifs pédagogiques sont les suivants :
 
-1. Explorer les métadonnées d'un raster (bandes, résolution, CRS)
+1. Explorer les métadonnées d'un raster (bandes, résolution, SCR)
 2. Fusionner des bandes spectrales raster en un seul fichier multibandes
 3. Utiliser la calculatrice raster pour dériver de nouvelles informations
 4. Effectuer une interpolation spatiale (IDW) à partir de données ponctuelles
 5. Réaliser des cartes thématiques raster et empaqueter le projet QGIS
 
-Ce TP n’aurait pas été possible sans les ressources listées ci-dessous:
+Ce TP n’aurait pas été possible sans les ressources listées ci-dessous :
 
 * _TP7 du cours “Géomatique et SIG” du Privat-docent Dr. Marj Tonini_
 
@@ -20,26 +20,26 @@ Ce TP n’aurait pas été possible sans les ressources listées ci-dessous:
 
 1a) Télécharge à [cet hyperlien](https://unils-my.sharepoint.com/:f:/g/personal/ayoub_fatihi_unil_ch/IgDD5wH1DzKtTp1vLVbGrsfoAWbEkhSnB92HPaI1e0EiBu0?e=4EmmQr) un dossier qui contient déjà les couches nécessaires ainsi qu'une mise en page finale de la carte que tu pourras utiliser pour l'habillage.
 
-1b) Ouvre le dossier compressé `zip` que tu viens de télécharger. Il contient les couches raster que nous allons utiliser :
+1b) Décompresse l'archive `.zip`. Le dossier contient les rasters suivants :
 
-* MapTicino1990\_8classes.tif : occupation du sol en 1990 au Tessin avec une classification en 8 classes (“Forêt”, “Prés”, “Eau”, “Neige”, “Sols nus”, “Aires urbaines”, “Nuages”, “Ombres”) et calculées à partir des données de Landsat4.
-* Landsat4\_1990\_194028\_bx.tif : les 7 bandes spectrales individuelles collectées par le satellite Landsat 4 de la NASA (b1: Bleu ; b2:Vert ; b3: Rouge ; b4: Proche infrarouge ; b5: Infrarouge moyen -1 ; b6: Thermique ; b7: Infrarouge moyen -2).
-* MNT\_Ticino.tif : un modèle numérique de terrain du Canton Tessin. Nota bene : ce n’est pas ce MNT qu’il faudra utiliser pour la carte finale ! Cette couche nous servira uniquement comme base de calcul.
+* `MapTicino1990_8classes.tif` : occupation du sol du Tessin en 1990, classée en huit catégories (« Forêt », « Prés », « Eau », « Neige », « Sols nus », « Aires urbaines », « Nuages » et « Ombres ») à partir d'images Landsat 4 ;
+* `Landsat4_1990_194028_bx.tif` : sept fichiers correspondant aux bandes Landsat 4 (b1 : bleu ; b2 : vert ; b3 : rouge ; b4 : proche infrarouge ; b5 : infrarouge moyen 1 ; b6 : thermique ; b7 : infrarouge moyen 2) ;
+* `MNT25_Ticino.tif` : MNT du canton du Tessin, utilisé uniquement pour le reclassement de l'occupation du sol.
 
-1c) Vérifie que le [système de référence](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_projections/working_with_projections.html#project-coordinate-reference-system) pour ton projet est bien: (EPSG: 2056 - CH1903+ LV95). Tu peux maintenant commencer le TP.
+1c) Vérifie que le [système de coordonnées de référence](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_projections/working_with_projections.html#project-coordinate-reference-system) (SCR) du projet est **EPSG:2056 — CH1903+ / LV95**.
 
-1d) Prends le temps d’explorer les métadonnées des couches (on parle de métadonnées, mais il s’agit, dans QGIS, des informations de la couche [ongler Information sous Propriétés de la couche {double-clicke la couche}]) et réponds aux premières questions sur le quiz Moodle. Choisis bien les métadonnées de la **bande 4** pour répondre aux questions.
+1d) Explore les métadonnées de chaque couche : double-clique sur la couche, puis ouvre l'onglet **Information**. Pour le quiz Moodle, relève précisément les informations de la **bande 4** : dimensions, résolution, type de données, étendue et SCR.
 
-Pour la suite du quiz Moodle, nous allons travailler sur les [bandes](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_properties.html#raster-properties-dialog) spectrales qui apparaissent comme 7 couches séparées. Afin d’effectuer les opérations d’analyse d’image, il faudra les fusionner dans un fichier multibandes unique. Pour ce faire, il existe un outil nommé [Raster > Miscellaneous > Merge](https://docs.qgis.org/3.44/fr/docs/training_manual/rasters/data_manipulation.html#merging-rasters).
+Les [bandes](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_properties.html#raster-properties-dialog) spectrales sont fournies dans sept fichiers séparés. Empile-les dans un raster multibande avec **Raster > Divers > Fusionner…** (_Merge_).
 
-1e) Une fois le menu de l’outil ouvert, sélectionne les fichiers qui correspondent à chaque bande **en ordre croissant** (de b1 à b7). Et coche `Place each input file in a separate layer`.
+1e) Ajoute les fichiers **dans l'ordre croissant**, de b1 à b7, puis coche **Placer chaque fichier en entrée dans une bande séparée**.
 
 1f) Sauvegarde la nouvelle image satellitaire comme fichier `.tif` (GeoTIFF). C'est ce raster multibandes que tu utiliseras pour toute la suite du TP.
 
-1g) Explore la visualisation de ta nouvelle image satellitaire, en essayant différent combinaisons.
+1g) Explore l'image satellitaire en essayant différentes combinaisons de bandes.
 
 <details>
-<summary>Solution – Merge</summary>
+<summary>Solution — Fusionner</summary>
 <img src=https://wp.unil.ch/dawn/files/2022/11/Composite-Band.gif>
 </details>
 <br>
@@ -50,27 +50,27 @@ Pour la suite du quiz Moodle, nous allons travailler sur les [bandes](https://do
 
 2b) Ouvre l'onglet de symbologie dans la fenêtre des propriétés de la couche multibandes (double-clique la couche) et essaye les différentes combinaisons de bandes comme bandes rouge, verte et bleue.
 
-2c) Après t’être familiarisé.e avec le fonctionnement des bandes, essaye de reproduire les compositions du tableau ci-dessous, qui indique la composition recommandée pour les images Landsat.
+2c) Reproduis les compositions colorées du tableau ci-dessous, qui indique les combinaisons courantes pour les images Landsat.
 
 ![](https://wp.unil.ch/dawn/files/2022/11/Schermata-2022-11-11-alle-16.22.28-1024x285.png)
 
-Des opérations peuvent être effectuées sur les différentes bandes de façon à mettre en évidence certains éléments. Dans le menu "Raster", tu trouveras l’outil [Calculatrice raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator) qui te permet de faire différentes analyse basées sur les images multibandes.
+Des opérations entre bandes permettent de mettre en évidence certains phénomènes. Le menu **Raster** contient la [**Calculatrice raster**](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator), qui crée un nouveau raster à partir d'une expression.
 
-Une des fonctions qui peuvent être appliquées à un raster multibandes est le calcul du NDVI. Cet index de végétation normalisé (“Normalized Difference Vegetation Index”) met en évidence la couverture végétale sur le territoire. Il est très utilisé en agriculture et sylviculture pour connaître l’état de santé des plantes, comme le montre l’image ci-dessous.
+L'indice de végétation par différence normalisée (NDVI, _Normalized Difference Vegetation Index_) met en évidence la végétation. Il est couramment utilisé en agriculture et en sylviculture pour suivre son état.
 
 ![](https://wp.unil.ch/dawn/files/2022/11/plants.jpg)
 
 Source à consulter pour plus d’informations : [https://eos.com/blog/ndvi-faq-all-you-need-to-know-about-ndvi/](https://eos.com/blog/ndvi-faq-all-you-need-to-know-about-ndvi/)
 
-Sur QGIS le calcul de cet indicateur est automatique, et effectué grâce à la formule ci-dessous :
+Le NDVI se calcule avec la formule suivante :
 
 ![](https://wp.unil.ch/dawn/files/2022/11/image.png)
 
 Où R désigne la réflectance spectrale dans la bande rouge (la bande 3 dans le TP) et PIR (ou NIR, Near InfraRed en anglais) indique la réflectance spectrale dans la bande du Proche-Infrarouge (la bande 4).
 
-2d) Applique la fonction NDVI dans la [Calculatrice raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator) .
+2d) Calcule le NDVI dans la [**Calculatrice raster**](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator). Donne au raster de sortie un type à virgule flottante afin de conserver les valeurs décimales comprises entre −1 et 1.
 
-2e) Explore désormais les autres outils d'analyse raster disponibles dans la [Boîte à outils de traitements](https://docs.qgis.org/3.40/fr/docs/user_manual/processing/toolbox.html) (menu `Traitement > Boîte à outils`), notamment sous la catégorie `Raster Analysis`. Par exemple, QGIS propose un algorithme [NDVI](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/rasteranalysis.html#id2) prêt à l'emploi. Réponds ensuite aux questions de la deuxième page du quiz Moodle.
+2e) Explore les autres outils disponibles dans la [**Boîte à outils de traitements**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing/toolbox.html), sous **Analyse raster**. QGIS propose notamment un algorithme [NDVI](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/rasteranalysis.html#id2) prêt à l'emploi. Réponds ensuite aux questions de la deuxième page du quiz Moodle.
 
 <details>
 <summary>Solution NDVI</summary>
@@ -79,47 +79,45 @@ Où R désigne la réflectance spectrale dans la bande rouge (la bande 3 dans le
 </details>
 <br>
 
-2f) Sauvegarde bien la nouvelle couche du NDVI dans ta géodatabase ! Tu devras utiliser ce rendu à la fin du travail.
+2f) Enregistre le NDVI dans un fichier GeoTIFF `.tif`. Tu l'utiliseras pour la carte finale.
 
 ## 3\. Correction du raster
 
-Le raster “MapTicino1990\_8classes.tif” est une cartographie de l’occupation du sol au Tessin en 1990. Les données sont recueillies par le satellite Landsat 4 de la NASA, et ensuite analysées de sorte à créer 8 classes d’occupation du sol : “Forêt”, “Prés”, “Eau”, “Neige”, “Sols nus”, “Aires urbaines”, “Nuages”, “Ombres”.
+Le raster `MapTicino1990_8classes.tif` cartographie l'occupation du sol du Tessin en 1990. Une classification des images Landsat 4 lui attribue huit classes : « Forêt », « Prés », « Eau », « Neige », « Sols nus », « Aires urbaines », « Nuages » et « Ombres ».
 
 La fonction qui permet de faire cette différenciation en se basant uniquement sur les données satellitaires (les 7 bandes spectrales vues plus haut) est par contre très sensible et engendre des erreurs.
 
-L’erreur principale qu’on retrouve est due à la similitude entre les longueurs d’ondes émises par les sols nus et les sols anthropiques (les zones urbaines). Ainsi, on retrouve des pixels classés comme “aires urbaines” en haute montagne à la place d’une classification comme “sols nus”.
+L'erreur principale vient de la similarité de la réponse spectrale des sols nus et de certaines surfaces artificialisées. Des pixels de haute montagne sont donc classés à tort comme « aires urbaines » plutôt que comme « sols nus ».
 
 Pour corriger ces erreurs, on va utiliser une seconde fois la [Calculatrice Raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator).
 
-3a) Ouvre l’outil en question et essaye de trouver l’expression qui te permet de modifier les valeurs erronées dont on a parlé avant (lis d’abord la suite avant de t’y attaquer). En pratique, il faudra créer une requête permettant de modifier l’affectation des pixels classés comme “zone urbaine” et situés au-dessus de 1’400 mètres d’altitude en les classants comme “sols nus”.
+3a) Dans la Calculatrice raster, construis une expression qui reclasse en « sols nus » les pixels classés « aires urbaines » au-dessus de 1 400 m. Lis les indications suivantes avant de commencer.
 
 **⚠️** Utilise les variables ainsi que les opérateurs offerts par l’outil. Tu pourrais écrire toi-même le tout, mais il arrive que les symboles ne soient pas identiques, ce qui pourrait engendrer une erreur. En outre, si tu fais une erreur minime dans l’écriture des couches, l’outil produira un autre message d’erreur.
 
 Voici quelques exemples de requêtes qui peuvent être menées :
 
-* _(“MapTicino1990\_8classes@1” == 4)_ : sélection de tous les pixels de la couche “MapTicino1990\_8classes” ayant une valeur égale à 4 (c.à.d. qui appartiennent à la classe “neige”).
-* _(“MNT25\_Ticino@1” < 600)_ : sélection de tous les pixels situés à une altitude inférieure à 600 mètres dans le MNT “MNT25\_Ticino”.
+* `"MapTicino1990_8classes@1" = 4` : repère les pixels de la classe 4 (« neige ») ;
+* `"MNT25_Ticino@1" < 600` : repère les pixels du MNT situés sous 600 m.
 
-Les deux requêtes ci-dessus donneront comme résultat un nombre, puisqu’elles indiqueront combien de pixels répondent à la requête en question. Elles donnent aussi la position de ces pixels.
+Chacune de ces expressions produit un raster booléen : chaque pixel vaut 1 si la condition est vraie et 0 si elle est fausse. Le résultat indique donc aussi la position des pixels concernés.
 
-Il existe aussi des fonctions conditionnelles, qui s’appliquent uniquement dans le cas où une condition préalablement fixée est respectée.
+Une fonction conditionnelle permet de choisir la valeur de sortie selon qu'une condition est vraie ou fausse :
 
-* _if( condition, valeur-si-vrai, valeur-si-faux)_ : cette requête appliquera la valeur “valeur-si-vrai” dans le cas où la condition initiale est respectée ; et appliquera la valeur “valeur-si-faux” dans le cas où la condition initiale n’est pas respectée. Il fonctionne de la même manière que le “=SI()” dans Excel.
-* _if ( (“MNT25\_Ticino@1” > 600) , 600 , “MNT25\_Ticino@1”)_ : cette requête définit un plafond d’altitude à 600 mètres. La condition est “si le MNT25\_Ticino présente une valeur **supérieure** à 600 mètres d’altitude, assigne la valeur de 600m” ; “si le MNT25\_Ticino présente une valeur **inférieure** à 600 mètres d’altitude, laisse la valeur d’origine”.
+* _if(condition, valeur_si_vrai, valeur_si_faux)_ applique la première valeur lorsque la condition est vraie et la seconde lorsqu'elle est fausse, comme la fonction `SI()` d'Excel.
+* `if("MNT25_Ticino@1" > 600, 600, "MNT25_Ticino@1")` plafonne le MNT à 600 m : les valeurs supérieures deviennent 600 et les autres restent inchangées.
 
-Les requêtes ci-dessus ont une seule condition, mais on peut très bien indiquer plusieurs conditions à remplir avec le symbole “&”.
+Les expressions précédentes n'ont qu'une condition. Dans la Calculatrice raster de QGIS, combine plusieurs conditions avec l'opérateur `AND`.
 
-_if ( ( “MNT25\_Ticino@1” > 600) & (“MapTicino1990\_8classes@1” == 7) , 4 , “MapTicino1990\_8classes@1” )_ : cette requête modifie la classification des pixels 7 (“ombres”) en pixels 4 (“neige”) si l’altitude est supérieure à 600 mètres. Donc : “si le MNT indique une valeur supérieure à 600 m, et que le pixel appartient à la classes 7 “Ombres”, alors assigne la valeur du pixel à 4 (“neige”). Si une des condition n’est pas remplie, laisse la valeur d’origine”.
+`if(("MNT25_Ticino@1" > 600) AND ("MapTicino1990_8classes@1" = 7), 4, "MapTicino1990_8classes@1")` reclasse les ombres (classe 7) en neige (classe 4) au-dessus de 600 m. Si l'une des conditions est fausse, la valeur d'origine est conservée.
 
-⚠️ C’est une requête de ce type qui te permettra d’effectuer le reclassement des pixels ayant la valeur 6 “Aires urbaines” et situés au-dessus de 1’400 mètres d’altitude en pixels avec valeur 5 “Sols nus”.
+⚠️ Adapte cette expression pour reclasser en « Sols nus » (valeur 5) les pixels « Aires urbaines » (valeur 6) situés au-dessus de 1 400 m.
 
-3b) Effectue la requête, puis, une fois la requête effectuée, sauvegarde le résultat dans une nouvelle couche que tu nommeras avec la mention “ReClass” (ex. ReClass\_MapTicino1990\_8classes).
-
-Garde cette couche dans ton géopackage car elle te sera redemandée plus tard pour le rendu final.
+3b) Exécute l'expression et enregistre le résultat dans un GeoTIFF nommé `ReClass_MapTicino1990_8classes.tif`. Tu l'utiliseras dans le rendu final.
 
 <details>
 <summary>Solution reclassement</summary>
-Si tu ne visualises pas la vidéo ci-dessous, active le mode plein écran si tu es sur MacOS, ou tourne ton appareil si tu es sur iOS ou iPadOS. La vidéo est toujours visible depuis Windows (sur les machines virtuelles).
+Si la vidéo ne s'affiche pas, passe en plein écran sur macOS ou tourne l'appareil sous iOS ou iPadOS. Elle est également accessible depuis les machines virtuelles Windows.
 
 <iframe src=https://wp.unil.ch/dawn/files/2022/11/ReCLass.mp4></iframe>
 
@@ -136,7 +134,7 @@ Si tu ne visualises pas la vidéo ci-dessous, active le mode plein écran si tu 
 
 ## 4\. Interpolation
 
-Bravo, tu as presque fini ! Dans cette dernière partie, tu créeras un MNT à partir de données ponctuelles disponibles sur le site de l’Office fédéral de topographie (Swisstopo). Il s’agit du modèle numérique de base du terrain de la Suisse, utilisé pour la production du MNT avec une maille de 25 m. Pour ce faire, on se basera sur une méthode déterministe classique, à savoir la pondération par l’inverse de la distance ou [_Inverse Distance Weighting_ (IDW)](https://docs.qgis.org/3.40/fr/docs/gentle_gis_introduction/spatial_analysis_interpolation.html#inverse-distance-weighted-idw).
+Dans cette dernière partie, tu vas créer un MNT à partir de points altimétriques de l'Office fédéral de topographie (swisstopo). Tu utiliseras une méthode déterministe classique : la [pondération par l'inverse de la distance](https://docs.qgis.org/3.40/fr/docs/gentle_gis_introduction/spatial_analysis_interpolation.html#inverse-distance-weighted-idw), ou IDW (_Inverse Distance Weighting_).
 
 Les phénomènes spatio-continus sont définis en tout point de l’espace géographique (ex. l’altitude et la température) mais sont généralement étudiés à travers des données ponctuelles. Entre les points d’échantillonnage, les valeurs de ces phénomènes ne sont pas mesurées. L’objectif des méthodes d’interpolation consiste à prédire ces valeurs inconnues sur la base de l’autocorrélation spatiale :
 
@@ -144,19 +142,22 @@ Les phénomènes spatio-continus sont définis en tout point de l’espace géog
 
 Pour qu’une modélisation soit satisfaisante, il est primordial qu’elle soit basée sur une analyse exploratoire des données et sur une analyse des erreurs (quelle que soit la méthode d’interpolation choisie).
 
-Le but de ce TP est d’interpoler assez rapidement (au détriment de la qualité du résultat) une surface raster à partir de données ponctuelles de l’altitude.
+L'objectif est de produire rapidement une surface raster d'altitude. La taille de pixel volontairement grossière limite le temps de calcul, au détriment du niveau de détail.
 
 4a) Pour télécharger les données, rends-toi sur le site de swisstopo et appuie sur « [DHM25 – Modèle de base ESRI Shapefile](https://cms.geo.admin.ch/ogd/topography/DHM25_BM_SHP.zip) » qui se trouve sous l’onglet Géodonnées et applications > Modèles d’altitude > MNT25.
 
 4b) Ensuite, importe le fichier shape « **dhm25\_p** » dans ton projet (sans oublier de [dézipper](https://support.microsoft.com/fr-fr/windows/compresser-et-d%C3%A9compresser-des-fichiers-f6dde0a7-0fec-8294-e1d3-703ed85e7ebc) le fichier, deux dossiers en seront extraits).
 
-Pour prédire l’altitude en tout point de l’espace géographique Suisse on utilisera l’outil [IDW](https://docs.qgis.org/3.40/fr/docs/gentle_gis_introduction/spatial_analysis_interpolation.html#inverse-distance-weighted-idw).
+Pour estimer l’altitude entre les points en Suisse, utilise l'outil [IDW](https://docs.qgis.org/3.40/fr/docs/gentle_gis_introduction/spatial_analysis_interpolation.html#inverse-distance-weighted-idw).
 
-4c) Cherche cet outil dans la [boîte à outil de traitements](https://docs.qgis.org/3.40/fr/docs/user_manual/processing/toolbox.html).
+4c) Recherche **Interpolation IDW** dans la [boîte à outils de traitements](https://docs.qgis.org/3.40/fr/docs/user_manual/processing/toolbox.html).
 
-4d) Grâce à cet outil, estime le MNT à partir des données Swisstopo.
-* Coche `Utiliser la coordonnée Z pour l'interpolation` et puis ajoute le en clickant le plus vert
-* Pixel size: 900
+4d) Estime le MNT à partir des points swisstopo :
+* choisis `dhm25_p` comme couche vectorielle ;
+* active **Utiliser la coordonnée Z pour l'interpolation**, puis clique sur le bouton **+** vert pour ajouter la couche à la liste ;
+* définis l'étendue à partir de `dhm25_p` ;
+* fixe la taille de pixel à **900 m** en X et en Y ;
+* enregistre le résultat dans un GeoTIFF.
 
 <details>
 <summary>Solution</summary>
@@ -164,26 +165,26 @@ Pour prédire l’altitude en tout point de l’espace géographique Suisse on u
 </details>
 <br>
 
-4e) Finalement, génère une représentation 3D de la surface du MNT grâce à l’outil _Hillshade_ ([Ombrage](https://docs.qgis.org/3.40/fr/docs/training_manual/rasters/terrain_analysis.html#follow-along-calculating-a-hillshade)) sous `Raster > Analysis > Ombrage`.
+4e) Génère enfin un [**Ombrage**](https://docs.qgis.org/3.40/fr/docs/training_manual/rasters/terrain_analysis.html#follow-along-calculating-a-hillshade) (_Hillshade_) du MNT interpolé avec **Raster > Analyse > Ombrage…**. L'ombrage donne une impression de relief, mais ce n'est pas une représentation 3D.
 
 ## 5\. Créer les trois cartes de résultats
 
-Il ne te reste plus qu’à rendre tes résultats sur Moodle. Pour ce faire, crée trois [mises en page](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#overview-of-the-print-layout) (_Print Layouts_) : **NDVI**, **occup\_sol**, et **IDW**, avec lesquelles tu pourras exporter les rasters respectifs au format `.pdf`.
+Crée trois [mises en page](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#overview-of-the-print-layout) : **NDVI**, **occup_sol** et **IDW**. Chacune servira à exporter le résultat correspondant au format PDF.
 
-5a) Pour chaque mise en page, fais correspondre l’information présente sur la carte à son titre. Pour modifier les couches affichées, il te suffit d’activer/désactiver les couches dans le panneau [Couches](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/qgis_gui.html#layer) de ton projet avant d'ajouter la carte à la mise en page. Tu peux aussi créer plusieurs [thèmes de couches](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/qgis_gui.html#layer-themes) si tu souhaites basculer rapidement entre les trois rendus.
+5a) Crée un [thème de couches](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/qgis_gui.html#layer-themes) pour chaque résultat, puis associe le thème correspondant à l'élément carte de chaque mise en page. Pour la carte **IDW**, affiche le MNT interpolé et superpose l'ombrage avec une transparence adaptée. Verrouille enfin les couches et les styles de chaque élément carte afin qu'un changement dans le canevas ne modifie pas les autres mises en page.
 
 5b) Pour la carte concernant l’occupation du sol, insère une [légende](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_legend.html) qui illustre les 8 classes. Utilise un [rendu de classification paletté](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_properties.html#paletted-rendering) sur la couche `ReClass\_MapTicino1990\_8classes` pour que chaque classe ait sa propre couleur.
 
-5c) Finalement, pour chaque carte, ajoute les éléments d'habillage cartographique essentiels : [échelle](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_scalebar.html), [flèche du nord](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_arrow.html), titre, ainsi que ton nom, prénom et les **sources des données** (NASA Landsat 4, Swisstopo).
+5c) Pour chaque carte, ajoute les éléments essentiels : [barre d'échelle](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_scalebar.html), [flèche du nord](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_image.html#the-picture-item), titre, nom, prénom et **sources des données** (NASA Landsat 4 et swisstopo).
 
 ## 6\. Rendus et paquetage du projet
 
-6a) Tu peux d’ores et déjà soumettre les trois cartes au format `.pdf` sur Moodle : [Rendus\_Cartes\_TP4](https://moodle.unil.ch/mod/assign/view.php?id=1736952). N’oublie pas le format du rendu : **_nom\_prenom\_cartes\_TP4.pdf_** (tu peux consulter la grille d’évaluation sur Moodle). Pour exporter une mise en page en PDF, utilise `Projet > Mises en page > Exporter > Exporter au format PDF` ou le bouton équivalent dans la fenêtre du _Print Layout_.
+6a) Regroupe les trois cartes dans le fichier `nom_prenom_cartes_TP4.pdf`, puis dépose-le dans [Rendus_Cartes_TP4](https://moodle.unil.ch/mod/assign/view.php?id=1736952). Consulte la grille d'évaluation avant la remise. Depuis chaque mise en page, utilise **Mise en page > Exporter au format PDF…** ; fusionne ensuite les trois PDF si nécessaire.
 
-6b) Pour le rendu du projet, empaquette ton projet en suivant la méthode apprise au TP1 (§9) : sauvegarde le projet dans un geopackage, ajoute tes rasters de résultats (les fichiers `.tif` : image multibandes, NDVI, reclassement et MNT IDW), compresse le tout en `.zip`. Nomme l'archive _nom\_prenom\_TP4.zip_.
+6b) Empaquette le projet selon la méthode du TP1 (§9). Place dans un même dossier le projet `.qgz` et les GeoTIFF nécessaires : image multibande, NDVI, reclassement, MNT IDW et ombrage. Rouvre le projet pour vérifier les chemins, puis compresse le dossier en `nom_prenom_TP4.zip`.
 
 6c) Copie le fichier `.zip` de la machine virtuelle sur ton OneDrive et crée un lien de partage.
 
-6d) Tu peux maintenant te rendre à nouveau sur Moodle pour soumettre à ce lien : [Rendus\_projet\_TP4](https://moodle.unil.ch/mod/quiz/view.php?id=1736953). N’oublie pas le format du rendu : **_nom\_prenom\_TP4.zip_**
+6d) Soumets le lien de partage dans [Rendus_projet_TP4](https://moodle.unil.ch/mod/quiz/view.php?id=1736953) et vérifie que l'archive porte bien le nom `nom_prenom_TP4.zip`.
 
 Félicitations pour avoir terminé le TP et à la semaine prochaine pour la création du portfolio !
