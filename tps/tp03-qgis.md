@@ -40,9 +40,9 @@ Il s’agit des données suivantes :
 * _bâtiments : « Buildings.shp »_
 * _routes : « Roads.shp »_
 
-1a) Télécharge donc le dossier et décompresse-le.
+1a) Télécharge donc le geopackage.
 
-1b) Ensuite, ajoute les couches dans une nouvelle géodatabase et appelle-la “_WUI.gdb_”.
+1b) Ensuite, ouvre le projet `tp3.prj`.
 
 ## 2\. Outils de sélection et d’extraction
 
@@ -60,12 +60,13 @@ En ouvrant la table des attributs, procède à une sélection par attributs, com
 
 <details>
 <summary>Solution</summary>
-`"NAME" ILIKE 'Frutigen-Niedersimmental' OR "NAME" ILIKE 'Obersimmental-Saanen'`
-<img src=https://wp.unil.ch/dawn/files/2022/10/Extract_Dist.gif>
+<code>"NAME" ILIKE 'Frutigen-Niedersimmental' OR "NAME" ILIKE 'Obersimmental-Saanen'</code>
+
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00001.gif>
 </details>
 <br>
 
-2b) Maintenant, à l’aide de l’outil d'Éditer les géométries [Fusionner les entités sélectionnées](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/editing_geometry_attributes.html#merge-selected-features), fusionne les deux districts en une seule entité.
+2b) Maintenant, à l’aide de l’outil de géotraitement [Regrouper /Dissolve](https://docs.qgis.org/3.44/fr/docs/user_manual/processing_algs/qgis/vectorgeometry.html#dissolve), fusionne les deux districts en une seule entité.
 
 <details>
 <summary>Astuce</summary>
@@ -76,15 +77,15 @@ Nomme les couches de sortie de manière logique (e.g., `Communes\_FNOS`, `Batime
 
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/11/E6_1.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00002.gif>
 </details>
 <br>
 
-2c) Une fois le périmètre de la zone d’étude délimité, on peut découper les autres couches dans ce périmètre. Pour ce faire, utilise l’outil de géotraitement [Couper](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#clip).
+2c) Une fois le périmètre de la zone d’étude délimité, on peut découper les autres couches dans ce périmètre. Pour ce faire, utilise l’outil de géotraitement [Couper / Clip](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#clip).
 
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/10/2_Clip.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00003.gif>
 </details>
 <br>
 
@@ -121,18 +122,24 @@ Dans cette partie, tu vas utiliser un outil important pour définir l’espace u
 
 **Lis attentivement les conseils ci-dessous** avant de te lancer dans ton travail sur QGIS!
 
-3a) **Zones tampons (Buffer)**: Nous souhaitons définir la zone où les bâtiments se trouvent à moins de 150 mètres les uns des autres pour délimiter la _zone urbaine_. Une solution est d’utiliser l’opération [Zone tampon](https://docs.qgis.org/3.40/fr/docs/gentle_gis_introduction/vector_spatial_analysis_buffers.html#vector-spatial-analysis-buffers) deux fois:
+3a) **Zones tampons (Buffer)**: Nous souhaitons définir la zone où les bâtiments se trouvent à moins de 150 mètres les uns des autres pour délimiter la _zone urbaine_. Une solution est d’utiliser l’opération [Zone tampon / Buffer](https://docs.qgis.org/3.40/fr/docs/gentle_gis_introduction/vector_spatial_analysis_buffers.html#vector-spatial-analysis-buffers) deux fois:
 
 1. Pour définir l’espace de 150 mètres autour des bâtiments, utilise une distance de **\+ 75 mètres** dans les options et cocher l'option **Regrouper le résultat**.
 2. Pour éliminer le polygone qui définit la surface à l’extérieur de la zone densément bâtie, il nous faut créer une **deuxième zone tampon** à partir de la première, en saisissant cette fois la valeur négative de **– 75 mètres** dans l’option distance. Le résultat te donnera une couche représentant uniquement la _Zone urbaine Densément Bâtie (ZDB)_.
 
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/10/4_Buffer.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00004.gif>
 </details>
 <br>
 
 3b) **Buffer sur les routes**: Cette fois, il nous faut créer des zones tampons en prenant en compte la largeur de chaque type de route. Pour simplifier l’exercice, nous pouvons faire l’hypothèse que toutes les routes ont une largeur de 12 mètres. 12 mètres correspondant à la largeur totale de chaque route, il nous faudra donc utiliser une distance de **6 mètres** (i.e., la moitié de la largeur) pour calculer la zone tampon.
+
+<details>
+<summary>Solution</summary>
+Exatement comme 3a).
+</details>
+<br>
 
 ## 4\. Outils de superposition
 
@@ -142,7 +149,23 @@ Dans cette partie, tu vas enfin définir la zone d’interface habitat-forêt (W
 
 4a) **Agrégation des entités** : Pour définir l’ensemble de la Zone Urbaine (ZU), agrège les couches correspondant aux infrastructures urbaines avec l’outil [Union](https://docs.qgis.org/3.40/en/docs/user_manual/processing_algs/qgis/vectoroverlay.html#union) (i.e., il faut agréger la ZDB avec les routes après l’opération _buffer_).
 
-4b) **Risque d’incendies forestiers** : En moyenne, 80% des incendies forestiers en Suisse se produisent à une distance qui va jusqu’à 80 mètres de la zone urbaine. Par conséquent, pour définir les zones qui constituent la WUI, commence par construire une zone tampon de 80 mètres autour de la zone urbaine. Puis utilise l'outil [Différence](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#difference) pour soustraire (ZU) pour en rester avec uniquement la zone à proximité de la (ZU).
+<details>
+<summary>Solution</summary>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00005.gif>
+Il faut s'assurer que l'attribut `fid` est unique pour sauvgarder la couche correctement (voir solution 4c).
+</details>
+<br>
+
+4b) **Risque d’incendies forestiers** : En moyenne, 80% des incendies forestiers en Suisse se produisent à une distance qui va jusqu’à 80 mètres de la zone urbaine. Par conséquent, pour définir les zones qui constituent la WUI, commence par:
+
+1. construire une zone tampon de 80 mètres autour de la zone urbaine.
+2. Puis utilise l'outil [Différence](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#difference) pour soustraire (ZU) pour en rester avec uniquement la zone à proximité de la (ZU).
+
+<details>
+<summary>Solution</summary>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00006.gif>
+</details>
+<br>
 
 <!-- Cette fois, dans l’option _Side Type_ choisi _Exclude the input polygon from buffer,_ tandis que les autres options sont les mêmes que pour la zone urbaine densément bâtie (ZDB). -->
 
@@ -151,9 +174,17 @@ Dans cette partie, tu vas enfin définir la zone d’interface habitat-forêt (W
 
 4c) **Croiser deux couches** : Maintenant il ne nous reste plus qu'à "croiser" la zone tampon de 80 mètres que tu viens de créer avec la couche de la surface forestière pour obtenir la zone d'interface habitat-forêt (WUI). Pour ce faire, utilise l'outil [Intersection](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#intersection) et nomme la couche de sortie _WUI._
 
+<details>
+<summary>Solution</summary>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00007.gif>
+Il faut s'assurer que l'attribut `fid` est unique pour sauvgarder la couche correctement:
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00008.gif>
+</details>
+<br>
+
 ## 5\. Automatiser avec le Model Designer
 
-Tu viens d'enchaîner plusieurs géotraitements à la main : sélection, fusion, découpe, zones tampons, union, différence, intersection. C'est puissant, mais **répétitif**. QGIS propose un outil visuel pour automatiser ces chaînes : le [Model Designer](https://docs.qgis.org/3.40/fr/docs/user_manual/processing/modeler.html).
+Tu viens d'enchaîner plusieurs géotraitements à la main : sélection, fusion, découpe, zones tampons, union, différence, intersection. C'est puissant, mais **répétitif**. QGIS propose un outil visuel pour automatiser ces chaînes : le [Model Designer](https://docs.qgis.org/3.40/fr/docs/user_manual/processing/modeler.html). On va maintenant reproduire l’ensemble du TP (sans la partie sur les routes) directement dans le **Model Designer**.
 
 :::{important}
 Le **Model Designer** permet de :
@@ -172,11 +203,11 @@ Le **Model Designer** permet de :
 
 5c) Ajoute les **algorithmes** (panneau _Algorithms_) et relie-les dans l'ordre :
 1. `Sélection par expression` sur "Districts" → filtre les 2 districts
-2. `Fusionner les entités` → un seul polygone
-3. `Couper` : Forêt découpée par le district fusionné
-4. `Zone tampon` (+75m, regroupé) sur "Bâtiments"
-5. `Zone tampon` (–75m) → ZDB
-6. `Zone tampon` (+80m) sur la ZDB → zone de risque
+2. `Fusionner les entités / Dissolve` → un seul polygone
+3. `Couper / Clip` : Forêt découpée par le district fusionné
+4. `Zone tampon / Buffer` (+75m, regroupé) sur "Bâtiments"
+5. `Zone tampon / Buffer` (–75m) → ZDB
+6. `Zone tampon / Buffer` (+80m) sur la ZDB → zone de risque
 7. `Différence` : zone de risque moins ZDB
 8. `Intersection` : résultat avec la forêt → **WUI**
 
@@ -187,6 +218,12 @@ Relie la **sortie** d'un algorithme (cercle rouge) à l'**entrée** du suivant (
 <br>
 
 5d) Sauvegarde le modèle (`Modèle > Enregistrer`) en fichier `.model3`, puis **exécute-le** (▶️) en sélectionnant tes couches d'entrée.
+
+<details>
+<summary>Solution</summary>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00009.gif>
+</details>
+<br>
 
 :::{note}
 Pas besoin de reconstruire toute la chaîne — l'objectif est de comprendre la logique. Un modèle avec **au moins 3 algorithmes connectés** et une couche de sortie suffit pour ce TP. Tu réutiliseras cette compétence dans ton **projet individuel**.
