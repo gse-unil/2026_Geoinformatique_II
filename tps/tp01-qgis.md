@@ -274,7 +274,7 @@ Tu peux calculer les valeurs d'un champ avec l'outil suivant :
 
 * la [**Calculatrice de champs**](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/attribute_table.html#using-the-field-calculator), qui permet d'effectuer des calculs généraux ou liés à la géométrie des entités (longueur, surface, périmètre, coordonnées du centroïde, etc.).
 
-8b) Active le mode **Édition**, puis utilise la **Calculatrice de champs** pour créer, dans la couche `Roads`, un champ contenant la longueur de chaque route. Choisis un type numérique décimal et utilise l'expression `$length`. Vérifie que le SCR de la couche emploie des mètres avant d'interpréter les valeurs.
+8b) Active le mode **Édition**, puis utilise la **Calculatrice de champs** pour créer, dans la couche `Roads`, un champ décimal `longueur_km`. Vérifie que la couche utilise un SCR projeté en mètres, puis saisis l'expression `$length / 1000` pour obtenir la longueur de chaque route en kilomètres.
 
 <details>
 <summary>Solution</summary>
@@ -338,10 +338,10 @@ Pour changer le SCR du projet, clique sur l'indicateur de SCR dans l'angle infé
 
 Identifiants de SCR à essayer :
 
-* 4326
-* 54009
-* 54030
-* 3857
+* `EPSG:4326`
+* `ESRI:54009`
+* `ESRI:54030`
+* `EPSG:3857`
 
 <details>
 <summary>Solution</summary>

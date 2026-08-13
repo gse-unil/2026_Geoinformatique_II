@@ -89,7 +89,7 @@ La fonction qui permet de faire cette différenciation en se basant uniquement s
 
 L'erreur principale vient de la similarité de la réponse spectrale des sols nus et de certaines surfaces artificialisées. Des pixels de haute montagne sont donc classés à tort comme « aires urbaines » plutôt que comme « sols nus ».
 
-Pour corriger ces erreurs, on va utiliser une seconde fois la [Calculatrice Raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator).
+Pour corriger ces erreurs, utilise une seconde fois la [Calculatrice raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator).
 
 3a) Dans la Calculatrice raster, construis une expression qui reclasse en « sols nus » les pixels classés « aires urbaines » au-dessus de 1 400 m. Lis les indications suivantes avant de commencer.
 
@@ -124,7 +124,7 @@ Si la vidéo ne s'affiche pas, passe en plein écran sur macOS ou tourne l'appar
 Étant donné la qualité de la vidéo, on t’offre un zoom sur la condition qui a été utilisée. Essaye toutefois de l’écrire toi-même avant de regarder la solution.
 
 <details>
-    <summary>SolutionRequête</summary>
+    <summary>Solution — requête</summary>
     <pre>if (  ( "MNT25_Ticino@1" > 1400 )  AND  ( "MapTicino1990_8classes@1" = 6 ) , 5, "MapTicino1990_8classes@1" )</pre>
     <img src=https://wp.unil.ch/dawn/files/2022/11/Schermata-2022-11-13-alle-14.13.27.png>
 </details>
@@ -138,15 +138,15 @@ Dans cette dernière partie, tu vas créer un MNT à partir de points altimétri
 
 Les phénomènes spatio-continus sont définis en tout point de l’espace géographique (ex. l’altitude et la température) mais sont généralement étudiés à travers des données ponctuelles. Entre les points d’échantillonnage, les valeurs de ces phénomènes ne sont pas mesurées. L’objectif des méthodes d’interpolation consiste à prédire ces valeurs inconnues sur la base de l’autocorrélation spatiale :
 
-« _Deux objets proches ont plus de chance \[d’interagir\] que deux objets éloignés_ » ([première loi de la géographie](https://support.esri.com/fr-fr/gis-dictionary/tobler-s-first-law-of-geography) de Waldo Tobler).
+« _Tout interagit avec tout, mais deux objets proches ont plus de chances d'interagir que deux objets éloignés._ » ([première loi de la géographie](https://support.esri.com/fr-fr/gis-dictionary/tobler-s-first-law-of-geography) de Waldo Tobler).
 
 Pour qu’une modélisation soit satisfaisante, il est primordial qu’elle soit basée sur une analyse exploratoire des données et sur une analyse des erreurs (quelle que soit la méthode d’interpolation choisie).
 
 L'objectif est de produire rapidement une surface raster d'altitude. La taille de pixel volontairement grossière limite le temps de calcul, au détriment du niveau de détail.
 
-4a) Pour télécharger les données, rends-toi sur le site de swisstopo et appuie sur « [DHM25 – Modèle de base ESRI Shapefile](https://cms.geo.admin.ch/ogd/topography/DHM25_BM_SHP.zip) » qui se trouve sous l’onglet Géodonnées et applications > Modèles d’altitude > MNT25.
+4a) Télécharge les données [DHM25 — Modèle de base ESRI Shapefile](https://cms.geo.admin.ch/ogd/topography/DHM25_BM_SHP.zip) de swisstopo.
 
-4b) Ensuite, importe le fichier shape « **dhm25\_p** » dans ton projet (sans oublier de [dézipper](https://support.microsoft.com/fr-fr/windows/compresser-et-d%C3%A9compresser-des-fichiers-f6dde0a7-0fec-8294-e1d3-703ed85e7ebc) le fichier, deux dossiers en seront extraits).
+4b) Décompresse l'archive principale, qui contient `dhm25_l.zip` et `dhm25_p.zip`. Décompresse ensuite `dhm25_p.zip`, puis ajoute le Shapefile ponctuel `dhm25_p.shp` au projet.
 
 Pour estimer l’altitude entre les points en Suisse, utilise l'outil [IDW](https://docs.qgis.org/3.40/fr/docs/gentle_gis_introduction/spatial_analysis_interpolation.html#inverse-distance-weighted-idw).
 
@@ -155,9 +155,10 @@ Pour estimer l’altitude entre les points en Suisse, utilise l'outil [IDW](http
 4d) Estime le MNT à partir des points swisstopo :
 * choisis `dhm25_p` comme couche vectorielle ;
 * active **Utiliser la coordonnée Z pour l'interpolation**, puis clique sur le bouton **+** vert pour ajouter la couche à la liste ;
+* choisis **Points** comme type de données ;
 * définis l'étendue à partir de `dhm25_p` ;
 * fixe la taille de pixel à **900 m** en X et en Y ;
-* enregistre le résultat dans un GeoTIFF.
+* enregistre le résultat dans `MNT_IDW.tif`.
 
 <details>
 <summary>Solution</summary>
@@ -165,7 +166,7 @@ Pour estimer l’altitude entre les points en Suisse, utilise l'outil [IDW](http
 </details>
 <br>
 
-4e) Génère enfin un [**Ombrage**](https://docs.qgis.org/3.40/fr/docs/training_manual/rasters/terrain_analysis.html#follow-along-calculating-a-hillshade) (_Hillshade_) du MNT interpolé avec **Raster > Analyse > Ombrage…**. L'ombrage donne une impression de relief, mais ce n'est pas une représentation 3D.
+4e) Génère enfin un [**Ombrage**](https://docs.qgis.org/3.40/fr/docs/training_manual/rasters/terrain_analysis.html#follow-along-calculating-a-hillshade) (_Hillshade_) du MNT interpolé avec **Raster > Analyse > Ombrage…**. Utilise d'abord les paramètres par défaut : facteur Z `1`, azimut `315°` et altitude de la lumière `45°`. Enregistre le résultat dans `Ombrage_IDW.tif`. L'ombrage donne une impression de relief, mais ce n'est pas une représentation 3D.
 
 ## 5\. Créer les trois cartes de résultats
 
@@ -175,7 +176,7 @@ Crée trois [mises en page](https://docs.qgis.org/3.40/fr/docs/user_manual/print
 
 5b) Pour la carte concernant l’occupation du sol, insère une [légende](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_legend.html) qui illustre les 8 classes. Utilise un [rendu de classification paletté](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_properties.html#paletted-rendering) sur la couche `ReClass\_MapTicino1990\_8classes` pour que chaque classe ait sa propre couleur.
 
-5c) Pour chaque carte, ajoute les éléments essentiels : [barre d'échelle](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_scalebar.html), [flèche du nord](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_image.html#the-picture-item), titre, nom, prénom et **sources des données** (NASA Landsat 4 et swisstopo).
+5c) Pour chaque carte, ajoute les éléments essentiels : [barre d'échelle](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_scalebar.html), [flèche du nord](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/composer_items/composer_image.html#the-picture-item), titre, tes nom et prénom, et **sources des données** (NASA Landsat 4 et swisstopo).
 
 ## 6\. Rendus et paquetage du projet
 

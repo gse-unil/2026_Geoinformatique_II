@@ -123,7 +123,7 @@ Dans cette partie, tu vas utiliser un outil important pour définir l’espace u
 
 3a) **Zones tampons** : nous voulons délimiter les groupes de bâtiments séparés par moins de 150 m. Utilise deux fois l'outil [**Zone tampon**](https://docs.qgis.org/3.40/fr/docs/gentle_gis_introduction/vector_spatial_analysis_buffers.html#vector-spatial-analysis-buffers) (_Buffer_) :
 
-1. Crée une zone tampon de **+75 m** autour des bâtiments et active **Regrouper le résultat**. Les zones de deux bâtiments distants de moins de 150 m se rejoindront.
+1. Crée une zone tampon de **+75 m** autour des bâtiments et active **Dissoudre le résultat**. Les zones de deux bâtiments distants de moins de 150 m se rejoindront.
 2. Sur le résultat, crée une seconde zone tampon de **−75 m**. Tu obtiendras la _zone densément bâtie_ (ZDB), avec des limites lissées autour des groupes de bâtiments.
 
 <details>
@@ -132,7 +132,7 @@ Dans cette partie, tu vas utiliser un outil important pour définir l’espace u
 </details>
 <br>
 
-3b) **Zone tampon autour des routes** : suppose que toutes les routes ont une largeur totale de 12 m. Crée donc une zone tampon de **6 m** de chaque côté des lignes et active **Regrouper le résultat**.
+3b) **Zone tampon autour des routes** : suppose que toutes les routes ont une largeur totale de 12 m. Crée donc une zone tampon de **6 m** de chaque côté des lignes et active **Dissoudre le résultat**.
 
 <details>
 <summary>Solution</summary>
@@ -155,9 +155,9 @@ Si l'enregistrement échoue à cause du champ `fid`, n'exporte pas ce champ : le
 </details>
 <br>
 
-4b) **Risque d’incendies forestiers** : en moyenne, 80 % des incendies forestiers en Suisse se produisent jusqu'à 80 m d'une zone urbaine. Pour définir la WUI, procède comme suit :
+4b) **Zone d'interface** : pour cet exercice, utilise une distance conventionnelle de 80 m autour de la zone urbaine afin de définir la WUI. Procède comme suit :
 
-1. Construis une zone tampon de 80 m autour de la ZU.
+1. Construis une zone tampon de 80 m autour de la ZU et active **Dissoudre le résultat**.
 2. Utilise [**Différence**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#difference) avec la zone tampon comme couche source et la ZU comme couche de superposition. Le résultat est l'anneau situé jusqu'à 80 m de la ZU, sans la ZU elle-même.
 
 <details>
@@ -183,7 +183,7 @@ Si l'enregistrement échoue à cause du champ `fid`, n'exporte pas ce champ afin
 
 ## 5\. Automatiser avec le modeleur graphique
 
-Tu viens d'enchaîner plusieurs géotraitements à la main : sélection, regroupement, découpe, zones tampons, union, différence et intersection. QGIS permet d'automatiser une telle chaîne avec le [**Modeleur graphique**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing/modeler.html) (_Model Designer_). Tu vas reproduire le traitement sans la partie sur les routes.
+Tu viens d'enchaîner plusieurs géotraitements à la main : sélection, regroupement, découpe, zones tampons, union, différence et intersection. QGIS permet d'automatiser une telle chaîne avec le [**Modeleur graphique**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing/modeler.html) (_Model Designer_). Tu vas d'abord construire un modèle simple, puis tu pourras reproduire la chaîne WUI sans la partie sur les routes comme défi facultatif.
 
 :::{important}
 Le **Modeleur graphique** permet de :
@@ -200,24 +200,27 @@ Le **Modeleur graphique** permet de :
 * **Couche vecteur** (polygones) → nomme-la "Forêt"
 * **Couche vecteur** (polygones) → nomme-la "Bâtiments"
 
-5c) Ajoute les **algorithmes** et relie-les dans l'ordre :
+5c) Pour le **modèle obligatoire**, ajoute les trois premiers algorithmes et définis la forêt découpée comme sortie du modèle :
 1. `Extraire par expression` sur "Districts" → extrait les deux districts
 2. `Regrouper` → un seul polygone
 3. `Couper` : forêt découpée par le district regroupé
+
+Pour le **défi facultatif**, prolonge le modèle avec les étapes suivantes :
+
 4. `Couper` : bâtiments découpés par le district regroupé
-5. `Zone tampon` (+75 m, résultat regroupé) sur les bâtiments découpés
+5. `Zone tampon` (+75 m, **Dissoudre le résultat**) sur les bâtiments découpés
 6. `Zone tampon` (−75 m) → ZDB
-7. `Zone tampon` (+80 m) sur la ZDB → zone de risque
-8. `Différence` : zone de risque moins ZDB
-9. `Intersection` : résultat avec la forêt découpée → **WUI**
+7. `Zone tampon` (+80 m, **Dissoudre le résultat**) sur la ZDB → zone de risque
+8. `Différence` : entrée = zone de risque ; superposition = ZDB
+9. `Intersection` : entrée = résultat de la différence ; superposition = forêt découpée → **WUI**
 
 <details>
 <summary>Astuce</summary>
-Relie la **sortie** d'un algorithme (cercle rouge) à l'**entrée** du suivant (cercle vert) en cliquant-glissant. Les entrées que tu as définies se connectent aux premiers algorithmes.
+Lorsque tu ajoutes un algorithme, choisis comme couche d'entrée soit une **Entrée du modèle**, soit la **Sortie d'algorithme** de l'étape précédente. Le modeleur crée automatiquement les liens dans le diagramme.
 </details>
 <br>
 
-5d) Sauvegarde le modèle (`Modèle > Enregistrer`) en fichier `.model3`, puis **exécute-le** (▶️) en sélectionnant tes couches d'entrée.
+5d) Donne un nom et un groupe au modèle. Dans le dernier algorithme obligatoire, définis la forêt découpée comme **Sortie du modèle**. Si tu réalises le défi, définis plutôt la sortie de l'intersection comme **Sortie du modèle** et nomme-la `WUI`. Enregistre le fichier `.model3`, puis exécute le modèle en sélectionnant les couches d'entrée.
 
 <details>
 <summary>Solution</summary>
@@ -226,7 +229,7 @@ Relie la **sortie** d'un algorithme (cercle rouge) à l'**entrée** du suivant (
 <br>
 
 :::{note}
-Pas besoin de reconstruire toute la chaîne — l'objectif est de comprendre la logique. Un modèle avec **au moins 3 algorithmes connectés** et une couche de sortie suffit pour ce TP. Tu réutiliseras cette compétence dans ton **projet individuel**.
+Un modèle avec **trois algorithmes connectés et une sortie** suffit pour ce TP. La chaîne WUI complète est un défi facultatif. Tu réutiliseras cette compétence dans ton **projet individuel**.
 :::
 
 ## 6\. Soumission du TP
@@ -241,4 +244,4 @@ Pas besoin de reconstruire toute la chaîne — l'objectif est de comprendre la 
 
 6d) Réponds enfin aux dernières questions du [Quiz_TP3](https://moodle.unil.ch/mod/quiz/view.php?id=1736940).
 
-Félicitations pour ta _WUI_ et à très bientôt pour en apprendre plus sur comment créer ta première carte thématique !
+Félicitations pour ta _WUI_ ! Tu apprendras ensuite à créer ta première carte thématique.
