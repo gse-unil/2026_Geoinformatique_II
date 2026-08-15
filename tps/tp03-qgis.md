@@ -4,15 +4,15 @@
 
 L'objectif de ce TP est de te montrer comment réaliser des analyses spatiales dans les SIG à partir de géodonnées. Tu apprendras à utiliser les principaux outils de géotraitement pour les opérations SIG de base. Une fois que tu auras expérimenté ces outils, tu seras également capable de les utiliser dans ton propre projet si nécessaire !
 
-Nos objectifs pédagogiques sont les suivants:
+Nos objectifs pédagogiques sont les suivants :
 
-1. Utiliser les outils de sélection et d'extraction (clip, extraction par masque)
-2. Utiliser les outils de proximité (buffer / zone tampon)
-3. Utiliser les outils de superposition (intersect, union, dissolve)
+1. Utiliser les outils de sélection et d'extraction (sélection par expression, découpage)
+2. Utiliser les outils de proximité (zone tampon)
+3. Utiliser les outils de superposition (intersection, union, différence et regroupement)
 4. Construire une chaîne de géotraitements vectoriels sur un cas d'étude concret
-5. Automatiser une chaîne de géotraitements avec le Model Designer de QGIS
+5. Automatiser une chaîne de géotraitements avec le modeleur graphique de QGIS
 
-Dans les TP précédents, tu as appris à utiliser les outils de gestion des tables attributaires (_Select by attribute_, _Select by location_). Dans ce TP, nous allons apprendre comment utiliser :
+Dans les TP précédents, tu as utilisé **Sélectionner par expression** et **Sélection par localisation**. Dans ce TP, tu vas découvrir :
 
 * _les outils de sélection et d’extraction,_
 * _les outils de proximité,_
@@ -20,7 +20,7 @@ Dans les TP précédents, tu as appris à utiliser les outils de gestion des tab
 
 avec des données vectorielles.
 
-Ce TP n’aurait pas été possible sans les ressources listées ci-dessous:
+Ce TP n’aurait pas été possible sans les ressources listées ci-dessous :
 
 * _TP6 du cours “Géomatique et SIG” de Privat-docent Dr. Marj Tonini_
 
@@ -30,31 +30,31 @@ Dans cet exercice, tu vas définir la zone d’interface entre l’espace urbain
 
 Réponds aux questions sur Moodle au fur et à mesure de ta progression dans l’exercice !
 
-Les données à télécharger sont contenues dans le geopackage [tp3.gpkg](https://unils-my.sharepoint.com/:f:/g/personal/ayoub_fatihi_unil_ch/IgDD5wH1DzKtTp1vLVbGrsfoAWbEkhSnB92HPaI1e0EiBu0?e=4EmmQr) situé dans le dossier OneDrive du cours.
+Les données sont regroupées dans le GeoPackage `tp3.gpkg`, disponible dans le [dossier OneDrive du cours](https://unils-my.sharepoint.com/:f:/g/personal/ayoub_fatihi_unil_ch/IgDD5wH1DzKtTp1vLVbGrsfoAWbEkhSnB92HPaI1e0EiBu0?e=4EmmQr).
 
 Il s’agit des données suivantes :
 
-* _limites administratives des communes : « Communes.shp »_
-* _limites administratives des districts : « Districts.shp »_
-* _zone forestière : « Foret.shp »_
-* _bâtiments : « Buildings.shp »_
-* _routes : « Roads.shp »_
+* limites administratives des communes : `Communes` ;
+* limites administratives des districts : `Districts` ;
+* zone forestière : `Foret` ;
+* bâtiments : `Buildings` ;
+* routes : `Roads`.
 
-1a) Télécharge donc le geopackage.
+1a) Télécharge le GeoPackage.
 
-1b) Ensuite, ouvre le projet `tp3.prj`.
+1b) Dans le panneau **Explorateur**, développe `tp3.gpkg`, puis ouvre le projet QGIS qu'il contient.
 
 ## 2\. Outils de sélection et d’extraction
 
-Avec ces outils, les entités d’une couche ou d’une table d’attributs peuvent être sélectionnées de manière interactive à l’aide de requêtes SQL, et des extractions spatiales peuvent être effectuées. Il est également possible (et souvent pratique) d’exporter les entités sélectionnées vers une nouvelle couche ou un nouveau tableau.
+Ces outils permettent de sélectionner des entités avec une expression ou selon leur position, puis de les exporter dans une nouvelle couche.
 
-Dans cette partie on va encadrer la région d’étude et extraire les données correspondantes, à l’aide d’outils de géotraitement de base. À partir des couches contenues dans le geopackage _tp3.gpkg_, notre objectif est de délimiter la zone d’étude en affichant seulement les éléments nécessaires au sein de son périmètre. La zone d’étude choisie correspond aux districts bernois de _Frutigen-Niedersimmental_ et _Obersimmental-Saanen_.
+Dans cette partie, tu vas délimiter la zone d'étude et en extraire les données utiles. Elle correspond aux districts bernois de _Frutigen-Niedersimmental_ et _Obersimmental-Saanen_.
 
-2a) Commence en sélectionnant ces deux districts et extrais-les à l’aide d’une `Sélection par expression` et crée une nouvelle couche avec seulement ces 2 districts.
+2a) Sélectionne ces deux districts avec **Sélectionner par expression**, puis exporte les entités sélectionnées dans une nouvelle couche.
 
 <details>
 <summary>Astuce</summary>
-En ouvrant la table des attributs, procède à une sélection par attributs, comme tu l’as appris dans les TP précédents. Ensuite, par un clic droit sur la couche, exporte les éléments vers une nouvelle couche.
+Ouvre la table attributaire et lance **Sélectionner par expression**, comme dans les TP précédents. Fais ensuite un clic droit sur la couche et choisis **Exporter > Sauvegarder les entités sélectionnées sous…**.
 </details>
 <br>
 
@@ -66,12 +66,12 @@ En ouvrant la table des attributs, procède à une sélection par attributs, com
 </details>
 <br>
 
-2b) Maintenant, à l’aide de l’outil de géotraitement [Regrouper /Dissolve](https://docs.qgis.org/3.44/fr/docs/user_manual/processing_algs/qgis/vectorgeometry.html#dissolve), fusionne les deux districts en une seule entité.
+2b) Utilise l'outil [**Regrouper**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectorgeometry.html#dissolve) (_Dissolve_) pour fusionner les deux districts en une seule entité.
 
 <details>
 <summary>Astuce</summary>
-Nomme les couches de sortie de manière logique (e.g., `Communes\_FNOS`, `Batiments\_FNOS`, `Foret\_FNOS` et `Routes\_FNOS`). Cela te permettra de garder ta géodatabase organisée et de rendre ton projet plus compréhensible.
-⚠️**Attention⚠️:** n’utilise pas d’espaces ni de caractères spéciaux (tels que les accents) lorsque tu nommes tes couches!
+Nomme les couches de sortie de manière explicite, par exemple `Communes_FNOS`, `Batiments_FNOS`, `Foret_FNOS` et `Routes_FNOS`. Ton GeoPackage et ton projet resteront ainsi faciles à comprendre.
+⚠️ **Attention :** n’utilise pas d’espaces ni de caractères accentués dans le nom des couches.
 </details>
 <br>
 
@@ -81,7 +81,7 @@ Nomme les couches de sortie de manière logique (e.g., `Communes\_FNOS`, `Batime
 </details>
 <br>
 
-2c) Une fois le périmètre de la zone d’étude délimité, on peut découper les autres couches dans ce périmètre. Pour ce faire, utilise l’outil de géotraitement [Couper / Clip](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#clip).
+2c) Découpe ensuite `Communes`, `Buildings`, `Foret` et `Roads` selon ce périmètre avec l'outil [**Couper**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#clip) (_Clip_). Utilise le district regroupé comme couche de superposition.
 
 <details>
 <summary>Solution</summary>
@@ -89,28 +89,27 @@ Nomme les couches de sortie de manière logique (e.g., `Communes\_FNOS`, `Batime
 </details>
 <br>
 
-2d) Une fois les couches découpées grâce à l’outil Clip, ton fond de carte est prêt. Le résultat devrait être semblable à la capture d’écran ci-dessous :
+2d) Une fois les couches découpées, ton fond de carte est prêt. Le résultat devrait ressembler à la capture ci-dessous :
 
 ![](assets/3_preview_tp3_output.png)
 
-2e) **En utilisant les outils de géotraitements appris jusqu’à présent, réponds aux 5 premières questions sur Moodle.**
+2e) **En utilisant les outils de géotraitement appris jusqu’à présent, réponds aux cinq premières questions sur Moodle.**
 
 <details>
 <summary>Astuce Question 3</summary>
-#TODO!
-Utilise l’outil “[Statistiques de résumé](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoranalysis.html#summary-statistics)" dans la table d'attribut de ta couche des routes grâce à “Summarize”, et observe la table de sortie résultante.
+Utilise l'outil [**Statistiques basiques pour les champs**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoranalysis.html#basic-statistics-for-fields) sur le champ de longueur de la couche des routes découpées. Si ce champ n'existe pas, crée-le d'abord avec la Calculatrice de champs et l'expression `$length`. Consulte ensuite la somme dans le rapport généré.
 </details>
 <br>
 
 <details>
 <summary>Astuce Question 4</summary>
-Fais attention de regarder la table d’attribut de la bonne couche ! Nous cherchons le périmètre des deux districts fusionnés.
+Consulte la table attributaire de la couche des deux districts regroupés : la question porte sur leur périmètre total.
 </details>
 <br>
 
 <details>
 <summary>Astuce Question 5</summary>
-Commence par sélectionner et extraire la commune de Willis comme tu l’as fait au début de ce TP pour les districts (2a), puis utilise l’outil de géotraitement *Couper* pour découper les forêts de la commune de Willis.
+Commence par sélectionner et extraire la commune de `Wimmis`, comme tu l'as fait pour les districts en 2a. Utilise ensuite **Couper** pour découper la forêt selon cette commune.
 </details>
 <br>
 
@@ -120,12 +119,12 @@ Ces outils permettent de détecter les relations de voisinage entre les objets d
 
 Dans cette partie, tu vas utiliser un outil important pour définir l’espace urbain, conventionnellement défini comme l’union des surfaces bâties et du réseau routier.
 
-**Lis attentivement les conseils ci-dessous** avant de te lancer dans ton travail sur QGIS!
+**Lis attentivement les consignes ci-dessous** avant de commencer dans QGIS !
 
-3a) **Zones tampons (Buffer)**: Nous souhaitons définir la zone où les bâtiments se trouvent à moins de 150 mètres les uns des autres pour délimiter la _zone urbaine_. Une solution est d’utiliser l’opération [Zone tampon / Buffer](https://docs.qgis.org/3.40/fr/docs/gentle_gis_introduction/vector_spatial_analysis_buffers.html#vector-spatial-analysis-buffers) deux fois:
+3a) **Zones tampons** : nous voulons délimiter les groupes de bâtiments séparés par moins de 150 m. Utilise deux fois l'outil [**Zone tampon**](https://docs.qgis.org/3.40/fr/docs/gentle_gis_introduction/vector_spatial_analysis_buffers.html#vector-spatial-analysis-buffers) (_Buffer_) :
 
-1. Pour définir l’espace de 150 mètres autour des bâtiments, utilise une distance de **\+ 75 mètres** dans les options et cocher l'option **Regrouper le résultat**.
-2. Pour éliminer le polygone qui définit la surface à l’extérieur de la zone densément bâtie, il nous faut créer une **deuxième zone tampon** à partir de la première, en saisissant cette fois la valeur négative de **– 75 mètres** dans l’option distance. Le résultat te donnera une couche représentant uniquement la _Zone urbaine Densément Bâtie (ZDB)_.
+1. Crée une zone tampon de **+75 m** autour des bâtiments et active **Dissoudre le résultat**. Les zones de deux bâtiments distants de moins de 150 m se rejoindront.
+2. Sur le résultat, crée une seconde zone tampon de **−75 m**. Tu obtiendras la _zone densément bâtie_ (ZDB), avec des limites lissées autour des groupes de bâtiments.
 
 <details>
 <summary>Solution</summary>
@@ -133,11 +132,11 @@ Dans cette partie, tu vas utiliser un outil important pour définir l’espace u
 </details>
 <br>
 
-3b) **Buffer sur les routes**: Cette fois, il nous faut créer des zones tampons en prenant en compte la largeur de chaque type de route. Pour simplifier l’exercice, nous pouvons faire l’hypothèse que toutes les routes ont une largeur de 12 mètres. 12 mètres correspondant à la largeur totale de chaque route, il nous faudra donc utiliser une distance de **6 mètres** (i.e., la moitié de la largeur) pour calculer la zone tampon.
+3b) **Zone tampon autour des routes** : suppose que toutes les routes ont une largeur totale de 12 m. Crée donc une zone tampon de **6 m** de chaque côté des lignes et active **Dissoudre le résultat**.
 
 <details>
 <summary>Solution</summary>
-Exatement comme 3a).
+Procède comme en 3a, avec une distance de 6 m.
 </details>
 <br>
 
@@ -145,21 +144,21 @@ Exatement comme 3a).
 
 Ces outils permettent de superposer plusieurs entités de différentes couches spatiales, facilitant ainsi la combinaison, la suppression, et/ou la modification des entités qu’ils contiennent. Les nouvelles entités qui en résultent sont stockées dans une nouvelle couche.
 
-Dans cette partie, tu vas enfin définir la zone d’interface habitat-forêt (WUI), grâce à deux autres outils de géotraitement: _Union_ et _Intersect_.
+Dans cette partie, tu vas définir l'interface habitat-forêt (WUI) avec les outils **Union**, **Différence** et **Intersection**.
 
-4a) **Agrégation des entités** : Pour définir l’ensemble de la Zone Urbaine (ZU), agrège les couches correspondant aux infrastructures urbaines avec l’outil [Union](https://docs.qgis.org/3.40/en/docs/user_manual/processing_algs/qgis/vectoroverlay.html#union) (i.e., il faut agréger la ZDB avec les routes après l’opération _buffer_).
+4a) **Combinaison des entités** : définis la zone urbaine (ZU) avec l'outil [**Union**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#union), en combinant la ZDB avec la zone tampon des routes. Applique ensuite **Regrouper** au résultat pour obtenir une géométrie sans limites internes inutiles.
 
 <details>
 <summary>Solution</summary>
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00005.gif>
-Il faut s'assurer que l'attribut `fid` est unique pour sauvgarder la couche correctement (voir solution 4c).
+Si l'enregistrement échoue à cause du champ `fid`, n'exporte pas ce champ : le GeoPackage créera automatiquement un identifiant unique.
 </details>
 <br>
 
-4b) **Risque d’incendies forestiers** : En moyenne, 80% des incendies forestiers en Suisse se produisent à une distance qui va jusqu’à 80 mètres de la zone urbaine. Par conséquent, pour définir les zones qui constituent la WUI, commence par:
+4b) **Zone d'interface** : pour cet exercice, utilise une distance conventionnelle de 80 m autour de la zone urbaine afin de définir la WUI. Procède comme suit :
 
-1. construire une zone tampon de 80 mètres autour de la zone urbaine.
-2. Puis utilise l'outil [Différence](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#difference) pour soustraire (ZU) pour en rester avec uniquement la zone à proximité de la (ZU).
+1. Construis une zone tampon de 80 m autour de la ZU et active **Dissoudre le résultat**.
+2. Utilise [**Différence**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#difference) avec la zone tampon comme couche source et la ZU comme couche de superposition. Le résultat est l'anneau situé jusqu'à 80 m de la ZU, sans la ZU elle-même.
 
 <details>
 <summary>Solution</summary>
@@ -172,52 +171,56 @@ Il faut s'assurer que l'attribut `fid` est unique pour sauvgarder la couche corr
 ![](https://wp.unil.ch/dawn/files/2022/10/Incendi.jpg)
 [Source](https://www.britannica.com/science/forest-fire)
 
-4c) **Croiser deux couches** : Maintenant il ne nous reste plus qu'à "croiser" la zone tampon de 80 mètres que tu viens de créer avec la couche de la surface forestière pour obtenir la zone d'interface habitat-forêt (WUI). Pour ce faire, utilise l'outil [Intersection](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#intersection) et nomme la couche de sortie _WUI._
+4c) **Croiser deux couches** : intersecte l'anneau de 80 m avec la surface forestière à l'aide de l'outil [**Intersection**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#intersection). Nomme la couche de sortie `WUI`.
 
 <details>
 <summary>Solution</summary>
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00007.gif>
-Il faut s'assurer que l'attribut `fid` est unique pour sauvgarder la couche correctement:
+Si l'enregistrement échoue à cause du champ `fid`, n'exporte pas ce champ afin que le GeoPackage crée un identifiant unique :
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00008.gif>
 </details>
 <br>
 
-## 5\. Automatiser avec le Model Designer
+## 5\. Automatiser avec le modeleur graphique
 
-Tu viens d'enchaîner plusieurs géotraitements à la main : sélection, fusion, découpe, zones tampons, union, différence, intersection. C'est puissant, mais **répétitif**. QGIS propose un outil visuel pour automatiser ces chaînes : le [Model Designer](https://docs.qgis.org/3.40/fr/docs/user_manual/processing/modeler.html). On va maintenant reproduire l’ensemble du TP (sans la partie sur les routes) directement dans le **Model Designer**.
+Tu viens d'enchaîner plusieurs géotraitements à la main : sélection, regroupement, découpe, zones tampons, union, différence et intersection. QGIS permet d'automatiser une telle chaîne avec le [**Modeleur graphique**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing/modeler.html) (_Model Designer_). Tu vas d'abord construire un modèle simple, puis tu pourras reproduire la chaîne WUI sans la partie sur les routes comme défi facultatif.
 
 :::{important}
-Le **Model Designer** permet de :
+Le **Modeleur graphique** permet de :
 * enchaîner des algorithmes dans un diagramme visuel ;
 * définir des **entrées** réutilisables (couches, paramètres) ;
 * **exécuter** toute la chaîne en un clic ;
 * **partager** le modèle (fichier `.model3`) — utile pour ton projet individuel !
 :::
 
-5a) Ouvre le Model Designer : menu `Traitement > Model Designer` (ou l'icône ![modeler](https://docs.qgis.org/3.44/en/_images/modeler_canvas.png) dans la boîte à outils).
+5a) Ouvre **Traitement > Modeleur graphique…**.
 
-5b) Ajoute les **entrées** (panneau de gauche > _Inputs_) :
+5b) Ajoute les **entrées** dans le panneau **Entrées** :
 * **Couche vecteur** (polygones) → nomme-la "Districts"
 * **Couche vecteur** (polygones) → nomme-la "Forêt"
 * **Couche vecteur** (polygones) → nomme-la "Bâtiments"
 
-5c) Ajoute les **algorithmes** (panneau _Algorithms_) et relie-les dans l'ordre :
-1. `Sélection par expression` sur "Districts" → filtre les 2 districts
-2. `Fusionner les entités / Dissolve` → un seul polygone
-3. `Couper / Clip` : Forêt découpée par le district fusionné
-4. `Zone tampon / Buffer` (+75m, regroupé) sur "Bâtiments"
-5. `Zone tampon / Buffer` (–75m) → ZDB
-6. `Zone tampon / Buffer` (+80m) sur la ZDB → zone de risque
-7. `Différence` : zone de risque moins ZDB
-8. `Intersection` : résultat avec la forêt → **WUI**
+5c) Pour le **modèle obligatoire**, ajoute les trois premiers algorithmes et définis la forêt découpée comme sortie du modèle :
+1. `Extraire par expression` sur "Districts" → extrait les deux districts
+2. `Regrouper` → un seul polygone
+3. `Couper` : forêt découpée par le district regroupé
+
+Pour le **défi facultatif**, prolonge le modèle avec les étapes suivantes :
+
+4. `Couper` : bâtiments découpés par le district regroupé
+5. `Zone tampon` (+75 m, **Dissoudre le résultat**) sur les bâtiments découpés
+6. `Zone tampon` (−75 m) → ZDB
+7. `Zone tampon` (+80 m, **Dissoudre le résultat**) sur la ZDB → zone de risque
+8. `Différence` : entrée = zone de risque ; superposition = ZDB
+9. `Intersection` : entrée = résultat de la différence ; superposition = forêt découpée → **WUI**
 
 <details>
 <summary>Astuce</summary>
-Relie la **sortie** d'un algorithme (cercle rouge) à l'**entrée** du suivant (cercle vert) en cliquant-glissant. Les entrées que tu as définies se connectent aux premiers algorithmes.
+Lorsque tu ajoutes un algorithme, choisis comme couche d'entrée soit une **Entrée du modèle**, soit la **Sortie d'algorithme** de l'étape précédente. Le modeleur crée automatiquement les liens dans le diagramme.
 </details>
 <br>
 
-5d) Sauvegarde le modèle (`Modèle > Enregistrer`) en fichier `.model3`, puis **exécute-le** (▶️) en sélectionnant tes couches d'entrée.
+5d) Donne un nom et un groupe au modèle. Dans le dernier algorithme obligatoire, définis la forêt découpée comme **Sortie du modèle**. Si tu réalises le défi, définis plutôt la sortie de l'intersection comme **Sortie du modèle** et nomme-la `WUI`. Enregistre le fichier `.model3`, puis exécute le modèle en sélectionnant les couches d'entrée.
 
 <details>
 <summary>Solution</summary>
@@ -226,19 +229,19 @@ Relie la **sortie** d'un algorithme (cercle rouge) à l'**entrée** du suivant (
 <br>
 
 :::{note}
-Pas besoin de reconstruire toute la chaîne — l'objectif est de comprendre la logique. Un modèle avec **au moins 3 algorithmes connectés** et une couche de sortie suffit pour ce TP. Tu réutiliseras cette compétence dans ton **projet individuel**.
+Un modèle avec **trois algorithmes connectés et une sortie** suffit pour ce TP. La chaîne WUI complète est un défi facultatif. Tu réutiliseras cette compétence dans ton **projet individuel**.
 :::
 
 ## 6\. Soumission du TP
 
-**Bravo !** Tu as ainsi réalisé ton premier projet en utilisant des outils de géotraitement ! ⚒️ Il ne te reste plus qu’à:
+**Bravo !** Tu as réalisé ton premier projet avec des outils de géotraitement. Il ne te reste plus qu'à préparer la remise :
 
-6a) passer dans la [_Print Layout_](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#overview-of-the-print-layout) et faire une jolie mise en page de ta carte (tu as appris à l'utiliser dans le TP2). N’oublie pas d’afficher les éléments essentiels d’habillage cartographiques (nom, date, légende, échelle, flèche du nord, bon usage de la palette des couleurs, etc…). La source des données est _[swisstopo](https://www.swisstopo.admin.ch/)_ (VECTOR200).
+6a) Crée une [mise en page](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#overview-of-the-print-layout), comme au TP2. Ajoute un titre, ton nom, la date, une légende, une barre d'échelle, une flèche du nord et la source des données : _[swisstopo](https://www.swisstopo.admin.ch/), VECTOR200_. Utilise une palette lisible.
 
-6b) Enfin, pour la remise des fichiers sur Moodle **rends ta carte (magnifique) au format .pdf** ([exportation en PDF](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#export-settings)) **sous** [Rendu\_TP3\_Carte\_PDF](https://moodle.unil.ch/mod/assign/view.php?id=1736942) **en la nommant de la manière suivante : _nom\_prénom\_TP3_**
+6b) Exporte la carte [au format PDF](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#export-settings), nomme-la `nom_prenom_TP3.pdf`, puis dépose-la dans [Rendu_TP3_Carte_PDF](https://moodle.unil.ch/mod/assign/view.php?id=1736942).
 
-6c) **Empaquette ton projet** (projet + couches) en suivant la méthode apprise au TP1 (§9) : sauvegarde le projet dans un geopackage, ajoute les éventuels rasters, compresse le tout en `.zip` et nomme-le _nom\_prénom\_TP3.zip_. Dépose-le sous [Projet\_TP3](https://moodle.unil.ch/mod/quiz/view.php?id=1736941).
+6c) **Empaquette ton projet** selon la méthode du TP1 (§9) : place le projet `.qgz`, le GeoPackage contenant tes couches de sortie et le modèle `.model3` dans un dossier, vérifie le projet, puis compresse le dossier en `nom_prenom_TP3.zip`. Dépose-le sous [Projet_TP3](https://moodle.unil.ch/mod/quiz/view.php?id=1736941).
 
-6d) et répond aux dernières questions du [Quiz\_TP3](https://moodle.unil.ch/mod/quiz/view.php?id=1736940).
+6d) Réponds enfin aux dernières questions du [Quiz_TP3](https://moodle.unil.ch/mod/quiz/view.php?id=1736940).
 
-Félicitations pour ta _WUI_ et à très bientôt pour en apprendre plus sur comment créer ta première carte thématique !
+Félicitations pour ta _WUI_ ! Tu apprendras ensuite à créer ta première carte thématique.

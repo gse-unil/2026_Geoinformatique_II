@@ -2,26 +2,26 @@
 
 ## Introduction
 
-Bienvenue au premier TP du cours de Géoinformatique II!
-Nos objectifs pédagogiques sont les suivants:
+Bienvenue au premier TP du cours de Géoinformatique II !
+Nos objectifs pédagogiques sont les suivants :
 
 1. Utiliser les machines virtuelles de l’UNIL
 2. Télécharger les données du TP depuis OneDrive
 3. Se familiariser avec le logiciel QGIS
 4. Visualiser des couches géographiques
-5. Sauvegarder un projet QGIS sur SWITCHdrive
+5. Sauvegarder un projet QGIS sur OneDrive
 6. Éditer l’apparence d’une couche
-7. Calculer la distance entre 2 éléments
+7. Mesurer la distance entre deux éléments
 8. Ouvrir et éditer des tables attributaires
-9. Empaqueter un projet QGIS (geopackage + rasters + zip) pour la remise
-10. Exploration des systèmes de coordonnées et projections
+9. Empaqueter un projet QGIS (projet, GeoPackage, rasters et archive ZIP) pour la remise
+10. Explorer les systèmes de coordonnées et les projections
 
-Ce TP n’aurait pas été possible sans les ressources listées ci-dessous:
+Ce TP n’aurait pas été possible sans les ressources listées ci-dessous :
 
 * _TP1 du cours “Géomatique et SIG” de Privat-docent Dr. Marj Tonini_
-* _Les tutoriels en ligne [“QGIS Training Manual”](https://docs.qgis.org/3.40/en/docs/training_manual/index.html)_
+* _Les tutoriels en ligne du [Manuel d'exercices QGIS](https://docs.qgis.org/3.40/fr/docs/training_manual/index.html)_
 
-Commençons sans plus tarder!
+Commençons sans plus tarder !
 
 ## 1\. Utiliser les machines virtuelles de l’UNIL
 
@@ -29,15 +29,14 @@ Commençons sans plus tarder!
 
 <img src="https://wp.unil.ch/dawn/files/2022/09/1200x630wa-1024x538.png" width="250">
 
-1b) La deuxième étape est de te connecter en suivant les instructions “Connexion à une machine virtuelle” [au même lien](https://wiki.unil.ch/ci/books/salles-informatiques-des-facult%C3%A9s/page/vdi-acces), copiées ci-dessous à toutes fins utiles:
+1b) Connecte-toi en suivant la section « Connexion à une machine virtuelle » [de la même page](https://wiki.unil.ch/ci/books/salles-informatiques-des-facult%C3%A9s/page/vdi-acces) :
 
-* Clique sur “Nouveau serveur”
-* Entre l’adresse : `vdi.unil.ch`
-* Connecte-toi avec tes identifiants **UNIL**
-* Entre tes identifiants UNIL dans le client _VMware_
-* Double-clique sur la machine virtuelle pour t’y connecter
+* clique sur **Nouveau serveur** ;
+* entre l’adresse `vdi.unil.ch` ;
+* connecte-toi avec tes identifiants **UNIL** ;
+* double-clique sur la machine virtuelle pour l'ouvrir.
 
-1c) Tu devrais maintenant avoir un visuel de ton poste de travail similaire à la capture d’écran ci-dessous. N’hésite pas à sortir du mode “plein écran” en cliquant sur le bouton “Fullscreen” comme démontré ci-dessous.
+1c) Ton poste de travail devrait maintenant ressembler à celui de la capture ci-dessous. Si nécessaire, quitte le mode « Plein écran » avec le bouton _Fullscreen_, comme dans le tutoriel.
 
 <details>
 <summary>Tutoriel</summary>
@@ -46,9 +45,7 @@ Commençons sans plus tarder!
 
 ## 2\. Télécharger les données du TP depuis OneDrive
 
-Télécharge les données du TP sur ta machine virtuelle en utilisant [cet hyperlien](https://unils-my.sharepoint.com/:f:/g/personal/ayoub_fatihi_unil_ch/IgDD5wH1DzKtTp1vLVbGrsfoAWbEkhSnB92HPaI1e0EiBu0?e=4EmmQr)
-
-<!-- #TODO! change to only tp1 data later -->
+Télécharge les données du TP sur ta machine virtuelle depuis le [dossier OneDrive du cours](https://unils-my.sharepoint.com/:f:/g/personal/ayoub_fatihi_unil_ch/IgDD5wH1DzKtTp1vLVbGrsfoAWbEkhSnB92HPaI1e0EiBu0?e=4EmmQr). Ouvre le dossier `tp1`, puis télécharge son contenu dans un dossier local avant de poursuivre.
 
 <details>
 <summary>Solution</summary>
@@ -63,44 +60,44 @@ Télécharge les données du TP sur ta machine virtuelle en utilisant [cet hyper
 Si tu préfères travailler directement sur ton propre ordinateur plutôt que sur une machine virtuelle UNIL, tu peux installer QGIS localement.
 
 1. Télécharge QGIS depuis le site officiel : <https://qgis.org/fr/site/forusers/download.html>
-2. Choisis la version adaptée à ton système d’exploitation (Windows, macOS ou Linux). Version 4+ recommandée.
+2. Choisis la version recommandée pour ton système d’exploitation (Windows, macOS ou Linux).
 3. Lance l’installateur téléchargé.
 4. Garde les options d’installation par défaut.
 5. Une fois l’installation terminée, ouvre QGIS Desktop.
 :::
 
-3b) Ouvre un _nouveau projet vide_ ou _OpenStreetMap Basemap_  dans l'onglet `Templates` pour te familiariser avec l’interface de QGIS.
+3b) Depuis la page d'accueil, ouvre un **Nouveau projet vide** ou le modèle **OpenStreetMap Basemap** dans l'onglet **Modèles** (_Templates_) pour te familiariser avec l’interface de QGIS.
 
 <details>
 <summary>Solution</summary>
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00001.gif>
 </details>
 
-3c) Rends-toi au Géopolis. Quelles sont les coordonnées?
+3c) Navigue jusqu'au bâtiment Géopolis. Quelles sont ses coordonnées ?
 
 <details>
 <summary>Solution</summary>
 <br>
-Les cordonnées du Géopolis sont: ~ 732416.60, 5865133.56 (EPSG:3857 - WGS84 / Pseudo-Mercator)
+Les coordonnées de Géopolis sont approximativement 732 416,60 et 5 865 133,56 en EPSG:3857 — WGS 84 / Pseudo-Mercator.
 </details>
 
 ## 4\. Visualiser des couches géographiques
 
-Maintenant que tout est bien installé, nous sommes enfin prêt à charger et manipuler nos données géographiques! Nous allons travailler sur une carte contenant les lacs, les villes, les routes, et la topographie suisse.
+Maintenant que tout est installé, tu peux charger et manipuler les données géographiques. Tu travailleras avec une carte des lacs, des villes, des routes et de la topographie suisses.
 
 ![](https://wp.unil.ch/dawn/files/2022/09/Lausanne-1024x576.jpeg)
 
 Aerial view of Leman lake – Lausanne city in Switzerland  
 Par [Samuel B.](https://stock.adobe.com/ch_fr/contributor/200820058/samuel-b?load_type=author&prev_url=detail)
 
-4a) Ouvre le projet nommé `tp1_main_prj` ([fichier de projet](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/project_files.html#working-with-project-files)) situé dans le geopackage `tp1.geopackage` après le connecter à partir de l'explorateur. Prends la bonne habitude dès maintenant de consulter la documentation de QGIS en ligne, par exemple en utilisant [cet hyperlien](https://docs.qgis.org/3.40/en/docs/training_manual/index.html).
+4a) Dans le panneau **Explorateur**, repère le GeoPackage `tp1.gpkg`, développe-le, puis ouvre le projet `tp1_main_prj` qu'il contient. Consulte au besoin la documentation sur les [fichiers de projet](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/project_files.html#working-with-project-files) et le [Manuel d'exercices QGIS](https://docs.qgis.org/3.40/fr/docs/training_manual/index.html).
 
 <details>
 <summary>Solution</summary>
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00002.gif>
 </details>
 
-4b) Explore les propriétés des fichiers [vecteurs](https://docs.qgis.org/3.40/en/docs/user_manual/working_with_vector/vector_properties.html) / [rasters](https://docs.qgis.org/3.40/en/docs/user_manual/working_with_raster/raster_properties.html) de chaque couche en effectuant un clic droit sur chaque couche avant de sélectionner “Properties”.
+4b) Explore les propriétés des couches [vectorielles](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/vector_properties.html) et [raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_properties.html) : fais un clic droit sur une couche, puis choisis **Propriétés**. Repère notamment sa source, son type de géométrie ou son nombre de bandes, ainsi que son SCR.
 
 <details>
 <summary>Solution</summary>
@@ -129,7 +126,7 @@ Nous arrivons désormais à un élément essentiel de chaque TP, surtout étant 
 
 ## 6\. Éditer l’apparence d’une couche
 
-Maintenant que nous avons un moyen facile et fiable d’enregistrer notre projet, il est temps de rendre notre carte magnifique!
+Maintenant que ton projet est sauvegardé de manière fiable, tu peux améliorer l'apparence de la carte !
 
 ![](https://wp.unil.ch/dawn/files/2022/09/AdobeStock_222755735-1024x1024.jpeg)
 
@@ -137,7 +134,7 @@ Hand drawing Switzerland maps with hand lettering. Illustration. EPS 10.
 Par [angkanasu](https://stock.adobe.com/ch_fr/contributor/204890139/angkanasu?load_type=author&prev_url=detail)
 
 :::{note}
-Ici, nous modifions l'apparence des couches **directement dans la fenêtre cartographique** de QGIS. La création d'une **mise en page** complète (titre, légende, échelle, flèche du nord, export PDF) se fera avec le _Print Layout_ au **TP2**.
+Ici, tu modifies l'apparence des couches **directement dans le canevas cartographique** de QGIS. Tu apprendras à créer une **mise en page** complète (titre, légende, barre d'échelle, flèche du nord et export PDF) au **TP2**.
 :::
 
 6a) Familiarise-toi avec les outils de [navigation dans la carte](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/qgis_gui.html#map-canvas) : zoome, dézoome et déplace-toi sur la Suisse à l'aide de la souris (molette pour le zoom, clic gauche + glisser pour déplacer).
@@ -147,21 +144,21 @@ Ici, nous modifions l'apparence des couches **directement dans la fenêtre carto
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00004.gif>
 </details>
 
-6b) Fait apparaître le nom des villes sur la carte en utilisant l’[Onglet Étiquettes / Labels](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/vector_properties.html#labels-properties) à partir de la fenêtre propriétés de la couche “Towns” pour faire apparaître le champ “ID1”. N’hésite pas à personaliser ta carte!
+6b) Affiche le nom des villes avec l'[onglet **Étiquettes**](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/vector_properties.html#labels-properties) des propriétés de la couche `Towns`. Choisis le champ `ID1`, puis personnalise l'affichage si tu le souhaites.
 
 <details>
 <summary>Solution</summary>
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00005.gif>
 </details>
 
-6c) Affiche le nom des lacs suisse avec une taille de police plus petite que pour les villes.
+6c) Affiche le nom des lacs suisses avec une taille de police plus petite que celle des villes.
 
 <details>
 <summary>Solution</summary>
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00006.gif>
 </details>
 
-6d) Agrandis la taille des symboles représentant les villes et change leurs couleurs en utilisant l'[Onglet Symbologie / Symbology](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/vector_properties.html#symbology-properties).
+6d) Agrandis les symboles représentant les villes et modifie leur couleur dans l'[onglet **Symbologie**](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/vector_properties.html#symbology-properties).
 
 <details>
 <summary>Solution</summary>
@@ -189,7 +186,7 @@ Ici, nous modifions l'apparence des couches **directement dans la fenêtre carto
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00011.gif>
 </details>
 
-6h) Ajuste l’ordre des couches en les glissant les unes par dessus les autres pour mettre en valeur les informations qui t’intéressent le plus.
+6h) Ajuste l’ordre des couches en les faisant glisser dans le panneau **Couches**, afin de mettre en valeur les informations qui t’intéressent le plus.
 
 <details>
 <summary>Solution</summary>
@@ -205,15 +202,16 @@ Voir réponse à la question 5c
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00012.gif>
 </details>
 
-## 7\. Calculer la distance entre 2 éléments
+## 7\. Mesurer la distance entre deux éléments
 
-7a) Activer le _snapping_
-Avant de mesurer précisément une distance, il est utile d’activer le **snapping** afin que le curseur “s’accroche” automatiquement aux villes ou aux objets géographiques.
+7a) Activer l'accrochage
 
-1. Ouvre le menu **Projet > Options de snapping…** (ou clique sur l’icône aimant 🧲 dans la barre d’outils).
-2. Active le snapping pour les couches souhaitées (par exemple `Towns` et `Lakes`).
+Avant de mesurer précisément une distance, active l'**accrochage** (_snapping_) afin que le curseur s'accroche automatiquement aux entités.
+
+1. Affiche la **Barre d'outils d'accrochage** avec **Vue > Barres d'outils > Accrochage**, puis active l'icône aimant 🧲.
+2. Ouvre les **Options d'accrochage…** et active l'accrochage pour les couches souhaitées, par exemple `Towns` et `Lakes`.
 3. Choisis :
-   * **Type** : Sommet (_Vertex_)
+   * **Type** : Sommet
    * **Tolérance** : par exemple `10 pixels`
 4. Clique sur **OK**.
 
@@ -223,7 +221,7 @@ Avant de mesurer précisément une distance, il est utile d’activer le **snapp
 * Lorsque tu approches le curseur d’une ville ou d’un bord de lac, un petit marqueur apparaît automatiquement.
 </details>
 
-7b) Calculer la distance entre deux éléments
+7b) Mesurer la distance entre deux éléments
 
 Nous allons maintenant utiliser l’outil de mesure de QGIS.
 
@@ -240,7 +238,7 @@ Nous allons maintenant utiliser l’outil de mesure de QGIS.
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00013.gif>
 
 Exemples de distances :
-* Lausanne ↔ Genève : ~ 51.307 km
+* Lausanne ↔ Genève : environ 51,3 km
 </details>
 
 Maintenant, réponds aux questions du “Quiz\_TP1” sur Moodle. Tu peux reprendre le test autant de fois que tu le souhaites.
@@ -258,25 +256,25 @@ Par [Elena Abrazhevich](https://stock.adobe.com/ch_fr/contributor/204136066/ele
 
 Pour rendre tout cela plus concret, jouons de suite avec ces tables attributaires, et n’oublie pas de répondre aux questions correspondantes sur la deuxième page du “Quiz\_TP1” sur Moodle.
 
-8a) Accède aux tables attributaires des villes et cantons en passant par la [table d'attributs](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/attribute_table.html) et classe les villes/cantons par ordre alphabétique puis par ordre de population.
+8a) Ouvre les [tables attributaires](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/attribute_table.html) des villes et des cantons. Trie-les d'abord par ordre alphabétique, puis par population.
 
 <details>
 <summary>Solution</summary>
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00014.gif>
 </details>
 
-Tu peux ajouter (ou effacer) des champs dans une table attributaire. Les champs peuvent être de type différent:
+Tu peux ajouter ou supprimer des champs dans une table attributaire. Les champs peuvent être de différents types :
 
-* numérique (“short/long integer”, “float/double”, etc.),
-* alphanumérique (“text”),
-* date/heure (“dates”),
+* numérique (entier, entier long, nombre décimal, etc.) ;
+* alphanumérique (texte) ;
+* date et heure ;
 * etc.
 
-Il est possible de calculer des valeurs de champs grâce à deux outils auxquels tu peux accéder avec un clic droit sur le champ en question:
+Tu peux calculer les valeurs d'un champ avec l'outil suivant :
 
-* “[Field Calculator](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/attribute_table.html#using-the-field-calculator)”: Utilise une formule à entrer pour effectuer un calculs généraux (multiplication, addition, etc.) ou relatives à la géométrie des objets (surface, périmètre, centroïde, etc.)
+* la [**Calculatrice de champs**](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/attribute_table.html#using-the-field-calculator), qui permet d'effectuer des calculs généraux ou liés à la géométrie des entités (longueur, surface, périmètre, coordonnées du centroïde, etc.).
 
-8b) Utilise “Field Calculator” pour créer un nouveau champ avec la longueur des routes suisses dans la table attributaire de la couche “Roads”. Vérifie que le mode **Édition** est activé.
+8b) Active le mode **Édition**, puis utilise la **Calculatrice de champs** pour créer, dans la couche `Roads`, un champ décimal `longueur_km`. Vérifie que la couche utilise un SCR projeté en mètres, puis saisis l'expression `$length / 1000` pour obtenir la longueur de chaque route en kilomètres.
 
 <details>
 <summary>Solution</summary>
@@ -297,53 +295,53 @@ Il est possible de calculer des valeurs de champs grâce à deux outils auxquels
 Pour rendre ton projet sur Moodle, un simple fichier `.qgz` ne suffit pas : il ne contient que les **références** aux couches, pas les données elles-mêmes. Tu dois **empaqueter** ton projet (projet + données) dans un seul fichier `.zip`.
 :::
 
-Voici la marche à suivre, que tu réutiliseras pour tous les TPs :
+Voici la marche à suivre, que tu réutiliseras pour tous les TP :
 
-**9a) Sauvegarde le projet dans un geopackage**
+**9a) Regroupe les fichiers dans un dossier de remise**
 
-Au lieu d'un fichier `.qgz`, sauvegarde ton projet **dans** un geopackage `.gpkg` : menu `Projet > Sauvegarder vers > Geopackage…`. Donne-lui un nom comme `nom_prenom_TP1.gpkg`. Le projet QGIS et toutes les couches vectorielles seront stockés dans ce fichier unique.
+Crée un dossier `nom_prenom_TP1`. Sauvegarde ton projet dans ce dossier au format `.qgz` avec **Projet > Enregistrer sous…**. Un projet `.qgz` conserve la mise en page et les références aux données, mais ne copie pas automatiquement les couches.
 
 <details>
 <summary>Astuce</summary>
-Le geopackage (<code>.gpkg</code>) est un conteneur : il peut regrouper plusieurs couches vectorielles <strong>et</strong> ton projet QGIS dans un seul fichier. C'est le format recommandé pour la remise.
+Un GeoPackage (<code>.gpkg</code>) peut regrouper plusieurs couches vectorielles. Il ne faut toutefois pas confondre l'enregistrement du projet avec la copie de ses données : vérifie que les couches nécessaires se trouvent bien dans ton dossier de remise.
 </details>
 <br>
 
-**9b) Ajoute les rasters** (si applicable)
+**9b) Ajoute les données**
 
-Si ton projet utilise des couches **raster** (fichiers `.tif`, `.asc`, etc.), le geopackage ne peut pas les contenir. Place-les dans le même dossier que ton `.gpkg`.
+Dans la **Boîte à outils de traitements**, lance **Couches de package**. Sélectionne toutes les couches vectorielles nécessaires au projet et enregistre-les dans `nom_prenom_TP1.gpkg`. Remplace ensuite les couches d'origine par celles du GeoPackage, puis copie dans le dossier les rasters utilisés (`.tif`, `.asc`, etc.). Dans le projet, choisis **Projet > Propriétés > Général > Enregistrer les chemins : Relatif**.
 
 **9c) Compresse le tout en `.zip`**
 
-Sélectionne ton `.gpkg` et les fichiers `.tif` associés, puis compresse-les en un seul fichier `.zip` (clic droit > Compresser, ou `Ctrl+clic > Compresser` sur macOS). Nomme l'archive `nom_prenom_TP1.zip`.
+Ferme puis rouvre le projet depuis le dossier de remise pour vérifier qu'aucune couche n'est manquante. Compresse ensuite le dossier complet en `.zip` et nomme l'archive `nom_prenom_TP1.zip`.
 
 **9d) Dépose le `.zip` sur Moodle** avant la semaine prochaine.
 
 :::{note}
 **Récapitulatif de l'empaquetage :**
 
-1. `Projet > Sauvegarder vers > Geopackage` → fichier `.gpkg` (projet + vecteurs)
-2. Copier les `.tif` à côté du `.gpkg` (s'il y a des rasters)
-3. Sélectionner le tout → compresser en `.zip`
-4. Déposer le `.zip` sur Moodle
+1. Enregistrer le projet `.qgz` dans un dossier de remise
+2. Copier les vecteurs nécessaires avec **Couches de package** et ajouter les rasters
+3. Rouvrir le projet et vérifier que toutes les couches sont disponibles
+4. Compresser le dossier en `.zip`, puis le déposer sur Moodle
 :::
 
 ## 10\. Exploration des systèmes de coordonnées et projections
 
 Dans cet exercice, tu vas afficher et explorer différentes projections cartographiques afin d’étudier les distorsions induites au niveau de la direction, des surfaces et des distances.
 
-Ouvre le projet nommé `tp1_crs_prj` ([fichier de projet](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/project_files.html#working-with-project-files)) situé dans le geopackage `tp1.geopackage` après le connecter à partir de l'explorateur. QGIS devrait te proposer une carte du monde depuis l’espace avec des cercles verts ([les ellipses de Tissot](https://en.wikipedia.org/wiki/Tissot%27s_indicatrix)).
+Dans le panneau **Explorateur**, ouvre le projet `tp1_crs_prj` stocké dans le GeoPackage `tp1.gpkg`. QGIS devrait afficher une carte du monde avec des cercles verts : les [indicatrices de Tissot](https://fr.wikipedia.org/wiki/Indicatrice_de_Tissot).
 
 Maintenant, réponds aux questions du “Quiz\_TP1” sur Moodle. Tu peux reprendre le test autant de fois que tu le souhaites.
 
-Pour changer le système de projection de la carte initiale, suis les instructions [de la documentation](https://docs.qgis.org/3.40/fr/docs/gentle_gis_introduction/coordinate_reference_systems.html#now-you-try) pour accéder aux systèmes de coordonnées (_Coordinate system_), tape le nom ou le code EPSG de la projection souhaitée dans la barre de recherche ou cherche manuellement la projection souhaitée depuis la liste.
+Pour changer le SCR du projet, clique sur l'indicateur de SCR dans l'angle inférieur droit de QGIS ou ouvre **Projet > Propriétés > SCR**. Recherche ensuite le nom ou l'identifiant de la projection dans la liste. Consulte au besoin la [documentation sur les systèmes de coordonnées](https://docs.qgis.org/3.40/fr/docs/gentle_gis_introduction/coordinate_reference_systems.html#now-you-try).
 
-Projection à essayer:
+Identifiants de SCR à essayer :
 
-* 4326
-* 54009
-* 54030
-* 3857
+* `EPSG:4326`
+* `ESRI:54009`
+* `ESRI:54030`
+* `EPSG:3857`
 
 <details>
 <summary>Solution</summary>
