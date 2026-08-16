@@ -30,7 +30,13 @@ Ce TP n’aurait pas été possible sans les ressources listées ci-dessous :
 
 1d) Explore les métadonnées de chaque couche : double-clique sur la couche, puis ouvre l'onglet **Information**. Pour le quiz Moodle, relève précisément les informations de la **bande 4** : dimensions, résolution, type de données, étendue et SCR.
 
-Les [bandes](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_properties.html#raster-properties-dialog) spectrales sont fournies dans sept fichiers séparés. Empile-les dans un raster multibande avec **Raster > Divers > Fusionner…** (_Merge_).
+<details>
+<summary>Solution</summary>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp4/tp4-00001.gif>
+</details>
+<br>
+
+Les [bandes](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_properties.html#raster-properties-dialog) spectrales sont fournies dans sept fichiers séparés. Empile-les dans un raster multibande avec **Raster > Divers > Fusionner…** (**_Merge_**).
 
 1e) Ajoute les fichiers **dans l'ordre croissant**, de b1 à b7, puis coche **Placer chaque fichier en entrée dans une bande séparée**.
 
@@ -40,7 +46,7 @@ Les [bandes](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/
 
 <details>
 <summary>Solution — Fusionner</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/11/Composite-Band.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp4/tp4-00002.gif>
 </details>
 <br>
 
@@ -70,16 +76,16 @@ Où R désigne la réflectance spectrale dans la bande rouge (la bande 3 dans le
 
 2d) Calcule le NDVI dans la [**Calculatrice raster**](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator). Donne au raster de sortie un type à virgule flottante afin de conserver les valeurs décimales comprises entre −1 et 1.
 
-2e) Explore les autres outils disponibles dans la [**Boîte à outils de traitements**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing/toolbox.html), sous **Analyse raster**. QGIS propose notamment un algorithme [NDVI](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/rasteranalysis.html#id2) prêt à l'emploi. Réponds ensuite aux questions de la deuxième page du quiz Moodle.
+2f) Enregistre le NDVI dans un fichier GeoTIFF `.tif`. Tu l'utiliseras pour la carte finale.
 
 <details>
-<summary>Solution NDVI</summary>
-`( "tp7_landsat@4" - "tp7_landsat@3" )  /  ( "tp7_landsat@4" + "tp7_landsat@3" )`
-![](https://wp.unil.ch/dawn/files/2022/11/NDVI.gif)
+<summary>Solution - NDVI</summary>
+<code>
+( "merged-landsat4-1990@4" - "merged-landsat4-1990@3" )  /  ( "merged-landsat4-1990@4" + "merged-landsat4-1990@3" )
+</code>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp4/tp4-00003.gif>
 </details>
 <br>
-
-2f) Enregistre le NDVI dans un fichier GeoTIFF `.tif`. Tu l'utiliseras pour la carte finale.
 
 ## 3\. Correction du raster
 
@@ -116,20 +122,9 @@ Les expressions précédentes n'ont qu'une condition. Dans la Calculatrice raste
 3b) Exécute l'expression et enregistre le résultat dans un GeoTIFF nommé `ReClass_MapTicino1990_8classes.tif`. Tu l'utiliseras dans le rendu final.
 
 <details>
-<summary>Solution reclassement</summary>
-Si la vidéo ne s'affiche pas, passe en plein écran sur macOS ou tourne l'appareil sous iOS ou iPadOS. Elle est également accessible depuis les machines virtuelles Windows.
-
-<iframe src=https://wp.unil.ch/dawn/files/2022/11/ReCLass.mp4></iframe>
-
-Étant donné la qualité de la vidéo, on t’offre un zoom sur la condition qui a été utilisée. Essaye toutefois de l’écrire toi-même avant de regarder la solution.
-
-<details>
-    <summary>Solution — requête</summary>
-    <pre>if (  ( "MNT25_Ticino@1" > 1400 )  AND  ( "MapTicino1990_8classes@1" = 6 ) , 5, "MapTicino1990_8classes@1" )</pre>
-    <img src=https://wp.unil.ch/dawn/files/2022/11/Schermata-2022-11-13-alle-14.13.27.png>
-</details>
-<br>
-</details>
+<summary>Solution - reclassement</summary>
+<pre>if (  ( "MNT25_Ticino@1" > 1400 )  AND  ( "MapTicino1990_8classes@1" = 6 ) , 5, "MapTicino1990_8classes@1" )</pre>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp4/tp4-00004.gif>
 <br>
 
 ## 4\. Interpolation
@@ -162,11 +157,17 @@ Pour estimer l’altitude entre les points en Suisse, utilise l'outil [IDW](http
 
 <details>
 <summary>Solution</summary>
-<img src=https://wp.unil.ch/dawn/files/2022/11/Enregistrement-20221115_180606.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp4/tp4-00005.gif>
 </details>
 <br>
 
-4e) Génère enfin un [**Ombrage**](https://docs.qgis.org/3.40/fr/docs/training_manual/rasters/terrain_analysis.html#follow-along-calculating-a-hillshade) (_Hillshade_) du MNT interpolé avec **Raster > Analyse > Ombrage…**. Utilise d'abord les paramètres par défaut : facteur Z `1`, azimut `315°` et altitude de la lumière `45°`. Enregistre le résultat dans `Ombrage_IDW.tif`. L'ombrage donne une impression de relief, mais ce n'est pas une représentation 3D.
+4e) Génère enfin un [**Ombrage**](https://docs.qgis.org/3.40/fr/docs/training_manual/rasters/terrain_analysis.html#follow-along-calculating-a-hillshade) (**_Hillshade_**) du MNT interpolé avec **Raster > Analyse > Ombrage…**. Utilise d'abord les paramètres par défaut : facteur Z `1`, azimut `315°` et altitude de la lumière `45°`. Enregistre le résultat dans `Ombrage_IDW.tif`. L'ombrage donne une impression de relief, mais ce n'est pas une représentation 3D.
+
+<details>
+<summary>Solution</summary>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp4/tp4-00006.gif>
+</details>
+<br>
 
 ## 5\. Créer les trois cartes de résultats
 
