@@ -1,11 +1,13 @@
 /* Badges cloud (Colab/Kaggle/Renku) des notebooks : garder les trois badges
    sur une seule ligne.
-   Le thème book-theme applique display:block aux <img> et <svg> (preflight
-   Tailwind), ce qui empile chaque badge sur sa propre ligne malgré le <span>
-   de la cellule d'en-tête des notebooks. Ce fichier est chargé via
-   site.options.style (voir myst.yml) et fusionné dans myst-theme.css. */
-.myst-jp-nb-block a.link img,
-.myst-jp-nb-block a.link svg {
+   Le thème book-theme applique display:block aux <img> (preflight Tailwind),
+   ce qui empile chaque badge sur sa propre ligne malgré le <span> de la
+   cellule d'en-tête des notebooks. Ce fichier est chargé via
+   site.options.style (voir myst.yml) et fusionné dans myst-theme.css.
+   NB : ne cibler QUE les <img> — le thème ajoute aussi un <svg class="link-icon">
+   (flèche "ouvrir dans un nouvel onglet") dans chaque lien ; un sélecteur
+   incluant svg le rendrait visible en grand à côté des badges. */
+.myst-jp-nb-block a.link img {
   display: inline !important;
   margin: 0 !important;
   vertical-align: middle;
