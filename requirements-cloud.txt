@@ -1,0 +1,15 @@
+# Dépendances pour exécuter les TPs Python dans le cloud
+# (Colab, Kaggle, Renku). `pip install -r requirements-cloud.txt`
+#
+# TPs 1-4 + exemple de projet : géotraitements vectoriels (GeoPandas),
+# raster (rasterio) et statistiques (statsmodels, scikit-learn, xgboost).
+geopandas>=1.0
+geodatasets>=2024.1
+matplotlib>=3.8
+numpy>=1.26
+pandas>=2.1
+rasterio>=1.3
+scipy>=1.11
+scikit-learn>=1.3
+statsmodels>=0.14
+xgboost>=2.0
