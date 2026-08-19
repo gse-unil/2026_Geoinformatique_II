@@ -48,6 +48,12 @@ site:
   options:
     folders: true
     hide_footer_links: true
+    # Feuille de style personnalisée, fusionnée dans myst-theme.css par le
+    # thème. Chemin relatif à la racine du projet (voir content/myst-custom.css :
+    # badges cloud des notebooks sur une ligne). Valable tel quel depuis la
+    # racine du dépôt comme depuis le miroir _build/src (le résolveur copie
+    # content/ à l'identique).
+    style: content/myst-custom.css
     # favicon: favicon.ico
     logo: content/site_logo.png
     logo_text: "Géoinformatique II"
