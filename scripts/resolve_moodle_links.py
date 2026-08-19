@@ -45,7 +45,17 @@ def load_values() -> dict[str, str]:
             if not line or line.startswith("#"):
                 continue
             key, _, val = line.partition("=")
-            values[key.strip()] = val.strip()
+            key = key.strip()
+            val = val.strip()
+            # Commentaire en fin de ligne : soit "VALEUR # commentaire"
+            # (URL suivie d'un espace), soit "= # commentaire" (valeur vide
+            # puis commentaire). On conserve en revanche les fragments d'URL
+            # ("#fragment" collé à l'URL, sans espace).
+            if val.startswith("#"):
+                val = ""
+            elif " #" in val:
+                val = val.split(" #", 1)[0].strip()
+            values[key] = val
     for key, val in os.environ.items():
         if key.startswith("MOODLE_"):
             values[key] = val
