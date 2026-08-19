@@ -91,8 +91,8 @@ Il est généré par l'interface — pas besoin de l'écrire à la main :
    (`https://renkulab.io/p/<namespace>/<slug>/sessions/<launcherId>/start`), puis pousser.
    Les notebooks contiennent déjà le placeholder `{{ MOODLE_RENKU_URL }}` ; le script de
    build (`scripts/resolve_moodle_links.py`) le remplace au moment du déploiement. Tant
-   que la valeur est vide, le badge Renku est **masqué** dans le site publié (bloc
-   conditionnel `<!-- MOODLE:if MOODLE_RENKU_URL -->`). Pour une surcharge ponctuelle
+   que la valeur est vide, le lien du badge Renku pointe vers `{{ MOODLE_RENKU_URL }}` non
+   résolu — penser à le renseigner avant de publier le site. Pour une surcharge ponctuelle
    sans commit, on peut aussi définir `MOODLE_RENKU_URL` comme variable GitHub Actions
    (Settings → Secrets and variables → Actions → Variables) — elle prime sur `moodle.env`.
 5. **Déposer les données dans le projet Renku** : l'interface *Upload* du projet ou le
@@ -113,7 +113,7 @@ notebook ; l'URL du badge de chaque notebook pointe alors vers son launcher.
 
 - [x] Badges insérés dans les 5 notebooks (Colab automatique, Kaggle + Renku liens)
 - [x] Workflow `.github/workflows/colab-badges.yml` (Colab)
-- [x] `MOODLE_RENKU_URL` dans `_config/moodle.env` (badge Renku masqué tant que vide)
+- [x] `MOODLE_RENKU_URL` dans `_config/moodle.env` (lien du badge Renku, à renseigner)
 - [ ] Tester le badge Kaggle une fois dans un navigateur (lien non documenté)
 - [ ] Créer le projet Renku + launcher (voir §3), renseigner `MOODLE_RENKU_URL` dans
       `_config/moodle.env`

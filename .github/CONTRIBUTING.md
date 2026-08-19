@@ -51,20 +51,11 @@ placeholders:
 [Quiz_TP3]({{ MOODLE_QUIZ_TP3 }})
 ```
 
-Conditional lines (hidden when the variable is empty — e.g. when the theoretical
-quiz and CodeRunner are merged into a single quiz):
-
-```markdown
-<!-- MOODLE:if MOODLE_CODERUNNER_TP3 -->
-| Questions CodeRunner | [CodeRunner_TP3]({{ MOODLE_CODERUNNER_TP3 }}) |
-<!-- MOODLE:endif -->
-```
-
 To update the links at the start of a new semester:
 
 1. Open the new Moodle course and copy the activity URLs (quiz, CodeRunner, assignments).
 2. Edit `_config/moodle.env` and paste the new URLs. Leave a key empty if the
-   activity does not exist (the corresponding line is hidden automatically).
+   activity does not exist.
 3. Verify locally: `./scripts/build_site.sh --strict` must succeed without warnings.
 4. Commit and push — the GitHub Actions deployment rebuilds and publishes the site.
 
