@@ -43,7 +43,11 @@ jobs:
         # (vérifier que _config/.env est à jour pour l'année en cours).
         run: python3 scripts/resolve_moodle_links.py --strict
       - name: Build HTML Assets
-        run: jupyter-book build --html ./_build/src
+        # Le build s'exécute depuis _build/src (miroir résolu) ; passer le
+        # dossier en argument déclenche EISDIR dans myst-cli (positionnel
+        # lu comme fichier).
+        working-directory: ./_build/src
+        run: jupyter-book build --html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

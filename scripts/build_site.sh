@@ -21,5 +21,9 @@ if [ -z "$JB" ]; then
   fi
 fi
 
-"$JB" build --html "$ROOT/_build/src"
+# Le build doit s'exécuter depuis _build/src : c'est là que vit le miroir
+# (sources copiées + placeholders résolus + myst.yml). Lancer jupyter-book
+# depuis la racine du dépôt construirait les sources non résolues.
+cd "$ROOT/_build/src"
+"$JB" build --html
 echo "✔ Site construit dans $ROOT/_build/src/_build/html"
