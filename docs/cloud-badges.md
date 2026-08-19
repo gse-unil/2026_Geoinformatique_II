@@ -1,12 +1,12 @@
 # Exécuter les TPs Python dans le cloud — badges Colab / Kaggle / Renku
 
-Chaque notebook des TPs Python (`tps/tp-py01.ipynb` … `tps/tp-py04.ipynb`, ainsi que
-`tps/project_example_landslides.ipynb`) commence par une cellule contenant trois badges :
+Chaque notebook des TPs Python (`tps/python/tp-py01.ipynb` … `tps/python/tp-py04.ipynb`,
+ainsi que `tps/python/project_example_landslides.ipynb`) commence par une cellule contenant trois badges :
 
 | Badge | Service | Cible du lien |
 |-------|---------|---------------|
 | <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" width="130"> | Google Colab | ouvre le notebook GitHub dans Colab |
-| [![Open in Kaggle](https://img.shields.io/badge/Open%20in-Kaggle-20BEFF?logo=kaggle&logoColor=white)](https://www.kaggle.com/kernels/welcome?src=https://github.com/gse-unil/2026_Geoinformatique_II/blob/main/tps/tp-py01.ipynb) | Kaggle | importe le notebook GitHub dans l'éditeur Kaggle |
+| [![Open in Kaggle](https://img.shields.io/badge/Open%20in-Kaggle-20BEFF?logo=kaggle&logoColor=white)](https://www.kaggle.com/kernels/welcome?src=https://github.com/gse-unil/2026_Geoinformatique_II/blob/main/tps/python/tp-py01.ipynb) | Kaggle | importe le notebook GitHub dans l'éditeur Kaggle |
 | [![Launch on Renku](https://renkulab.io/renku-badge.svg)](https://renkulab.io/p/NAMESPACE/SLUG/sessions/LAUNCHER_ID/start) | Renku (SDSC) | lance une session depuis le projet Renku du cours |
 
 **Important — les données.** Aucun des notebooks ne télécharge ses données :
@@ -23,7 +23,7 @@ en tête de chaque notebook).
 ## 1. Colab — lien direct
 
 Le badge Colab est un simple lien markdown vers
-`https://colab.research.google.com/github/gse-unil/2026_Geoinformatique_II/blob/main/tps/<notebook>.ipynb`
+`https://colab.research.google.com/github/gse-unil/2026_Geoinformatique_II/blob/main/tps/python/<notebook>.ipynb`
 — aucun entretien, rien à configurer. Si le notebook est renommé ou déplacé,
 mettre à jour le lien à la main dans la cellule badge.
 
@@ -38,7 +38,7 @@ documentée et n'est pas fiable (elle crée un scratchpad sans importer le conte
 
 Le badge Kaggle inséré dans les notebooks pointe donc vers cette URL d'import non
 documentée : **il faut le tester**. Si Kaggle le casse, le lien reste correct :
-`https://github.com/gse-unil/2026_Geoinformatique_II/blob/main/tps/tp-py01.ipynb`.
+`https://github.com/gse-unil/2026_Geoinformatique_II/blob/main/tps/python/tp-py01.ipynb`.
 
 **Procédure étudiante (à ajouter au TP si besoin) :**
 

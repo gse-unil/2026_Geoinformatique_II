@@ -10,37 +10,37 @@ project:
   toc:
     - file: content/index
       title: Accueil
-    - file: 'tps/tp01.md'
+    - file: 'tps/overview/tp01.md'
       title: 'TP1 · Données spatiales'
       children: 
-        - file: 'tps/tp01-qgis.md'
+        - file: 'tps/qgis/tp01-qgis.md'
           title: QGIS
-        - file: tps/tp-py01.ipynb
+        - file: tps/python/tp-py01.ipynb
           title: Python
-    - file: 'tps/tp02.md'
+    - file: 'tps/overview/tp02.md'
       title: 'TP2 · Requêtes & cartes'
       children:
-        - file: 'tps/tp02-qgis.md'
+        - file: 'tps/qgis/tp02-qgis.md'
           title: QGIS
-        - file: 'tps/tp-py02.ipynb'
+        - file: 'tps/python/tp-py02.ipynb'
           title: Python
-    - file: 'tps/tp03.md'
+    - file: 'tps/overview/tp03.md'
       title: 'TP3 · Géotraitements vecteurs'
       children:
-        - file: 'tps/tp03-qgis.md'
+        - file: 'tps/qgis/tp03-qgis.md'
           title: QGIS
-        - file: 'tps/tp-py03.ipynb'
+        - file: 'tps/python/tp-py03.ipynb'
           title: Python
-    - file: 'tps/tp04.md'
+    - file: 'tps/overview/tp04.md'
       title: 'TP4 · Analyse raster'
       children:
-        - file: 'tps/tp04-qgis.md'
+        - file: 'tps/qgis/tp04-qgis.md'
           title: QGIS
-        - file: 'tps/tp-py04.ipynb'
+        - file: 'tps/python/tp-py04.ipynb'
           title: Python
-    - file: 'tps/tp05.md'
+    - file: 'tps/overview/tp05.md'
       title: 'TP5 · Portfolio'
-    - file: 'tps/tp00.md'
+    - file: 'tps/overview/tp00.md'
       title: 'Projet individuel'
     
 site:

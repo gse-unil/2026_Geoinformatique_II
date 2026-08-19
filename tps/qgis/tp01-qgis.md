@@ -315,7 +315,7 @@ Dans la **Boîte à outils de traitements**, lance **Couches de package**. Séle
 
 Ferme puis rouvre le projet depuis le dossier de remise pour vérifier qu'aucune couche n'est manquante. Compresse ensuite le dossier complet en `.zip` et nomme l'archive `nom_prenom_TP1.zip`.
 
-**9d) Dépose le `.zip` sur [Moodle]({{ MOODLE_RENDU_TP1 }})** avant la semaine prochaine. Le lien exact de dépôt est aussi indiqué dans la section [Évaluation et rendus](tp01.md#tp1-rendus) du TP1.
+**9d) Dépose le `.zip` sur [Moodle]({{ MOODLE_RENDU_TP1 }})** avant la semaine prochaine. Le lien exact de dépôt est aussi indiqué dans la section [Évaluation et rendus](../overview/tp01.md#tp1-rendus) du TP1.
 
 :::{note}
 **Récapitulatif de l'empaquetage :**
