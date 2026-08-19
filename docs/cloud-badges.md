@@ -20,23 +20,12 @@ en tête de chaque notebook).
 
 ---
 
-## 1. Colab — automatique (GitHub Action)
+## 1. Colab — lien direct
 
-Le badge Colab est maintenu automatiquement par le workflow
-[`.github/workflows/colab-badges.yml`](../.github/workflows/colab-badges.yml),
-basé sur [`trsvchn/colab-badge-action`](https://github.com/trsvchn/colab-badge-action) (v4) :
-
-1. Les notebooks contiennent un **badge suivi** au format HTML
-   (`<!--<badge>-->…<!--</badge>-->`) dans leur première cellule markdown.
-2. À chaque `push` sur `main`, l'action vérifie tous les notebooks, met à jour le lien
-   si le fichier a été renommé/déplacé (ou si la branche/répo change) et insère le badge
-   dans tout notebook qui n'en aurait pas.
-3. `stefanzweifel/git-auto-commit-action` pousse le résultat.
-
-**À copier ailleurs** (autre répo) : adapter `target_repository` et `target_branch`,
-et placer `{{ badge }}` dans une cellule markdown d'un notebook — l'action la remplace
-par le badge. Astuce : l'action fonctionne avec le format standard `source` en liste de
-lignes ; les notebooks de ce cours utilisent ce format.
+Le badge Colab est un simple lien markdown vers
+`https://colab.research.google.com/github/gse-unil/2026_Geoinformatique_II/blob/main/tps/<notebook>.ipynb`
+— aucun entretien, rien à configurer. Si le notebook est renommé ou déplacé,
+mettre à jour le lien à la main dans la cellule badge.
 
 ## 2. Kaggle — manuel (pas de badge officiel)
 
@@ -65,9 +54,6 @@ documentée : **il faut le tester**. Si Kaggle le casse, le lien reste correct :
 > répo du cours. C'est voulu — les étudiant·e·s travaillent sur leur copie.
 
 ## 3. Renku — à configurer une fois (SDSC RenkuLab)
-
-Renku (Swiss Data Science Center) propose un **badge officiel de lancement de session**.
-Il est généré par l'interface — pas besoin de l'écrire à la main :
 
 1. **Créer le projet Renku** : sur [renkulab.io](https://renkulab.io), *New Project*,
    et importer le répo GitHub du cours
@@ -111,8 +97,7 @@ notebook ; l'URL du badge de chaque notebook pointe alors vers son launcher.
 
 ## Résumé des étapes à faire
 
-- [x] Badges insérés dans les 5 notebooks (Colab automatique, Kaggle + Renku liens)
-- [x] Workflow `.github/workflows/colab-badges.yml` (Colab)
+- [x] Badges insérés dans les 5 notebooks (Colab lien direct, Kaggle + Renku liens)
 - [x] `MOODLE_RENKU_URL` dans `_config/.env` (lien du badge Renku, à renseigner)
 - [ ] Tester le badge Kaggle une fois dans un navigateur (lien non documenté)
 - [ ] Créer le projet Renku + launcher (voir §3), renseigner `MOODLE_RENKU_URL` dans
