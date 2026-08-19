@@ -5,7 +5,7 @@ Copie ``content/``, ``tps/`` et ``myst.yml`` vers ``_build/src`` (miroir de
 build), puis remplace chaque ``{{ NOM }}`` par la valeur définie dans :
 
 1. les variables d'environnement ``MOODLE_*`` (priorité la plus haute) ;
-2. ``_config/moodle.env`` (fichier source de vérité, commité).
+2. ``_config/.env`` (fichier source de vérité, commité).
 
 Usage:
     python scripts/resolve_moodle_links.py [--strict]
@@ -27,7 +27,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC_DIRS = ["content", "tps"]
-CONFIG = ROOT / "_config" / "moodle.env"
+CONFIG = ROOT / "_config" / ".env"
 MIRROR = ROOT / "_build" / "src"
 
 # Fichiers dans lesquels on résout les placeholders (les autres sont copiés tels quels).
@@ -37,7 +37,7 @@ PLACEHOLDER = re.compile(r"\{\{\s*([A-Za-z_][A-Za-z0-9_]*)\s*\}\}")
 
 
 def load_values() -> dict[str, str]:
-    """Valeurs : _config/moodle.env, surchargées par l'environnement."""
+    """Valeurs : _config/.env, surchargées par l'environnement."""
     values: dict[str, str] = {}
     if CONFIG.exists():
         for raw in CONFIG.read_text(encoding="utf-8").splitlines():

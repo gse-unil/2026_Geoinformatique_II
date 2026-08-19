@@ -43,7 +43,7 @@ les sources avec les liens Moodle résolus).
 
 ## Moodle links (annual update)
 
-**All Moodle links live in `_config/moodle.env`** — never hardcode a
+**All Moodle links live in `_config/.env`** — never hardcode a
 `moodle.unil.ch/...` URL in a page. In the sources, reference links with
 placeholders:
 
@@ -54,10 +54,10 @@ placeholders:
 To update the links at the start of a new semester:
 
 1. Open the new Moodle course and copy the activity URLs (quiz, CodeRunner, assignments).
-2. Edit `_config/moodle.env` and paste the new URLs. Leave a key empty if the
+2. Edit `_config/.env` and paste the new URLs. Leave a key empty if the
    activity does not exist.
 3. Verify locally: `./scripts/build_site.sh --strict` must succeed without warnings.
 4. Commit and push — the GitHub Actions deployment rebuilds and publishes the site.
 
 Environment variables (`MOODLE_*`, set in GitHub → Settings → Secrets and
-variables → Actions → Variables) override `_config/moodle.env` without a commit.
+variables → Actions → Variables) override `_config/.env` without a commit.

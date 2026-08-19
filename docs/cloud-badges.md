@@ -86,7 +86,7 @@ Il est généré par l'interface — pas besoin de l'écrire à la main :
 3. **Récupérer le badge** : menu du launcher → **Share session launch link** →
    *Copy Launch Badge* (markdown) ou *Copy Launch Link* (URL). L'URL a la forme :
    `https://renkulab.io/p/<namespace>/<slug>/sessions/<launcherId>/start`.
-4. **Déclarer l'URL dans le fichier de variables du cours** : dans `_config/moodle.env`,
+4. **Déclarer l'URL dans le fichier de variables du cours** : dans `_config/.env`,
    renseigner `MOODLE_RENKU_URL=` avec le lien de lancement
    (`https://renkulab.io/p/<namespace>/<slug>/sessions/<launcherId>/start`), puis pousser.
    Les notebooks contiennent déjà le placeholder `{{ MOODLE_RENKU_URL }}` ; le script de
@@ -94,7 +94,7 @@ Il est généré par l'interface — pas besoin de l'écrire à la main :
    que la valeur est vide, le lien du badge Renku pointe vers `{{ MOODLE_RENKU_URL }}` non
    résolu — penser à le renseigner avant de publier le site. Pour une surcharge ponctuelle
    sans commit, on peut aussi définir `MOODLE_RENKU_URL` comme variable GitHub Actions
-   (Settings → Secrets and variables → Actions → Variables) — elle prime sur `moodle.env`.
+   (Settings → Secrets and variables → Actions → Variables) — elle prime sur `.env`.
 5. **Déposer les données dans le projet Renku** : l'interface *Upload* du projet ou le
    CLI `renku dataset add`/`renku storage` ; les étudiant·e·s les retrouveront dans le
    répertoire de travail de la session.
@@ -113,8 +113,8 @@ notebook ; l'URL du badge de chaque notebook pointe alors vers son launcher.
 
 - [x] Badges insérés dans les 5 notebooks (Colab automatique, Kaggle + Renku liens)
 - [x] Workflow `.github/workflows/colab-badges.yml` (Colab)
-- [x] `MOODLE_RENKU_URL` dans `_config/moodle.env` (lien du badge Renku, à renseigner)
+- [x] `MOODLE_RENKU_URL` dans `_config/.env` (lien du badge Renku, à renseigner)
 - [ ] Tester le badge Kaggle une fois dans un navigateur (lien non documenté)
 - [ ] Créer le projet Renku + launcher (voir §3), renseigner `MOODLE_RENKU_URL` dans
-      `_config/moodle.env`
+      `_config/.env`
 - [ ] (Option) Déposer `requirements-cloud.txt` et les données dans le projet Renku
