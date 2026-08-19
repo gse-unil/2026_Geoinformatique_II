@@ -104,7 +104,7 @@ Par [Samuel B.](https://stock.adobe.com/ch_fr/contributor/200820058/samuel-b?lo
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00003.gif>
 </details>
 
-4c) Réponds aux questions de la première page du “Quiz\_TP1” sur Moodle en utilisant les propriétés de chaque couche. Chaque réponse est enregistrée, mais tu peux soumettre de nouvelles réponses sans pénalité après avoir reçu du feedback de Moodle.
+4c) Réponds aux questions de la première page du “Quiz\_TP1” sur [Moodle]({{ MOODLE_QUIZ_TP1 }}) en utilisant les propriétés de chaque couche. Chaque réponse est enregistrée, mais tu peux soumettre de nouvelles réponses sans pénalité après avoir reçu du feedback de Moodle.
 
 ## 5\. Sauvegarder un projet QGIS sur OneDrive
 
@@ -241,7 +241,7 @@ Exemples de distances :
 * Lausanne ↔ Genève : environ 51,3 km
 </details>
 
-Maintenant, réponds aux questions du “Quiz\_TP1” sur Moodle. Tu peux reprendre le test autant de fois que tu le souhaites.
+Maintenant, réponds aux questions du “Quiz\_TP1” sur [Moodle]({{ MOODLE_QUIZ_TP1 }}). Tu peux reprendre le test autant de fois que tu le souhaites.
 
 ## 8\. Ouvrir et éditer des tables attributaires
 
@@ -254,7 +254,7 @@ La **table attributaire**, élément central des systèmes d’information géog
 Table with numerical data  
 Par [Elena Abrazhevich](https://stock.adobe.com/ch_fr/contributor/204136066/elena-abrazhevich?load_type=author&prev_url=detail)
 
-Pour rendre tout cela plus concret, jouons de suite avec ces tables attributaires, et n’oublie pas de répondre aux questions correspondantes sur la deuxième page du “Quiz\_TP1” sur Moodle.
+Pour rendre tout cela plus concret, jouons de suite avec ces tables attributaires, et n’oublie pas de répondre aux questions correspondantes sur la deuxième page du “Quiz\_TP1” sur [Moodle]({{ MOODLE_QUIZ_TP1 }}).
 
 8a) Ouvre les [tables attributaires](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/attribute_table.html) des villes et des cantons. Trie-les d'abord par ordre alphabétique, puis par population.
 
@@ -287,12 +287,12 @@ Tu peux calculer les valeurs d'un champ avec l'outil suivant :
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00016.gif>
 </details>
 
-8d) Effectue une sauvegarde finale de ton projet. N’oublie pas de finir de répondre aux questions du “Quiz\_TP1” sur Moodle si tu souhaites obtenir la note maximale.
+8d) Effectue une sauvegarde finale de ton projet. N’oublie pas de finir de répondre aux questions du “Quiz\_TP1” sur [Moodle]({{ MOODLE_QUIZ_TP1 }}) si tu souhaites obtenir la note maximale.
 
 ## 9\. Empaquetage du projet pour la remise
 
 :::{important}
-Pour rendre ton projet sur Moodle, un simple fichier `.qgz` ne suffit pas : il ne contient que les **références** aux couches, pas les données elles-mêmes. Tu dois **empaqueter** ton projet (projet + données) dans un seul fichier `.zip`.
+Pour rendre ton projet sur [Moodle]({{ MOODLE_RENDU_TP1 }}), un simple fichier `.qgz` ne suffit pas : il ne contient que les **références** aux couches, pas les données elles-mêmes. Tu dois **empaqueter** ton projet (projet + données) dans un seul fichier `.zip`.
 :::
 
 Voici la marche à suivre, que tu réutiliseras pour tous les TP :
@@ -315,7 +315,7 @@ Dans la **Boîte à outils de traitements**, lance **Couches de package**. Séle
 
 Ferme puis rouvre le projet depuis le dossier de remise pour vérifier qu'aucune couche n'est manquante. Compresse ensuite le dossier complet en `.zip` et nomme l'archive `nom_prenom_TP1.zip`.
 
-**9d) Dépose le `.zip` sur Moodle** avant la semaine prochaine.
+**9d) Dépose le `.zip` sur [Moodle]({{ MOODLE_RENDU_TP1 }})** avant la semaine prochaine. Le lien exact de dépôt est aussi indiqué dans la section [Évaluation et rendus](tp01.md#tp1-rendus) du TP1.
 
 :::{note}
 **Récapitulatif de l'empaquetage :**
@@ -323,7 +323,7 @@ Ferme puis rouvre le projet depuis le dossier de remise pour vérifier qu'aucune
 1. Enregistrer le projet `.qgz` dans un dossier de remise
 2. Copier les vecteurs nécessaires avec **Couches de package** et ajouter les rasters
 3. Rouvrir le projet et vérifier que toutes les couches sont disponibles
-4. Compresser le dossier en `.zip`, puis le déposer sur Moodle
+4. Compresser le dossier en `.zip`, puis le déposer sur [Moodle]({{ MOODLE_RENDU_TP1 }})
 :::
 
 ## 10\. Exploration des systèmes de coordonnées et projections
@@ -332,7 +332,7 @@ Dans cet exercice, tu vas afficher et explorer différentes projections cartogra
 
 Dans le panneau **Explorateur**, ouvre le projet `tp1_crs_prj` stocké dans le GeoPackage `tp1.gpkg`. QGIS devrait afficher une carte du monde avec des cercles verts : les [indicatrices de Tissot](https://fr.wikipedia.org/wiki/Indicatrice_de_Tissot).
 
-Maintenant, réponds aux questions du “Quiz\_TP1” sur Moodle. Tu peux reprendre le test autant de fois que tu le souhaites.
+Maintenant, réponds aux questions du “Quiz\_TP1” sur [Moodle]({{ MOODLE_QUIZ_TP1 }}). Tu peux reprendre le test autant de fois que tu le souhaites.
 
 Pour changer le SCR du projet, clique sur l'indicateur de SCR dans l'angle inférieur droit de QGIS ou ouvre **Projet > Propriétés > SCR**. Recherche ensuite le nom ou l'identifiant de la projection dans la liste. Consulte au besoin la [documentation sur les systèmes de coordonnées](https://docs.qgis.org/3.40/fr/docs/gentle_gis_introduction/coordinate_reference_systems.html#now-you-try).
 

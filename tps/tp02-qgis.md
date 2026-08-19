@@ -72,7 +72,7 @@ Passe maintenant aux [expressions](https://docs.qgis.org/3.40/fr/docs/user_manua
 </details>
 <br>
 
-Tu peux maintenant répondre aux cinq premières questions du quiz Moodle (page `TP 2`).
+Tu peux maintenant répondre aux cinq premières questions du [quiz Moodle]({{ MOODLE_QUIZ_TP2 }}) (page `TP 2`).
 
 ---
 
@@ -131,7 +131,7 @@ Charge la couche `BatimentsUNIL`. Lance l'outil [**Joindre les attributs par loc
 </details>
 <br>
 
-Bravo ! Tu peux maintenant poursuivre le quiz Moodle avec la question 8.
+Bravo ! Tu peux maintenant poursuivre le [quiz Moodle]({{ MOODLE_QUIZ_TP2 }}) avec la question 8.
 
 ### 3.3 Relations
 
@@ -180,7 +180,7 @@ Le but de cet exercice est de visualiser, pour une parcelle appartenant à plusi
 </details>
 <br>
 
-Tu peux maintenant terminer le quiz Moodle.
+Tu peux maintenant terminer le [quiz Moodle]({{ MOODLE_QUIZ_TP2 }}).
 
 ## 4\. Mise en page cartographique
 

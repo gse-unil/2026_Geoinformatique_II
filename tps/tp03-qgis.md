@@ -28,7 +28,7 @@ Ce TP n’aurait pas été possible sans les ressources listées ci-dessous :
 
 Dans cet exercice, tu vas définir la zone d’interface entre l’espace urbain (habitat) et la forêt dans deux [districts](https://fr.wikipedia.org/wiki/District_(Suisse)) du Canton de Berne. Cet espace du territoire, dénommé _Wildland Urban Interface_ (WUI), peut représenter un risque important d’incendie non-contrôlé de forêt et peut mettre en danger la population et les infrastructures.
 
-Réponds aux questions sur Moodle au fur et à mesure de ta progression dans l’exercice !
+Réponds aux questions sur [Moodle]({{ MOODLE_QUIZ_TP3 }}) au fur et à mesure de ta progression dans l’exercice !
 
 Les données sont regroupées dans le GeoPackage `tp3.gpkg`, disponible dans le [dossier OneDrive du cours](https://unils-my.sharepoint.com/:f:/g/personal/ayoub_fatihi_unil_ch/IgDD5wH1DzKtTp1vLVbGrsfoAWbEkhSnB92HPaI1e0EiBu0?e=4EmmQr).
 
@@ -93,7 +93,7 @@ Nomme les couches de sortie de manière explicite, par exemple `Communes_FNOS`, 
 
 ![](assets/3_preview_tp3_output.png)
 
-2e) **En utilisant les outils de géotraitement appris jusqu’à présent, réponds aux cinq premières questions sur Moodle.**
+2e) **En utilisant les outils de géotraitement appris jusqu’à présent, réponds aux cinq premières questions sur [Moodle]({{ MOODLE_QUIZ_TP3 }}).**
 
 <details>
 <summary>Astuce Question 3</summary>
@@ -238,10 +238,10 @@ Un modèle avec **trois algorithmes connectés et une sortie** suffit pour ce TP
 
 6a) Crée une [mise en page](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#overview-of-the-print-layout), comme au TP2. Ajoute un titre, ton nom, la date, une légende, une barre d'échelle, une flèche du nord et la source des données : _[swisstopo](https://www.swisstopo.admin.ch/), VECTOR200_. Utilise une palette lisible.
 
-6b) Exporte la carte [au format PDF](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#export-settings), nomme-la `nom_prenom_TP3.pdf`, puis dépose-la dans [Rendu_TP3_Carte_PDF](https://moodle.unil.ch/mod/assign/view.php?id=1736942).
+6b) Exporte la carte [au format PDF](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#export-settings), nomme-la `nom_prenom_TP3.pdf`, puis dépose-la dans [Rendu_TP3_Carte_PDF]({{ MOODLE_RENDU_TP3_CARTE }}).
 
-6c) **Empaquette ton projet** selon la méthode du TP1 (§9) : place le projet `.qgz`, le GeoPackage contenant tes couches de sortie et le modèle `.model3` dans un dossier, vérifie le projet, puis compresse le dossier en `nom_prenom_TP3.zip`. Dépose-le sous [Projet_TP3](https://moodle.unil.ch/mod/quiz/view.php?id=1736941).
+6c) **Empaquette ton projet** selon la méthode du TP1 (§9) : place le projet `.qgz`, le GeoPackage contenant tes couches de sortie et le modèle `.model3` dans un dossier, vérifie le projet, puis compresse le dossier en `nom_prenom_TP3.zip`. Dépose-le sous [Projet_TP3]({{ MOODLE_RENDU_TP3_PROJET }}).
 
-6d) Réponds enfin aux dernières questions du [Quiz_TP3](https://moodle.unil.ch/mod/quiz/view.php?id=1736940).
+6d) Réponds enfin aux dernières questions du [Quiz_TP3]({{ MOODLE_QUIZ_TP3 }}).
 
 Félicitations pour ta _WUI_ ! Tu apprendras ensuite à créer ta première carte thématique.

@@ -25,8 +25,13 @@ cd 2026_Geoinformatique_II
 ### 4. Run locally
 
 ```bash
-jupyter-book start
+./scripts/build_site.sh        # résout les liens Moodle puis construit le site
+# ou, sans le script :
+python3 scripts/resolve_moodle_links.py && jupyter-book build --html ./_build/src
 ```
+
+Le site est construit dans `_build/src/_build/html` (le miroir `_build/src` contient
+les sources avec les liens Moodle résolus).
 
 ## Adding Content
 
@@ -35,3 +40,33 @@ jupyter-book start
 * Include exercises when appropriate
 * For the table of contents:
   * Add new files to the `myst.yml` toc section
+
+## Moodle links (annual update)
+
+**All Moodle links live in `_config/moodle.env`** — never hardcode a
+`moodle.unil.ch/...` URL in a page. In the sources, reference links with
+placeholders:
+
+```markdown
+[Quiz_TP3]({{ MOODLE_QUIZ_TP3 }})
+```
+
+Conditional lines (hidden when the variable is empty — e.g. when the theoretical
+quiz and CodeRunner are merged into a single quiz):
+
+```markdown
+<!-- MOODLE:if MOODLE_CODERUNNER_TP3 -->
+| Questions CodeRunner | [CodeRunner_TP3]({{ MOODLE_CODERUNNER_TP3 }}) |
+<!-- MOODLE:endif -->
+```
+
+To update the links at the start of a new semester:
+
+1. Open the new Moodle course and copy the activity URLs (quiz, CodeRunner, assignments).
+2. Edit `_config/moodle.env` and paste the new URLs. Leave a key empty if the
+   activity does not exist (the corresponding line is hidden automatically).
+3. Verify locally: `./scripts/build_site.sh --strict` must succeed without warnings.
+4. Commit and push — the GitHub Actions deployment rebuilds and publishes the site.
+
+Environment variables (`MOODLE_*`, set in GitHub → Settings → Secrets and
+variables → Actions → Variables) override `_config/moodle.env` without a commit.

@@ -14,4 +14,6 @@ Chaque TP est structuré en deux volets complémentaires : une partie **QGIS** e
 | [TP4](../tps/tp04.md) | Analyse spatiale raster | calculatrice raster, NDVI, IDW | rasterio, numpy, RF/XGBoost/MLP |
 | [TP5](../tps/tp05.md) | Créer son site web (portfolio & projet) | — | markdown, Jupyter Book, GitHub Pages |
 
-Pendant le semestre, tu réalises aussi un **projet individuel** : une analyse spatiale complète, de la question de recherche jusqu'à la carte finale, publiée sur ton site web. Toutes les informations pratiques (calendrier, évaluation, quiz, rendus) se trouvent sur [Moodle](http://www.unil.ch/dawn/teaching/#SIG).
+Pendant le semestre, tu réalises aussi un **projet individuel** : une analyse spatiale complète, de la question de recherche jusqu'à la carte finale, publiée sur ton site web. Toutes les informations pratiques (calendrier, évaluation, quiz, rendus) se trouvent sur [Moodle]({{ MOODLE_URL }}).
+
+Chaque page TP contient une section **Évaluation et rendus** : tu y trouves, dans l'ordre, les liens vers le **quiz théorique**, les questions **CodeRunner** (Python) et les **dépôts de fichiers**.

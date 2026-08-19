@@ -37,12 +37,17 @@ jobs:
           node-version: 18.x
       - name: Install Jupyter Book (via myst)
         run: npm install -g jupyter-book
+      - name: Resolve Moodle links
+        # Résout les placeholders {{ MOODLE_* }} dans _build/src.
+        # En mode strict : le déploiement échoue si un lien Moodle est vide
+        # (vérifier que _config/moodle.env est à jour pour l'année en cours).
+        run: python3 scripts/resolve_moodle_links.py --strict
       - name: Build HTML Assets
-        run: jupyter-book build --html
+        run: jupyter-book build --html ./_build/src
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './_build/html'
+          path: './_build/src/_build/html'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

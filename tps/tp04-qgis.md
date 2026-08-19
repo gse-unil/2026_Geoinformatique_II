@@ -28,7 +28,7 @@ Ce TP n’aurait pas été possible sans les ressources listées ci-dessous :
 
 1c) Vérifie que le [système de coordonnées de référence](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_projections/working_with_projections.html#project-coordinate-reference-system) (SCR) du projet est **EPSG:2056 — CH1903+ / LV95**.
 
-1d) Explore les métadonnées de chaque couche : double-clique sur la couche, puis ouvre l'onglet **Information**. Pour le quiz Moodle, relève précisément les informations de la **bande 4** : dimensions, résolution, type de données, étendue et SCR.
+1d) Explore les métadonnées de chaque couche : double-clique sur la couche, puis ouvre l'onglet **Information**. Pour le [quiz Moodle]({{ MOODLE_QUIZ_TP4 }}), relève précisément les informations de la **bande 4** : dimensions, résolution, type de données, étendue et SCR.
 
 <details>
 <summary>Solution</summary>
@@ -181,12 +181,12 @@ Crée trois [mises en page](https://docs.qgis.org/3.40/fr/docs/user_manual/print
 
 ## 6\. Rendus et paquetage du projet
 
-6a) Regroupe les trois cartes dans le fichier `nom_prenom_cartes_TP4.pdf`, puis dépose-le dans [Rendus_Cartes_TP4](https://moodle.unil.ch/mod/assign/view.php?id=1736952). Consulte la grille d'évaluation avant la remise. Depuis chaque mise en page, utilise **Mise en page > Exporter au format PDF…** ; fusionne ensuite les trois PDF si nécessaire.
+6a) Regroupe les trois cartes dans le fichier `nom_prenom_cartes_TP4.pdf`, puis dépose-le dans [Rendus_Cartes_TP4]({{ MOODLE_RENDU_TP4_CARTES }}). Consulte la grille d'évaluation avant la remise. Depuis chaque mise en page, utilise **Mise en page > Exporter au format PDF…** ; fusionne ensuite les trois PDF si nécessaire.
 
 6b) Empaquette le projet selon la méthode du TP1 (§9). Place dans un même dossier le projet `.qgz` et les GeoTIFF nécessaires : image multibande, NDVI, reclassement, MNT IDW et ombrage. Rouvre le projet pour vérifier les chemins, puis compresse le dossier en `nom_prenom_TP4.zip`.
 
 6c) Copie le fichier `.zip` de la machine virtuelle sur ton OneDrive et crée un lien de partage.
 
-6d) Soumets le lien de partage dans [Rendus_projet_TP4](https://moodle.unil.ch/mod/quiz/view.php?id=1736953) et vérifie que l'archive porte bien le nom `nom_prenom_TP4.zip`.
+6d) Soumets le lien de partage dans [Rendus_projet_TP4]({{ MOODLE_RENDU_TP4_PROJET }}) et vérifie que l'archive porte bien le nom `nom_prenom_TP4.zip`.
 
 Félicitations pour avoir terminé le TP et à la semaine prochaine pour la création du portfolio !
