@@ -14,8 +14,6 @@ project:
       children: 
         - file: 'tps/tp01-qgis.md'
           title: TP1 QGIS
-        - file: 'tps/tp01-py.ipynb'
-          title: TP1 Python (draft)
         - file: tps/tp-py01.ipynb
           title: TP1 Python
     - file: 'tps/tp02.md'
