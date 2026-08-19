@@ -65,9 +65,9 @@ documentée : **il faut le tester**. Si Kaggle le casse, le lien reste correct :
    - **Global environment** : démarrage immédiat, mais les paquets (`geopandas`,
      `rasterio`, `scikit-learn`, `xgboost`, …) doivent être installés à la volée à
      chaque session (`pip install -r requirements-cloud.txt`) ;
-   - **Code-based environment** : pointe Renku vers `requirements-cloud.txt`
-     (ou `pyproject.toml`) du répo → environnement pré-construit, paquets prêts à
-     l'emploi (recommandé pour un cours).
+   - **Code-based environment** : pointe Renku vers `environment.yml` (racine du
+     répo) → environnement pré-construit avec tous les paquets des notebooks,
+     prêts à l'emploi (recommandé pour un cours).
    Choisir une *resource class* (CPU/RAM) suffisante pour les TPs raster.
 3. **Récupérer le badge** : menu du launcher → **Share session launch link** →
    *Copy Launch Badge* (markdown) ou *Copy Launch Link* (URL). L'URL a la forme :

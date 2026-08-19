@@ -1,0 +1,23 @@
+# Environnement Renku des TPs Python — Géoinformatique II
+# Fichier reconnu par RenkuLab comme définition d'environnement « code based »
+# (Miniconda) : https://docs.renkulab.io/en/latest/docs/users/compute/environment/guides/create-environment-with-custom-packages-installed/
+# Paquets utilisés par tps/python/*.ipynb (TP1–4 + exemple de projet).
+name: base
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.11
+  - geopandas>=1.0
+  - shapely>=2.0
+  - pandas>=2.1
+  - numpy>=1.26
+  - matplotlib>=3.8
+  - scipy>=1.11
+  - scikit-learn>=1.3
+  - statsmodels>=0.14
+  - rasterio>=1.3
+  - xgboost>=2.0
+  - geodatasets>=2024.1
+  - jupyterlab
+prefix: /opt/conda
