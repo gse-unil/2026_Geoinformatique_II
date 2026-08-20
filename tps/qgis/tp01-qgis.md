@@ -19,7 +19,7 @@ Nos objectifs pédagogiques sont les suivants :
 Ce TP n’aurait pas été possible sans les ressources listées ci-dessous :
 
 * _TP1 du cours “Géomatique et SIG” de Privat-docent Dr. Marj Tonini_
-* _Les tutoriels en ligne du [Manuel d'exercices QGIS](https://docs.qgis.org/3.40/fr/docs/training_manual/index.html)_
+* _Les tutoriels en ligne du [Manuel d'exercices QGIS](https://docs.qgis.org/3.44/fr/docs/training_manual/index.html)_
 
 Commençons sans plus tarder !
 
