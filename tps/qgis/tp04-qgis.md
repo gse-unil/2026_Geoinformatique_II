@@ -18,7 +18,7 @@ Ce TP n’aurait pas été possible sans les ressources listées ci-dessous :
 
 ## 1\. Téléchargement des données du TP et exploration des métadonnées
 
-1a) Télécharge à [cet hyperlien](https://unils-my.sharepoint.com/:f:/g/personal/ayoub_fatihi_unil_ch/IgDD5wH1DzKtTp1vLVbGrsfoAWbEkhSnB92HPaI1e0EiBu0?e=4EmmQr) un dossier qui contient déjà les couches nécessaires ainsi qu'une mise en page finale de la carte que tu pourras utiliser pour l'habillage.
+1a) Télécharge à [cet hyperlien](https://unils-my.sharepoint.com/:f:/g/personal/tom_beucler_unil_ch/IgAbdMV6LtilQocQhWgGGyIrAecbnnShumSyv65fPHE8yqw?e=PeZ9wa) un dossier qui contient déjà les couches nécessaires ainsi qu'une mise en page finale de la carte que tu pourras utiliser pour l'habillage.
 
 1b) Décompresse l'archive `.zip`. Le dossier contient les rasters suivants :
 

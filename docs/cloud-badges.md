@@ -12,7 +12,7 @@ ainsi que `tps/python/project_example_landslides.ipynb`) commence par une cellul
 **Important — les données.** Aucun des notebooks ne télécharge ses données :
 ils lisent des fichiers locaux (`tp1.gpkg`, `tp2.gpkg`, `tp3.gpkg`,
 `project_landslides.gpkg`, CSVs, rasters) que les étudiant·e·s récupèrent sur le
-[dossier OneDrive du cours](https://unils-my.sharepoint.com/:f:/g/personal/ayoub_fatihi_unil_ch/IgDD5wH1DzKtTp1vLVbGrsfoAWbEkhSnB92HPaI1e0EiBu0?e=4EmmQr).
+[dossier OneDrive du cours](https://unils-my.sharepoint.com/:f:/g/personal/tom_beucler_unil_ch/IgAbdMV6LtilQocQhWgGGyIrAecbnnShumSyv65fPHE8yqw?e=PeZ9wa).
 Ce dossier est protégé par l'authentification UNIL : ni Colab, ni Kaggle, ni Renku ne
 peuvent y accéder automatiquement. Dans chaque environnement, il faut donc **téléverser
 les données une fois** dans le répertoire de travail du notebook (voir la cellule d'aide

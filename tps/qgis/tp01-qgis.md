@@ -45,7 +45,7 @@ Commençons sans plus tarder !
 
 ## 2\. Télécharger les données du TP depuis OneDrive
 
-Télécharge les données du TP sur ta machine virtuelle depuis le [dossier OneDrive du cours](https://unils-my.sharepoint.com/:f:/g/personal/ayoub_fatihi_unil_ch/IgDD5wH1DzKtTp1vLVbGrsfoAWbEkhSnB92HPaI1e0EiBu0?e=4EmmQr). Ouvre le dossier `tp1`, puis télécharge son contenu dans un dossier local avant de poursuivre.
+Télécharge les données du TP sur ta machine virtuelle depuis le [dossier OneDrive du cours](https://unils-my.sharepoint.com/:f:/g/personal/tom_beucler_unil_ch/IgAbdMV6LtilQocQhWgGGyIrAecbnnShumSyv65fPHE8yqw?e=PeZ9wa). Ouvre le dossier `tp1`, puis télécharge son contenu dans un dossier local avant de poursuivre.
 
 <details>
 <summary>Solution</summary>

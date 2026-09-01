@@ -30,7 +30,7 @@ Dans cet exercice, tu vas définir la zone d’interface entre l’espace urbain
 
 Réponds aux questions sur [Moodle]({{ MOODLE_QUIZ_TP3 }}) au fur et à mesure de ta progression dans l’exercice !
 
-Les données sont regroupées dans le GeoPackage `tp3.gpkg`, disponible dans le [dossier OneDrive du cours](https://unils-my.sharepoint.com/:f:/g/personal/ayoub_fatihi_unil_ch/IgDD5wH1DzKtTp1vLVbGrsfoAWbEkhSnB92HPaI1e0EiBu0?e=4EmmQr).
+Les données sont regroupées dans le GeoPackage `tp3.gpkg`, disponible dans le [dossier OneDrive du cours](https://unils-my.sharepoint.com/:f:/g/personal/tom_beucler_unil_ch/IgAbdMV6LtilQocQhWgGGyIrAecbnnShumSyv65fPHE8yqw?e=PeZ9wa).
 
 Il s’agit des données suivantes :
 
