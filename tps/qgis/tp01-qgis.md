@@ -25,7 +25,7 @@ Commençons sans plus tarder !
 
 ## 1\. Utiliser les machines virtuelles de l’UNIL
 
-1a) La première étape est d’**ouvrir le logiciel _VMware Horizon Client_**. Si tu travailles sur un poste des salles informatiques, le logiciel devrait déjà être installé et il suffit de cliquer sur l’icône du logiciel (copiée ci-dessous à toutes fins utiles). Si tu travailles sur ton propre ordinateur, il te faudra d’abord installer le logiciel en suivant les instructions du premier paragraphe “Installation du logiciel _VMware Horizon Client_” [à ce lien](https://wiki.unil.ch/ci/books/salles-informatiques-des-facult%C3%A9s/page/vdi-acces).
+1a) La première étape est d’**ouvrir le logiciel _VMware Horizon Client_**. Si tu travailles sur un poste des salles informatiques, le logiciel devrait déjà être installé et il suffit de cliquer sur l’icône du logiciel (copiée ci-dessous à toutes fins utiles). Si tu travailles sur ton propre ordinateur, il te faudra d’abord installer le logiciel en suivant les instructions du paragraphe “Installation du logiciel _VMware Horizon Client_” [à ce lien](https://wiki.unil.ch/ci/books/salles-informatiques-des-facult%C3%A9s/page/vdi-acces). Attention à ne pas confondre ce paragraphe avec celui nommé "Installation du logiciel _Omnissa Horizon Client_"!
 
 <img src="https://wp.unil.ch/dawn/files/2022/09/1200x630wa-1024x538.png" width="250">
 
@@ -66,7 +66,7 @@ Si tu préfères travailler directement sur ton propre ordinateur plutôt que su
 5. Une fois l’installation terminée, ouvre QGIS Desktop.
 :::
 
-3b) Depuis la page d'accueil, ouvre un **Nouveau projet vide** ou le modèle **OpenStreetMap Basemap** dans l'onglet **Modèles** (_Templates_) pour te familiariser avec l’interface de QGIS.
+3b) Depuis la page d'accueil, ouvre le modèle **OpenStreetMap Basemap** dans l'onglet **Modèles** (_Templates_) pour te familiariser avec l’interface de QGIS.
 
 <details>
 <summary>Solution</summary>
@@ -78,7 +78,7 @@ Si tu préfères travailler directement sur ton propre ordinateur plutôt que su
 <details>
 <summary>Solution</summary>
 <br>
-Les coordonnées de Géopolis sont approximativement 732 416,60 et 5 865 133,56 en EPSG:3857 — WGS 84 / Pseudo-Mercator.
+Tu peux trouver les coordonnées d'un point en plaçant ton curseur sur ce point et en lisant les coordonnées indiquées en bas au centre de ton écran. Les coordonnées de Géopolis sont approximativement 732 416,60 et 5 865 133,56 dans le système de coordonnées EPSG:3857 — WGS 84 / Pseudo-Mercator. 
 </details>
 
 ## 4\. Visualiser des couches géographiques
@@ -117,7 +117,7 @@ Nous arrivons désormais à un élément essentiel de chaque TP, surtout étant 
 <details>
 <summary>Solution</summary>
 <br>
-![](https://wp.unil.ch/dawn/files/2023/09/onedrive-geomatique.gif)
+  <img loading="lazy" src=https://wp.unil.ch/dawn/files/2023/09/onedrive-geomatique.gif>
 </details>
 
 5c) Attention, il faut bien attendre le symbole “vu” dans le statut du téléchargement OneDrive.
@@ -137,14 +137,14 @@ Par [angkanasu](https://stock.adobe.com/ch_fr/contributor/204890139/angkanasu?l
 Ici, tu modifies l'apparence des couches **directement dans le canevas cartographique** de QGIS. Tu apprendras à créer une **mise en page** complète (titre, légende, barre d'échelle, flèche du nord et export PDF) au **TP2**.
 :::
 
-6a) Familiarise-toi avec les outils de [navigation dans la carte](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/qgis_gui.html#map-canvas) : zoome, dézoome et déplace-toi sur la Suisse à l'aide de la souris (molette pour le zoom, clic gauche + glisser pour déplacer).
+6a) Familiarise-toi avec les outils de [navigation dans la carte](https://docs.qgis.org/3.40/fr/docs/user_manual/introduction/qgis_gui.html#view) : zoome, dézoome et déplace-toi sur la Suisse à l'aide de la souris (molette pour le zoom, clic gauche + glisser pour déplacer).
 
 <details>
 <summary>Solution</summary>
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00004.gif>
 </details>
 
-6b) Affiche le nom des villes avec l'[onglet **Étiquettes**](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/vector_properties.html#labels-properties) des propriétés de la couche `Towns`. Choisis le champ `ID1`, puis personnalise l'affichage si tu le souhaites.
+6b) Affiche le nom des villes : Pour cela, ouvre les propriétés de la couche `Towns` puis l'[onglet **Étiquettes**](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/vector_properties.html#labels-properties). Choisis le champ `ID1`, puis personnalise l'affichage si tu le souhaites.
 
 <details>
 <summary>Solution</summary>
@@ -176,28 +176,28 @@ Ici, tu modifies l'apparence des couches **directement dans le canevas cartograp
 
 <details>
 <summary>Solution</summary>
-<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00010.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00009.gif>
 </details>
 
 6g) Joue avec les propriétés de la couche “HillShadeCH” pour améliorer ta carte, et [modifie sa transparence](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_properties.html#transparency-properties) (par exemple utilise une transparence de 50%).
 
 <details>
 <summary>Solution</summary>
-<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00011.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00010.gif>
 </details>
 
 6h) Ajuste l’ordre des couches en les faisant glisser dans le panneau **Couches**, afin de mettre en valeur les informations qui t’intéressent le plus.
 
 <details>
 <summary>Solution</summary>
-<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00012.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00011.gif>
 </details>
 
 6i) N’oublie pas de sauvegarder ton projet et de le transférer sur OneDrive car ce serait dommage de perdre cette belle carte.
 
 <details>
 <summary>Solution</summary>
-Voir réponse à la question 5c
+Suis le tutoriel ci-dessous pour sauvegarder ton projet. Pour le transferer sur One Drive, utilise les indications de la section 5.
 
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00012.gif>
 </details>
@@ -209,14 +209,13 @@ Voir réponse à la question 5c
 Avant de mesurer précisément une distance, active l'**accrochage** (_snapping_) afin que le curseur s'accroche automatiquement aux entités.
 
 1. Affiche la **Barre d'outils d'accrochage** avec **Vue > Barres d'outils > Accrochage**, puis active l'icône aimant 🧲.
-2. Ouvre les **Options d'accrochage…** et active l'accrochage pour les couches souhaitées, par exemple `Towns` et `Lakes`.
+2. En utilisant l'icone à droite de l'aimant, ouvre les **Options d'accrochage…**. Utilise ensuite l'outils de configuration avancé pour activer l'accrochage pour les couches souhaitées, par exemple `Towns` et `Lakes`.
 3. Choisis :
-   * **Type** : Sommet
+   * **Type** : Sommet (vertex en anglais)
    * **Tolérance** : par exemple `10 pixels`
-4. Clique sur **OK**.
 
 <details>
-<summary>Solution</summary>
+<summary>Notes</summary>
 * Vérifie que l’icône 🧲 est activée.
 * Lorsque tu approches le curseur d’une ville ou d’un bord de lac, un petit marqueur apparaît automatiquement.
 </details>
@@ -235,6 +234,7 @@ Nous allons maintenant utiliser l’outil de mesure de QGIS.
 
 <details>
 <summary>Solution</summary>
+Cette solution utilise un "raccourci" sans ouvrir la fenêtre d'option d'accrochage. Dans notre cas, cela n'a pas d'impact sur le résultat!
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00013.gif>
 
 Exemples de distances :
@@ -270,9 +270,7 @@ Tu peux ajouter ou supprimer des champs dans une table attributaire. Les champs 
 * date et heure ;
 * etc.
 
-Tu peux calculer les valeurs d'un champ avec l'outil suivant :
-
-* la [**Calculatrice de champs**](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/attribute_table.html#using-the-field-calculator), qui permet d'effectuer des calculs généraux ou liés à la géométrie des entités (longueur, surface, périmètre, coordonnées du centroïde, etc.).
+Tu peux calculer les valeurs d'un champ avec la [**Calculatrice de champs**](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/attribute_table.html#using-the-field-calculator), qui permet d'effectuer des calculs généraux ou liés à la géométrie des entités (longueur, surface, périmètre, coordonnées du centroïde, etc.).
 
 8b) Active le mode **Édition**, puis utilise la **Calculatrice de champs** pour créer, dans la couche `Roads`, un champ décimal `longueur_km`. Vérifie que la couche utilise un SCR projeté en mètres, puis saisis l'expression `$length / 1000` pour obtenir la longueur de chaque route en kilomètres.
 
