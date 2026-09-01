@@ -289,41 +289,88 @@ Tu peux calculer les valeurs d'un champ avec l'outil suivant :
 
 8d) Effectue une sauvegarde finale de ton projet. N’oublie pas de finir de répondre aux questions du “Quiz\_TP1” sur [Moodle]({{ MOODLE_QUIZ_TP1 }}) si tu souhaites obtenir la note maximale.
 
-## 9\. Empaquetage du projet pour la remise
+## 9. Sauvegarder et partager ton projet
 
-:::{important}
-Pour rendre ton projet sur [Moodle]({{ MOODLE_RENDU_TP1 }}), un simple fichier `.qgz` ne suffit pas : il ne contient que les **références** aux couches, pas les données elles-mêmes. Tu dois **empaqueter** ton projet (projet + données) dans un seul fichier `.zip`.
+::: {important}
+Tout au long des TP, **continue à travailler avec le même projet QGIS et
+le même GeoPackage**. Le GeoPackage (`.gpkg`) permet de regrouper dans
+un seul fichier tes couches vectorielles, leur mise en forme et ton
+projet QGIS.
+
+Lorsque tu dois rendre ou partager ton travail, il suffit d'en préparer
+une copie.
 :::
 
-Voici la marche à suivre, que tu réutiliseras pour tous les TP :
+9a) Prépare une copie pour la remise
 
-**9a) Regroupe les fichiers dans un dossier de remise**
+Fais une copie de ton GeoPackage et renomme-la :
 
-Crée un dossier `nom_prenom_TP1`. Sauvegarde ton projet dans ce dossier au format `.qgz` avec **Projet > Enregistrer sous…**. Un projet `.qgz` conserve la mise en page et les références aux données, mais ne copie pas automatiquement les couches.
+`nom_prenom_TP1.gpkg`
 
-<details>
-<summary>Astuce</summary>
-Un GeoPackage (<code>.gpkg</code>) peut regrouper plusieurs couches vectorielles. Il ne faut toutefois pas confondre l'enregistrement du projet avec la copie de ses données : vérifie que les couches nécessaires se trouvent bien dans ton dossier de remise.
-</details>
-<br>
+Ouvre cette copie dans QGIS et vérifie que ton projet et toutes tes
+couches s'affichent correctement.
 
-**9b) Ajoute les données**
+::: {tip}
+Tu peux ouvrir un projet enregistré dans un GeoPackage depuis **Projet
+\> Ouvrir depuis \> GeoPackage...**.
+:::
 
-Dans la **Boîte à outils de traitements**, lance **Couches de package**. Sélectionne toutes les couches vectorielles nécessaires au projet et enregistre-les dans `nom_prenom_TP1.gpkg`. Remplace ensuite les couches d'origine par celles du GeoPackage, puis copie dans le dossier les rasters utilisés (`.tif`, `.asc`, etc.). Dans le projet, choisis **Projet > Propriétés > Général > Enregistrer les chemins : Relatif**.
+9b) Vérifie les fichiers externes
 
-**9c) Compresse le tout en `.zip`**
+Certaines données, notamment les **rasters** (`.tif`, `.asc`, etc.),
+peuvent être enregistrées en dehors du GeoPackage.
 
-Ferme puis rouvre le projet depuis le dossier de remise pour vérifier qu'aucune couche n'est manquante. Compresse ensuite le dossier complet en `.zip` et nomme l'archive `nom_prenom_TP1.zip`.
+Si ton projet en utilise (par exemple dans le TP4) :
 
-**9d) Dépose le `.zip` sur [Moodle]({{ MOODLE_RENDU_TP1 }})** avant la semaine prochaine. Le lien exact de dépôt est aussi indiqué dans la section [Évaluation et rendus](../overview/tp01.md#tp1-rendus) du TP1.
+1. crée un dossier `nom_prenom_TP1` ;
+2. place ton GeoPackage et les rasters nécessaires dans ce dossier ;
+3. ouvre le projet et vérifie que les rasters s'affichent correctement
+    ;
+4. si un raster est manquant, ajoute le fichier correspondant au projet
+    depuis l'interface **Couches** de QGIS, puis **sauvegarde à nouveau
+    le projet**.
 
-:::{note}
-**Récapitulatif de l'empaquetage :**
+Ton dossier pourra par exemple contenir :
 
-1. Enregistrer le projet `.qgz` dans un dossier de remise
-2. Copier les vecteurs nécessaires avec **Couches de package** et ajouter les rasters
-3. Rouvrir le projet et vérifier que toutes les couches sont disponibles
-4. Compresser le dossier en `.zip`, puis le déposer sur [Moodle]({{ MOODLE_RENDU_TP1 }})
+``` text
+nom_prenom_TP1/
+├── nom_prenom_TP1.gpkg
+├── raster_1.tif
+└── raster_2.tif
+```
+
+9c) Prépare le fichier à partager
+
+Si ton travail est entièrement contenu dans le GeoPackage, tu peux
+simplement partager :
+
+`nom_prenom_TP1.gpkg`
+
+Si ton projet utilise également des fichiers externes, comme des
+rasters, compresse le **dossier complet** en `.zip` :
+
+`nom_prenom_TP1.zip`
+
+Avant de le partager, ouvre une dernière fois le projet pour vérifier
+que **toutes les couches s'affichent correctement**.
+
+9d) Dépose ton travail sur [Moodle]({{ MOODLE_RENDU_TP1 }})
+
+Dépose le fichier demandé (`.gpkg` ou `.zip`, selon le contenu de ton
+projet) sur [Moodle]({{ MOODLE_RENDU_TP1 }}) avant la
+semaine prochaine.
+
+Le lien de dépôt est également indiqué dans la section [Évaluation et
+rendus](../overview/tp01.md#tp1-rendus) du TP1.
+
+::: {note}
+**À retenir :**
+
+* **Projet + couches vectorielles** → un seul fichier `.gpkg` peut
+    suffire.
+* **Projet avec des rasters externes** → mets le `.gpkg` et les
+    rasters dans un dossier, vérifie le projet, puis partage le dossier
+    en `.zip`.
 :::
 
 ## 10\. Exploration des systèmes de coordonnées et projections
