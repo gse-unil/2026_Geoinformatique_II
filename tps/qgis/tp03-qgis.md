@@ -169,6 +169,7 @@ Si l'enregistrement échoue à cause du champ `fid`, n'exporte pas ce champ : le
 <!-- Cette fois, dans l’option _Side Type_ choisi _Exclude the input polygon from buffer,_ tandis que les autres options sont les mêmes que pour la zone urbaine densément bâtie (ZDB). -->
 
 ![](https://wp.unil.ch/dawn/files/2022/10/Incendi.jpg)
+
 [Source](https://www.britannica.com/science/forest-fire)
 
 4c) **Croiser deux couches** : intersecte l'anneau de 80 m avec la surface forestière à l'aide de l'outil [**Intersection**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#intersection). Nomme la couche de sortie `WUI`.
