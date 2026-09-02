@@ -1,5 +1,7 @@
 # Géoinformatique II
 
+![banner flux](flux.jpg)
+
 Bienvenue dans le cours de **Géoinformatique II** (Bachelor en géosciences et environnement, FGSE, UNIL) !
 
 La géomatique regroupe les méthodes et outils qui permettent de collecter, stocker, analyser et visualiser des géodonnées. Dans ce cours appliqué, tu apprendras à manipuler et analyser des données spatiales avec le logiciel **QGIS**, à automatiser ces analyses en **Python** (numpy, pandas, geopandas, rasterio, scikit-learn) et à communiquer tes résultats sous forme de cartes et d'un site web personnel.
