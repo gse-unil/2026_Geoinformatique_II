@@ -31,7 +31,16 @@ python3 scripts/resolve_moodle_links.py && jupyter-book build --html ./_build/sr
 ```
 
 Le site est construit dans `_build/src/_build/html` (le miroir `_build/src` contient
-les sources avec les liens Moodle résolus).
+les sources avec les liens Moodle résolus). Pour le consulter dans le navigateur :
+
+```bash
+cd _build/src/_build/html && python3 -m http.server 8000
+# puis ouvrir http://localhost:8000
+```
+
+Chaque lien vers `moodle.unil.ch` est complété à la construction par la note
+*« accès réservé aux étudiant·e·s UNIL »* (ajoutée par
+`scripts/resolve_moodle_links.py` — ne pas l'écrire dans les sources).
 
 ## Adding Content
 

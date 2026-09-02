@@ -14,6 +14,11 @@ Usage:
 (recommandé en CI — le déploiement ne doit pas publier de liens vides).
 Sans ``--strict`` : avertissement, le placeholder est laissé tel quel dans
 le miroir afin que l'auteur·rice le voie lors du build local.
+
+En plus de la résolution, chaque lien markdown vers ``moodle.unil.ch`` est
+complété d'une note précisant que l'accès est réservé aux étudiant·e·s UNIL
+(cours fermé au public — ajoutée ici plutôt que dans chaque source pour
+rester en un seul endroit).
 """
 
 from __future__ import annotations
@@ -34,6 +39,14 @@ MIRROR = ROOT / "_build" / "src"
 TEXT_EXTS = {".md", ".yml", ".yaml", ".ipynb", ".html", ".txt"}
 
 PLACEHOLDER = re.compile(r"\{\{\s*([A-Za-z_][A-Za-z0-9_]*)\s*\}\}")
+
+# Note ajoutée après chaque lien markdown résolu vers moodle.unil.ch : le cours
+# n'est accessible qu'avec une session UNIL (étudiant·e·s inscrit·e·s).
+MOODLE_ACCESS_NOTE = " *(accès réservé aux étudiant·e·s UNIL)*"
+
+MOODLE_LINK = re.compile(
+    r"(\[[^\]]*\]\(\s*https://moodle\.unil\.ch/[^\s)]*\s*\))"
+)
 
 
 def load_values() -> dict[str, str]:
@@ -78,7 +91,10 @@ def resolve_text(text: str, values: dict[str, str], strict: bool,
             warnings.append(f"{msg}, laissé tel quel")
         return m.group(0)
 
-    return PLACEHOLDER.sub(repl, text)
+    text = PLACEHOLDER.sub(repl, text)
+    # Note d'accès après chaque lien Moodle résolu (les placeholders non
+    # résolus ne correspondent pas, donc pas de note sur un lien vide).
+    return MOODLE_LINK.sub(rf"\1{MOODLE_ACCESS_NOTE}", text)
 
 
 def main() -> int:
