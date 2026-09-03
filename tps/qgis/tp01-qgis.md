@@ -25,7 +25,7 @@ Commençons sans plus tarder !
 
 ## 1\. Utiliser les machines virtuelles de l’UNIL
 
-1a) La première étape est d’**ouvrir le logiciel _VMware Horizon Client_**. Si tu travailles sur un poste des salles informatiques, le logiciel devrait déjà être installé et il suffit de cliquer sur l’icône du logiciel (copiée ci-dessous à toutes fins utiles). Si tu travailles sur ton propre ordinateur, il te faudra d’abord installer le logiciel en suivant les instructions du paragraphe “Installation du logiciel _VMware Horizon Client_” [à ce lien](https://wiki.unil.ch/ci/books/salles-informatiques-des-facult%C3%A9s/page/vdi-acces). Attention à ne pas confondre ce paragraphe avec celui nommé "Installation du logiciel _Omnissa Horizon Client_"!
+1a) La première étape est d’**ouvrir le logiciel _VMware Horizon Client_**. Si tu travailles sur un poste des salles informatiques, le logiciel devrait déjà être installé et il suffit de cliquer sur l’icône du logiciel (copiée ci-dessous à toutes fins utiles). Si tu travailles sur ton propre ordinateur, il te faudra d’abord installer le logiciel en suivant les instructions du paragraphe “Installation du logiciel _VMware Horizon Client_” [à ce lien](https://wiki.unil.ch/ci/books/salles-informatiques-des-facult%C3%A9s/page/vdi-acces).
 
 <img src="https://wp.unil.ch/dawn/files/2022/09/1200x630wa-1024x538.png" width="250">
 
