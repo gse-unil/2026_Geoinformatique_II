@@ -9,10 +9,8 @@ This project is built with [Jupyter Book](https://jupyterbook.org/stable).
 More info [here](https://jupyterbook.org/stable/get-started/install/).
 
 ```bash
-# create env ...
-mamba install -c conda-forge "jupyter-book"
-# or
-# pip install "jupyter-book>=2.0.0"
+uv venv
+uv pip install -r requirements.txt   # creates .venv/bin/jupyter-book
 ```
 
 ### 2. Clone the repository
@@ -40,7 +38,7 @@ cd _build/src/_build/html && python3 -m http.server 8000
 
 Chaque lien vers `moodle.unil.ch` est complété à la construction par la note
 *« accès réservé aux étudiant·e·s UNIL »* (ajoutée par
-`scripts/resolve_moodle_links.py` — ne pas l'écrire dans les sources).
+`scripts/resolve_moodle_links.py` ; ne pas l'écrire dans les sources).
 
 ## Adding Content
 
@@ -52,7 +50,7 @@ Chaque lien vers `moodle.unil.ch` est complété à la construction par la note
 
 ## Moodle links (annual update)
 
-**All Moodle links live in `_config/.env`** — never hardcode a
+**All Moodle links live in `_config/.env`**. Never hardcode a
 `moodle.unil.ch/...` URL in a page. In the sources, reference links with
 placeholders:
 
@@ -66,7 +64,7 @@ To update the links at the start of a new semester:
 2. Edit `_config/.env` and paste the new URLs. Leave a key empty if the
    activity does not exist.
 3. Verify locally: `./scripts/build_site.sh --strict` must succeed without warnings.
-4. Commit and push — the GitHub Actions deployment rebuilds and publishes the site.
+4. Commit and push. The GitHub Actions deployment rebuilds and publishes the site.
 
 Environment variables (`MOODLE_*`, set in GitHub → Settings → Secrets and
 variables → Actions → Variables) override `_config/.env` without a commit.
