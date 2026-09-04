@@ -3,14 +3,15 @@ _build/
 cantons*
 *.tif
 *.csv
+*.bak
 # MyST build outputs
 _build
-tps/dhm/dhm25_p.dbf
-tps/dhm/dhm25_p.prj
-tps/dhm/dhm25_p.sbn
-tps/dhm/dhm25_p.sbx
-tps/dhm/dhm25_p.shp
-tps/dhm/dhm25_p.shx
+tps/dhm25_p/dhm25_p.dbf
+tps/dhm25_p/dhm25_p.prj
+tps/dhm25_p/dhm25_p.sbn
+tps/dhm25_p/dhm25_p.sbx
+tps/dhm25_p/dhm25_p.shp
+tps/dhm25_p/dhm25_p.shx
 tps/sortie/*
 tps/project_example_resources/*
 .planning/
