@@ -381,15 +381,6 @@ Maintenant, réponds aux questions du “Quiz\_TP1” sur [Moodle]({{ MOODLE_QUI
 
 Pour changer le SCR du projet, clique sur l'indicateur de SCR dans l'angle inférieur droit de QGIS ou ouvre **Projet > Propriétés > SCR**. Recherche ensuite le nom ou l'identifiant de la projection dans la liste. Consulte au besoin la [documentation sur les systèmes de coordonnées](https://docs.qgis.org/3.40/fr/docs/gentle_gis_introduction/coordinate_reference_systems.html#now-you-try).
 
-Consulte maintenant les propriétés de la couche `ne_110m_land` et cherche son SCR. Que constates-tu ?
-
-<details>
-<summary>Solution</summary>
-
-Le SCR de la couche n'a pas été modifié. En effet, le SCR d'une couche et celui du projet sont indépendants. S'ils diffèrent, QGIS reprojette alors automatiquement chaque couche afin de les afficher dans le SCR du projet, sans modifier les données originales de la couche. Une bonne pratique reste cependant d'utiliser des SCR identiques pour l'ensemble des couches et pour le projet.
-
-</details>
-
 Identifiants de SCR à essayer :
 
 * `EPSG:4326`
@@ -400,4 +391,13 @@ Identifiants de SCR à essayer :
 <details>
 <summary>Solution</summary>
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00017.gif>
+</details>
+
+Consulte maintenant les propriétés de la couche `ne_110m_land` et cherche son SCR. Que constates-tu ?
+
+<details>
+<summary>Solution</summary>
+
+Le SCR de la couche n'a pas été modifié. En effet, le SCR d'une couche et celui du projet sont indépendants. S'ils diffèrent, QGIS reprojette alors automatiquement chaque couche afin de les afficher dans le SCR du projet, sans modifier les données originales de la couche. Une bonne pratique reste cependant d'utiliser des SCR identiques pour l'ensemble des couches et pour le projet.
+
 </details>
