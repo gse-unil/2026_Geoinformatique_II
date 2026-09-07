@@ -23,20 +23,35 @@ Ce TP n’aurait pas été possible sans les ressources listées ci-dessous :
 
 Commençons sans plus tarder !
 
-## 1\. Utiliser les machines virtuelles de l’UNIL
+## 1\. Télécharger QGIS
 
-1a) La première étape est d’**ouvrir le logiciel _VMware Horizon Client_**. Si tu travailles sur un poste des salles informatiques, le logiciel devrait déjà être installé et il suffit de cliquer sur l’icône du logiciel (copiée ci-dessous à toutes fins utiles). Si tu travailles sur ton propre ordinateur, il te faudra d’abord installer le logiciel en suivant les instructions du paragraphe “Installation du logiciel _VMware Horizon Client_” [à ce lien](https://wiki.unil.ch/ci/books/salles-informatiques-des-facult%C3%A9s/page/vdi-acces).
+Nous te conseillons de suivre les instructions de la section 1.1 pour télécharger directement QGIS sur ton propre ordinateur plutôt que de travailler sur une machine virtuelle de l'UNIL. Si toutefois ce n'est pas possible, tu peux suivre les instructions de la section 1.2 pour utiliser QGIS depuis la machine virtuelle de l'UNIL.
+
+### 1.1 Téléchargement de QGIS sur ton ordinateur personnel
+
+Pour télécharger le logiciel QGIS sur ton ordinateur personnel :
+1. Rends-toi sur le site officiel  de QGIS: <https://qgis.org/fr/site/forusers/download.html>
+2. Une fenêtre apparait à droite de ton écran contenant différentes donations possibles. Appuie sur "Skip it and go to download".
+3. Choisis ton système d'exploitation (MacOS, Windows ou Linux par exemple).
+4. Télécharge la version 4.2 de QGIS. Si ton système d'exploitation ne permet pas le téléchargement de cette version, choisis la version recomandée!
+5. Lors de l'installation, garde les options d’installation par défaut.
+6. Une fois l’installation terminée, ouvre QGIS Desktop.
+
+
+### 1.2 Utilisation de la machine virtuelle de l'UNIL
+
+1. La première étape est d’**ouvrir le logiciel _VMware Horizon Client_**. Si tu travailles sur un poste des salles informatiques, le logiciel devrait déjà être installé et il suffit de cliquer sur l’icône du logiciel (copiée ci-dessous à toutes fins utiles). Si tu travailles sur ton propre ordinateur, il te faudra d’abord installer le logiciel en suivant les instructions du paragraphe “Installation du logiciel _VMware Horizon Client_” [à ce lien](https://wiki.unil.ch/ci/books/salles-informatiques-des-facult%C3%A9s/page/vdi-acces).
 
 <img src="https://wp.unil.ch/dawn/files/2022/09/1200x630wa-1024x538.png" width="250">
 
-1b) Connecte-toi en suivant la section « Connexion à une machine virtuelle » [de la même page](https://wiki.unil.ch/ci/books/salles-informatiques-des-facult%C3%A9s/page/vdi-acces) :
+2. Connecte-toi en suivant la section « Connexion à une machine virtuelle » [de la même page](https://wiki.unil.ch/ci/books/salles-informatiques-des-facult%C3%A9s/page/vdi-acces) :
 
 * clique sur **Nouveau serveur** ;
 * entre l’adresse `vdi.unil.ch` ;
 * connecte-toi avec tes identifiants **UNIL** ;
 * double-clique sur la machine virtuelle pour l'ouvrir.
 
-1c) Ton poste de travail devrait maintenant ressembler à celui de la capture ci-dessous. Si nécessaire, quitte le mode « Plein écran » avec le bouton _Fullscreen_, comme dans le tutoriel.
+3. Ton poste de travail devrait maintenant ressembler à celui de la capture ci-dessous. Si nécessaire, quitte le mode « Plein écran » avec le bouton _Fullscreen_, comme dans le tutoriel.
 
 <details>
 <summary>Tutoriel</summary>
@@ -45,7 +60,7 @@ Commençons sans plus tarder !
 
 ## 2\. Télécharger les données du TP depuis OneDrive
 
-Télécharge les données du TP sur ta machine virtuelle depuis le [dossier OneDrive du cours](https://unils-my.sharepoint.com/:f:/g/personal/tom_beucler_unil_ch/IgAbdMV6LtilQocQhWgGGyIrAecbnnShumSyv65fPHE8yqw?e=PeZ9wa). Ouvre le dossier `tp1`, puis télécharge son contenu dans un dossier local avant de poursuivre.
+Télécharge les données du TP depuis le [dossier OneDrive du cours](https://unils-my.sharepoint.com/:f:/g/personal/tom_beucler_unil_ch/IgAbdMV6LtilQocQhWgGGyIrAecbnnShumSyv65fPHE8yqw?e=PeZ9wa). Ouvre le dossier `tp1`, puis télécharge son contenu dans un dossier local avant de poursuivre.
 
 <details>
 <summary>Solution</summary>
@@ -54,17 +69,7 @@ Télécharge les données du TP sur ta machine virtuelle depuis le [dossier OneD
 
 ## 3\. Se familiariser avec le logiciel QGIS
 
-3a) Ouvre le logiciel QGIS depuis ta machine virtuelle ou localement.
-
-:::{note} Installer QGIS localement
-Si tu préfères travailler directement sur ton propre ordinateur plutôt que sur une machine virtuelle UNIL, tu peux installer QGIS localement.
-
-1. Télécharge QGIS depuis le site officiel : <https://qgis.org/fr/site/forusers/download.html>
-2. Choisis la version recommandée pour ton système d’exploitation (Windows, macOS ou Linux).
-3. Lance l’installateur téléchargé.
-4. Garde les options d’installation par défaut.
-5. Une fois l’installation terminée, ouvre QGIS Desktop.
-:::
+3a) Ouvre le logiciel QGIS depuis ta machine virtuelle ou sur ton ordinateur personnel.
 
 3b) Depuis la page d'accueil, ouvre le modèle **OpenStreetMap Basemap** dans l'onglet **Modèles** (_Templates_) pour te familiariser avec l’interface de QGIS.
 
