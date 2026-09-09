@@ -42,6 +42,9 @@ project:
       title: 'TP5 · Portfolio'
     - file: 'tps/overview/tp00.md'
       title: 'Projet individuel'
+      children:
+        - file: 'tps/python/project_example_landslides.ipynb'
+          title: 'Exemple : glissements de terrain'
     
 site:
   template: book-theme
