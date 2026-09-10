@@ -38,7 +38,7 @@ project:
           title: QGIS
         - file: 'tps/python/tp-py04.ipynb'
           title: Python
-    - file: 'tps/overview/tp00.md'
+    - file: 'project/overview.md'
       title: 'Projet individuel'
       children:
         - file: 'project/etape1.md'

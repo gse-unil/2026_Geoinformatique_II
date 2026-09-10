@@ -14,7 +14,6 @@ Chaque TP est structuré en deux volets complémentaires : une partie **QGIS** e
 | [TP2](../tps/overview/tp02.md) | Extraire de l'information et analyser les données | requêtes, jointures, relations, mise en page | geopandas, choroplèthe, régression linéaire |
 | [TP3](../tps/overview/tp03.md) | Analyse spatiale vectorielle | buffer, clip, intersect, dissolve, modeleur graphique | geopandas, shapely, GLM, GAM |
 | [TP4](../tps/overview/tp04.md) | Analyse spatiale raster | calculatrice raster, NDVI, IDW | rasterio, numpy, RF/XGBoost/MLP |
-| [TP5](../tps/overview/tp05.md) | Créer son site web (portfolio & projet) | — | markdown, Jupyter Book, GitHub Pages |
 
 Pendant le semestre, tu réalises aussi un **projet individuel** : une analyse spatiale complète, de la question de recherche jusqu'à la carte finale, publiée sur ton site web. Toutes les informations pratiques (calendrier, évaluation, quiz, rendus) se trouvent sur [Moodle]({{ MOODLE_URL }}).
 
