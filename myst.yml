@@ -38,11 +38,17 @@ project:
           title: QGIS
         - file: 'tps/python/tp-py04.ipynb'
           title: Python
-    - file: 'tps/overview/tp05.md'
-      title: 'TP5 · Portfolio'
     - file: 'tps/overview/tp00.md'
       title: 'Projet individuel'
       children:
+        - file: 'project/etape1.md'
+          title: 'Project · Etape I'
+        - file: 'project/etape2.md'
+          title: 'Project · Etape II'
+        - file: 'project/etape3.md'
+          title: 'Project · Etape III'
+        - file: 'project/etape4.md'
+          title: 'Project · Etape IV'
         - file: 'tps/python/project_example_landslides.ipynb'
           title: 'Exemple : glissements de terrain'
     

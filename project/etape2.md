@@ -1,0 +1,76 @@
+# Projet individuel - Etape II : Créer son site web (portfolio & projet)
+
+Cette étape consiste à publier ton portfolio en ligne sous forme de site web. Tu vas forker un modèle prêt à l'emploi, le personnaliser, puis le mettre en ligne gratuitement via GitHub Pages. **Ce même site servira de rendu pour le projet final** — autant bien le configurer dès maintenant.
+
+La configuration se fera sur GitHub Pages. Toutefois, si vous préférez éviter d’avoir un répertoire GitHub public, vous pouvez utiliser GitLab comme alternative (voir les détails plus bas).
+
+## Objectifs pédagogiques
+
+* Configurer GitHub Pages
+* Personnaliser un site avec Markdown
+* Intégrer un notebook Jupyter comme page du site
+* Comprendre la chaîne : fichier `.md` ou `ipynb` → Jupyter Book → site publié
+
+## Concepts clés
+
+* **Markdown** : langage de mise en forme simple (titres avec `#`, listes avec `-`, gras avec `**`). Les fichiers `.md` sont la base du site. [Plus d'information](https://github.com/adam-p/markdown-here/wiki/markdown-cheatsheet).
+* **Jupyter notebook**: Un fichier `.ipynb` est un document Jupyter Notebook utilisé pour le calcul interactif, qui combine du code en direct, des équations, des visualisations et du texte explicatif. [Plus d'information](https://jupyter.org/try-jupyter/lab/).
+* **GitHub Pages** : service gratuit de GitHub qui héberge et publie automatiquement un site statique depuis un répertoire. [Plus d'informations](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages).
+* **Jupyter Book (MyST)** : outil qui transforme des fichiers Markdown et des notebooks Jupyter en site web structuré. Le fichier `myst.yml` contrôle la navigation. [Plus d'information](https://jupyterbook.org).
+
+## Étapes
+
+**1. Forker le [modèle](https://github.com/gse-unil/2026_modele_portfolio)** : Crée ta propre copie du répertoire sur ton compte GitHub.
+
+**2. Activer les workflows**
+Onglet *Actions* → cliquer sur *"I understand my workflows, go ahead and enable them"*.
+
+**3. Activer GitHub Pages**
+*Settings* → *Pages* → source : **GitHub Actions**.
+
+**4. Personnaliser le contenu**
+
+| Fichier | Contenu |
+|---|---|
+| `content/apropos.md` | Ta page de présentation |
+| `content/img/ma_photo.png` | Ta photo (remplacer le fichier) |
+| `content/portfolio.md` | Tes réalisations |
+| `content/mon_projet.ipynb` | Ton projet d'analyse |
+
+**5. Mettre à jour la navigation**
+Éditer `myst.yml` pour ajouter/retirer des pages de la table des matières.
+
+**6. Publier**
+Chaque `commit` déclenche automatiquement la mise à jour du site. L'URL est visible dans *Settings → Pages*.
+
+Les étapes complètes pour réaliser ce projet sont disponibles dans le README du [modèle](https://github.com/gse-unil/2026_modele_portfolio).
+
+(tp5-rendus)=
+## Évaluation et rendus
+
+| Activité | Quand ? | Où ? |
+|----------|---------|------|
+| Site publié (lien vers ton portfolio) | à la fin du TP | [Rendu\_TP5]({{ MOODLE_RENDU_TP5 }}) |
+
+
+## Critères d'évaluation
+
+| Critère | Détail |
+|---|---|
+| Répertoire configuré | Fork, Actions et Pages activés, site accessible |
+| Page *À propos* | Présentation personnelle complète |
+| Page *Portfolio* | Contenu pertinent et mis en forme |
+| Projet intégré | Notebook visible et fonctionnel sur le site |
+| Navigation | `myst.yml` cohérent avec les pages présentes |
+| Qualité Markdown | Mise en forme soignée, pas de contenu brut |
+
+## Optionnel : GitLab (portfolio privé)
+
+Alternative à GitHub si vous ne souhaitez pas de répertoire public.
+
+* Importer le repo GitHub dans GitLab via **Repository by URL**
+* Mettre le projet en **Private**
+* Activer **Pages → Only project members**
+* Ajouter les enseignant·e·s dans **Members (role: Reporter)**
+
+Les étapes complètes pour réaliser ce projet sont disponibles dans le README du [modèle](https://github.com/gse-unil/2026_modele_portfolio).
