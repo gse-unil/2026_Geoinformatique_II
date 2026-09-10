@@ -31,7 +31,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC_DIRS = ["content", "tps"]
+SRC_DIRS = ["content", "tps", "project"]
 CONFIG = ROOT / "_config" / ".env"
 MIRROR = ROOT / "_build" / "src"
 
