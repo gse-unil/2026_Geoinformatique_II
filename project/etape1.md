@@ -1,4 +1,4 @@
-# Projet individuel - Etape I
+# Projet individuel - Etape I : Question et recherche des données
 
 ## Objectifs
 Cette première étape vise à obtenir une vision d'ensemble de ton projet. Elle fait l'objet d'un rendu intermédiaire et obligatoire à déposer sur Moodle au plus tard à la fin de la semaine intercalaire (semaine 8). Ce rendu doit contenir ta question et tes hypothèses de recherche, un schéma de la chaîne de géotraitements et les données dont tu auras besoin.
