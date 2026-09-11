@@ -24,7 +24,7 @@ Analyse spatiale complète, de la question de recherche à la carte finale, publ
 
 Pour te faire une idée concrète du résultat attendu, tu peux consulter cet **exemple de projet réalisé lors d'une édition précédente du cours** :
 
-- [Exemple de projet: **glissement des terrains**](../python/project_example_landslides.ipynb)
+- [Exemple de projet: **glissement des terrains**](../tps/python/project_example_landslides.ipynb)
 - [Exemple de projet: **?**](../python/?.ipynb)
 
 Cet exemple est fourni à titre d'illustration : le sujet, les données et les méthodes de ton propre projet restent libres.
