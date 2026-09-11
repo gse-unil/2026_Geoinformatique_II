@@ -6,12 +6,8 @@ cantons*
 *.bak
 # MyST build outputs
 _build
-tps/dhm25_p/dhm25_p.dbf
-tps/dhm25_p/dhm25_p.prj
-tps/dhm25_p/dhm25_p.sbn
-tps/dhm25_p/dhm25_p.sbx
-tps/dhm25_p/dhm25_p.shp
-tps/dhm25_p/dhm25_p.shx
+# Swisstopo DHM25 point data (used by TP4, kept out of git wherever it lives)
+dhm25_p/
 tps/sortie/*
 tps/project_example_resources/*
 .planning/
