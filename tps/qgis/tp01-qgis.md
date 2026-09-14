@@ -60,7 +60,7 @@ Pour télécharger le logiciel QGIS sur ton ordinateur personnel :
 
 ## 2\. Télécharger les données du TP depuis OneDrive
 
-Télécharge les données du TP depuis le [dossier OneDrive du cours](https://unils-my.sharepoint.com/:f:/g/personal/tom_beucler_unil_ch/IgAbdMV6LtilQocQhWgGGyIrAecbnnShumSyv65fPHE8yqw?e=PeZ9wa). Ouvre le dossier `tp1`, puis télécharge son contenu dans un dossier local avant de poursuivre.
+Depuis le [dossier OneDrive du cours](https://unils-my.sharepoint.com/:f:/g/personal/tom_beucler_unil_ch/IgAbdMV6LtilQocQhWgGGyIrAecbnnShumSyv65fPHE8yqw?e=PeZ9wa), télécharge le dossier `tp1.gpkg`.
 
 <details>
 <summary>Solution</summary>
@@ -109,7 +109,7 @@ Par [Samuel B.](https://stock.adobe.com/ch_fr/contributor/200820058/samuel-b?lo
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00003.gif>
 </details>
 
-4c) Réponds aux questions de la première page du “Quiz\_TP1” sur [Moodle]({{ MOODLE_QUIZ_TP1 }}) en utilisant les propriétés de chaque couche. Chaque réponse est enregistrée, mais tu peux soumettre de nouvelles réponses sans pénalité après avoir reçu du feedback de Moodle.
+4c) Réponds aux questions de la Partie 1 du “Quiz_01_2026_QGIS” sur [Moodle]({{ MOODLE_QUIZ_TP1 }}) en utilisant les propriétés de chaque couche. Chaque réponse est enregistrée, mais tu peux soumettre de nouvelles réponses sans pénalité après avoir reçu du feedback de Moodle.
 
 ## 5\. Sauvegarder un projet QGIS sur OneDrive
 
@@ -246,8 +246,6 @@ Exemples de distances :
 * Lausanne ↔ Genève : environ 51,3 km
 </details>
 
-Maintenant, réponds aux questions du “Quiz\_TP1” sur [Moodle]({{ MOODLE_QUIZ_TP1 }}). Tu peux reprendre le test autant de fois que tu le souhaites.
-
 ## 8\. Ouvrir et éditer des tables attributaires
 
 :::{important}
@@ -259,7 +257,7 @@ La **table attributaire**, élément central des systèmes d’information géog
 Table with numerical data  
 Par [Elena Abrazhevich](https://stock.adobe.com/ch_fr/contributor/204136066/elena-abrazhevich?load_type=author&prev_url=detail)
 
-Pour rendre tout cela plus concret, jouons de suite avec ces tables attributaires, et n’oublie pas de répondre aux questions correspondantes sur la deuxième page du “Quiz\_TP1” sur [Moodle]({{ MOODLE_QUIZ_TP1 }}).
+Pour rendre tout cela plus concret, jouons de suite avec ces tables attributaires !
 
 8a) Ouvre les [tables attributaires](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/attribute_table.html) des villes et des cantons. Trie-les d'abord par ordre alphabétique, puis par population.
 
@@ -290,7 +288,7 @@ Tu peux calculer les valeurs d'un champ avec la [**Calculatrice de champs**](htt
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00016.gif>
 </details>
 
-8d) Effectue une sauvegarde finale de ton projet. N’oublie pas de finir de répondre aux questions du “Quiz\_TP1” sur [Moodle]({{ MOODLE_QUIZ_TP1 }}) si tu souhaites obtenir la note maximale.
+8d) Effectue une sauvegarde finale de ton projet et réponds aux questions de la Partie 2 du “Quiz_01_2026_QGIS” sur [Moodle]({{ MOODLE_QUIZ_TP1 }}). Tu peux reprendre le test autant de fois que tu le souhaites.
 
 ## 9. Sauvegarder et partager ton projet
 
@@ -382,7 +380,7 @@ Dans cet exercice, tu vas afficher et explorer différentes projections cartogra
 
 Dans le panneau **Explorateur**, ouvre le projet `tp1_crs_prj` stocké dans le GeoPackage `tp1.gpkg`. QGIS devrait afficher une carte du monde avec des cercles verts : les [indicatrices de Tissot](https://fr.wikipedia.org/wiki/Indicatrice_de_Tissot).
 
-Maintenant, réponds aux questions du “Quiz\_TP1” sur [Moodle]({{ MOODLE_QUIZ_TP1 }}). Tu peux reprendre le test autant de fois que tu le souhaites.
+Maintenant, réponds aux questions de la Partie 3 du “Quiz_01_2026_QGIS” sur [Moodle]({{ MOODLE_QUIZ_TP1 }}). Tu peux reprendre le test autant de fois que tu le souhaites.
 
 Pour changer le SCR du projet, clique sur l'indicateur de SCR dans l'angle inférieur droit de QGIS ou ouvre **Projet > Propriétés > SCR**. Recherche ensuite le nom ou l'identifiant de la projection dans la liste. Consulte au besoin la [documentation sur les systèmes de coordonnées](https://docs.qgis.org/3.40/fr/docs/gentle_gis_introduction/coordinate_reference_systems.html#now-you-try).
 
