@@ -16,7 +16,7 @@ Nos objectifs pédagogiques sont les suivants :
 
 ## 1\. Télécharger les données du TP
 
-Pour la partie suivante, télécharge les données du TP depuis OneDrive sur ta machine virtuelle en utilisant [cet hyperlien](https://unils-my.sharepoint.com/:f:/g/personal/tom_beucler_unil_ch/IgAbdMV6LtilQocQhWgGGyIrAecbnnShumSyv65fPHE8yqw?e=PeZ9wa).
+Pour la partie suivante, télécharge les données du TP depuis [le dossier OneDrive du cours](https://unils-my.sharepoint.com/:f:/g/personal/tom_beucler_unil_ch/IgAbdMV6LtilQocQhWgGGyIrAecbnnShumSyv65fPHE8yqw?e=PeZ9wa).
 
 ## 2\. Requêtes attributaires et requêtes spatiales
 
@@ -78,14 +78,13 @@ Tu peux maintenant répondre aux cinq premières questions du [quiz Moodle]({{ M
 
 Tu vas maintenant effectuer une requête fondée sur la position spatiale des entités.
 
-* Charge dans ton projet le fichier « Communes ».
-* Sélectionne les accidents tectoniques de type « Chevauchement principal alpin (certain) » ou « (probable) ».
-* Enfin, effectue une requête spatiale pour ne conserver, parmi les accidents tectoniques sélectionnés, que ceux qui intersectent le territoire vaudois représenté par la couche `Communes`.
-  * Utilise l'outil [**Sélection par localisation**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectorselection.html#select-by-location).
+* Dans la couche `LI_Accident_tecto`, sélectionne les accidents tectoniques de type « Chevauchement principal alpin (certain) » ou « (probable) ».
+* Enfin, effectue une requête spatiale en utilisant  l'outil [**Sélection par localisation**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectorselection.html#select-by-location) pour ne conserver, parmi les accidents tectoniques sélectionnés, que ceux qui intersectent le territoire vaudois représenté par la couche `Communes`.
+
 
 <details>
 <summary>Astuce</summary>
-Choisis le mode de sélection **Sélectionner un sous-ensemble de la sélection actuelle**.
+Choisis le mode de sélection : Sélectionner un sous-ensemble de la sélection actuelle.
 </details>
 <br>
 
@@ -105,9 +104,9 @@ Les données proviennent souvent de sources différentes. Pour représenter des 
 
 Ce type de jointure est le plus utilisé. Une [jointure attributaire](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/joins_relations.html#joining-features-between-two-layers) ajoute des données d’une table à une autre table, à la suite des colonnes existantes. L’opération se base sur un champ (ou attribut) commun aux deux tables appelé clé ou identifiant. Le nom ou la valeur de chaque entité du champ clé doit être le même d’une table à l’autre. Les tables peuvent provenir de formats différents, à condition que QGIS puisse les lire et que les champs de jointure aient des valeurs et des types compatibles.
 
-Pour apprendre à effectuer une jointure attributaire, utilise la table du nombre de véhicules pour 1 000 habitants par commune en 2010. L’objectif est de joindre cette table à la couche des communes afin de cartographier les valeurs.
+Pour apprendre à effectuer une jointure attributaire, tu vas utiliser une table contenant le nombre de véhicules pour 1 000 habitants par commune en 2010. L’objectif est de joindre cette table à la couche des communes afin de cartographier les valeurs.
 
-Charge la couche `Communes` et la table `VoituresPlus`. Dans l'onglet [**Jointures**](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/joins_relations.html#joining-features-between-two-layers) des propriétés de `Communes`, ajoute une jointure avec `VoituresPlus`. Utilise `Communes` comme **champ de jointure** et `NAME` comme **champ cible**. Vérifie ensuite quelques correspondances dans la table attributaire de `Communes`.
+Charge la table `VoituresPlus`. Dans l'onglet [**Jointures**](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/joins_relations.html#joining-features-between-two-layers) des propriétés de `Communes`, ajoute une jointure avec `VoituresPlus`. Utilise `Communes` comme **champ de jointure** et `NAME` comme **champ cible**. Vérifie ensuite quelques correspondances dans la table attributaire de `Communes`.
 
 <details>
 <summary>Solution</summary>
@@ -137,7 +136,7 @@ Bravo ! Tu peux maintenant poursuivre le [quiz Moodle]({{ MOODLE_QUIZ_TP2 }}) av
 
 Les [relations](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/joins_relations.html#setting-relations-between-multiple-layers) reposent aussi sur des champs communs, mais n'ajoutent pas de colonnes à la table de base. Elles permettent de naviguer entre des enregistrements liés, notamment dans des relations **un-à-plusieurs (1-N)** ou **plusieurs-à-plusieurs (N-N)**.
 
-Pour ces exercices, ajoute depuis le GeoPackage `Cadastres.gpkg` les tables `Parcelles`, `Proprietaires` et `Proprietaire_Parcelle`. Cette dernière est une table intermédiaire qui relie les deux premières au moyen des champs `NO_IMM` et `NO_PROPRI`.
+Pour ces exercices, ajoute les tables `Parcelles`, `Proprietaires` et `Proprietaire_Parcelle`. Cette dernière est une table intermédiaire qui relie les deux premières au moyen des champs `NO_IMM` et `NO_PROPRI`.
 
 #### 3.3.1 Relations un-à-plusieurs (1-N)
 
@@ -154,7 +153,7 @@ Pour créer cette relation dans QGIS :
 
 <details>
 <summary>Solution</summary>
-<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp2/tp2-00006.gif>
+Même solution que pour la section 3.3.2 en ne construisant que la première relation.
 </details>
 <br>
 
@@ -192,11 +191,11 @@ La [**Mise en page**](https://docs.qgis.org/3.40/fr/docs/user_manual/print_compo
 
 4a) Crée une mise en page avec **Projet > Nouvelle mise en page…** et nomme-la `Carte_VD`.
 
-4b) Ajoute une **carte** : clique sur **Ajouter une carte**, puis dessine un rectangle sur la page. Le contenu du canevas QGIS apparaît dans ce cadre.
+4b) Ajoute une **carte** de la couche **Parcelle** : clique sur **Ajouter une carte**, puis dessine un rectangle sur la page. Le contenu du canevas QGIS apparaît dans ce cadre. 
 
 <details>
 <summary>Astuce</summary>
-Si ta carte apparaît trop petite ou décalée, utilise l'outil <em>Déplacer le contenu</em> (main 🖐️) pour la recentrer, et la molette pour zoomer/dézoomer à l'intérieur du cadre.
+Si la carte ne s'affiche pas, vérifie d'avoir bien sélectionné la couche **Parcelle** dans l'interface principale de QGIS. Si ta carte apparaît trop petite ou décalée, utilise l'outil <em>Déplacer le contenu</em> (main 🖐️) pour la recentrer, et la molette pour zoomer/dézoomer à l'intérieur du cadre.
 </details>
 <br>
 
