@@ -51,6 +51,8 @@ Passe maintenant aux [expressions](https://docs.qgis.org/3.40/fr/docs/user_manua
 "LEG_TEC_3" = 'Nappe de Morcles (Chaine des Aravis incl.)'
 ```
 
+Tu peux maintenant répondre aux question 8, 9 et 10 du [Quiz_02_2026_QGIS sur Moodle]({{ MOODLE_QUIZ_TP2 }}) !
+
 * **Sélection multiple** : sélectionner plusieurs catégories
 
 ```sql
@@ -72,14 +74,14 @@ Passe maintenant aux [expressions](https://docs.qgis.org/3.40/fr/docs/user_manua
 </details>
 <br>
 
-Tu peux maintenant répondre aux cinq premières questions du [quiz Moodle]({{ MOODLE_QUIZ_TP2 }}) (page `TP 2`).
+Tu peux maintenant répondre à la question 11 du [Quiz_02_2026_QGIS sur Moodle]({{ MOODLE_QUIZ_TP2 }}) !
 
 ---
 
 Tu vas maintenant effectuer une requête fondée sur la position spatiale des entités.
 
-* Dans la couche `LI_Accident_tecto`, sélectionne les accidents tectoniques de type « Chevauchement principal alpin (certain) » ou « (probable) ».
-* Enfin, effectue une requête spatiale en utilisant  l'outil [**Sélection par localisation**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectorselection.html#select-by-location) pour ne conserver, parmi les accidents tectoniques sélectionnés, que ceux qui intersectent le territoire vaudois représenté par la couche `Communes`.
+* Dans la couche `LI_Accident_tecto`, sélectionne les accidents tectoniques de type « Chevauchement principal alpin (certain) » ou « (probable) » et répond à la question 12 du [Quiz_02_2026_QGIS sur Moodle]({{ MOODLE_QUIZ_TP2 }}).
+* Enfin, effectue une requête spatiale en utilisant  l'outil [**Sélection par localisation**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectorselection.html#select-by-location) pour ne conserver, parmi les accidents tectoniques sélectionnés, que ceux qui intersectent le territoire vaudois représenté par la couche `Communes`. Répond ensuite à la question 13 du [Quiz_02_2026_QGIS sur Moodle]({{ MOODLE_QUIZ_TP2 }}).
 
 
 <details>
@@ -106,15 +108,13 @@ Ce type de jointure est le plus utilisé. Une [jointure attributaire](https://do
 
 Pour apprendre à effectuer une jointure attributaire, tu vas utiliser une table contenant le nombre de véhicules pour 1 000 habitants par commune en 2010. L’objectif est de joindre cette table à la couche des communes afin de cartographier les valeurs.
 
-Charge la table `VoituresPlus`. Dans l'onglet [**Jointures**](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/joins_relations.html#joining-features-between-two-layers) des propriétés de `Communes`, ajoute une jointure avec `VoituresPlus`. Utilise `Communes` comme **champ de jointure** et `NAME` comme **champ cible**. Vérifie ensuite quelques correspondances dans la table attributaire de `Communes`.
+Charge la table `VoituresPlus`. Dans l'onglet [**Jointures**](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/joins_relations.html#joining-features-between-two-layers) des propriétés de `Communes`, ajoute une jointure avec `VoituresPlus`. Utilise `Communes` comme **champ de jointure** et `NAME` comme **champ cible**. Vérifie ensuite quelques correspondances dans la table attributaire de `Communes` et répond à la question 14 du [Quiz_02_2026_QGIS sur Moodle]({{ MOODLE_QUIZ_TP2 }}).
 
 <details>
 <summary>Solution</summary>
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp2/tp2-00004.gif>
 </details>
 <br>
-
-Tu peux maintenant répondre à la question 7 (deuxième page du quiz).
 
 ### 3.2 Jointures spatiales
 
@@ -130,7 +130,7 @@ Charge la couche `BatimentsUNIL`. Lance l'outil [**Joindre les attributs par loc
 </details>
 <br>
 
-Bravo ! Tu peux maintenant poursuivre le [quiz Moodle]({{ MOODLE_QUIZ_TP2 }}) avec la question 8.
+Bravo ! Tu peux maintenant répondre à la question 15 du [Quiz_02_2026_QGIS sur Moodle]({{ MOODLE_QUIZ_TP2 }}) !
 
 ### 3.3 Relations
 
@@ -179,7 +179,7 @@ Le but de cet exercice est de visualiser, pour une parcelle appartenant à plusi
 </details>
 <br>
 
-Tu peux maintenant terminer le [quiz Moodle]({{ MOODLE_QUIZ_TP2 }}).
+Tu peux maintenant terminer le [Quiz_02_2026_QGIS sur Moodle]({{ MOODLE_QUIZ_TP2 }}) !
 
 ## 4\. Mise en page cartographique
 
