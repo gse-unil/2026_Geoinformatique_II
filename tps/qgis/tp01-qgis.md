@@ -3,9 +3,9 @@
 ## Introduction
 
 Bienvenue au premier TP du cours de Géoinformatique II !
-Nos objectifs pédagogiques sont les suivants :
+Nos objectifs sont les suivants :
 
-1. Utiliser les machines virtuelles de l’UNIL
+1. Ouvrir QGIS, que ce soit en le téléchargeant sur ton propre ordinateur ou en utilisant les machines virtuelles de l’UNIL
 2. Télécharger les données du TP depuis OneDrive
 3. Se familiariser avec le logiciel QGIS
 4. Visualiser des couches géographiques
@@ -102,7 +102,7 @@ Par [Samuel B.](https://stock.adobe.com/ch_fr/contributor/200820058/samuel-b?lo
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp1/tp1-00002.gif>
 </details>
 
-4b) Explore les propriétés des couches [vectorielles](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/vector_properties.html) et [raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_properties.html) : fais un clic droit sur une couche, puis choisis **Propriétés**. Repère notamment sa source, son type de géométrie ou son nombre de bandes, ainsi que son SCR.
+4b) Explore les propriétés des couches [vectorielles](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_vector/vector_properties.html) et [raster](https://docs.qgis.org/3.40/fr/docs/user_manual/working_with_raster/raster_properties.html) : fais un clic droit sur une couche, puis choisis **Propriétés**. Repère notamment sa source, son type de géométrie ou son nombre de bandes, ainsi que son système de coordonnées (sur QGIS en anglais : CRS pour *Coordinate Reference System*).
 
 <details>
 <summary>Solution</summary>
@@ -118,6 +118,10 @@ Nous arrivons désormais à un élément essentiel de chaque TP, surtout étant 
 5a) Si tu ne l’as pas déjà fait, suis les [instructions à ce lien](https://www.unil.ch/ci/onedrive) (accède au service) pour créer ton compte OneDrive avec tes identifiants de l’UNIL.
 
 5b) **Après avoir créé ton compte OneDrive**, tu pourras sauvegarder ton projet dans le dossier “OneDrive – Université de Lausanne”.
+
+:::{tip}
+Surtout si tu travailles avec une machine virtuelle, copie le fichier `tp1.gpkg` dans le dossier **OneDrive – Université de Lausanne**, puis ouvre le projet `tp1_main_prj` depuis cette copie. Tu travailleras ainsi directement avec une version sauvegardée sur OneDrive, plutôt qu'avec une copie locale qui pourrait être perdue à la fermeture de la session virtuelle.
+:::
 
 <details>
 <summary>Solution</summary>
@@ -342,23 +346,26 @@ nom_prenom_TP1/
 
 9c) Prépare le fichier à partager
 
-Si ton travail est entièrement contenu dans le GeoPackage, tu peux
-simplement partager :
+Crée un dossier nommé :
+
+`nom_prenom_TP1`
+
+Place dans ce dossier ton GeoPackage :
 
 `nom_prenom_TP1.gpkg`
 
-Si ton projet utilise également des fichiers externes, comme des
-rasters, compresse le **dossier complet** en `.zip` :
+ainsi que les éventuels fichiers externes nécessaires au projet, comme les rasters.
+
+Compresse ensuite le **dossier complet** en `.zip` :
 
 `nom_prenom_TP1.zip`
 
-Avant de le partager, ouvre une dernière fois le projet pour vérifier
-que **toutes les couches s'affichent correctement**.
+Avant de le partager, ouvre une dernière fois le projet pour vérifier que **toutes les couches s'affichent correctement**.
 
 9d) Dépose ton travail sur [Moodle]({{ MOODLE_RENDU_TP1 }})
 
-Dépose le fichier demandé (`.gpkg` ou `.zip`, selon le contenu de ton
-projet) sur [Moodle]({{ MOODLE_RENDU_TP1 }}) avant la
+Dépose le fichier demandé (au format `.zip`) sur 
+[Moodle]({{ MOODLE_RENDU_TP1 }}) avant la
 semaine prochaine.
 
 Le lien de dépôt est également indiqué dans la section [Évaluation et
@@ -401,6 +408,6 @@ Consulte maintenant les propriétés de la couche `ne_110m_land` et cherche son 
 <details>
 <summary>Solution</summary>
 
-Le SCR de la couche n'a pas été modifié. En effet, le SCR d'une couche et celui du projet sont indépendants. S'ils diffèrent, QGIS reprojette alors automatiquement chaque couche afin de les afficher dans le SCR du projet, sans modifier les données originales de la couche. Une bonne pratique reste cependant d'utiliser des SCR identiques pour l'ensemble des couches et pour le projet.
+Le SCR de la couche n'a pas été modifié. En effet, le SCR d'une couche et celui du projet sont indépendants. S'ils diffèrent, QGIS reprojette alors automatiquement chaque couche afin de les afficher dans le SCR du projet, sans modifier les données originales de la couche. Une bonne pratique reste cependant d'utiliser des SCR identiques pour l'ensemble des couches et pour le projet car cela facilite certaines opérations spatiales.
 
 </details>
