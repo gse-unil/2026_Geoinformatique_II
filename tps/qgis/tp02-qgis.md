@@ -122,7 +122,7 @@ Contrairement aux jointures attributaires, qui peuvent être effectuées dans to
 
 Pour illustrer l’utilisation des jointures spatiales, tu vas déterminer le nom de la commune sur laquelle se trouve chaque bâtiment du campus de l’UNIL.
 
-Charge la couche `BatimentsUNIL`. Lance l'outil [**Joindre les attributs par localisation**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectorgeneral.html#join-attributes-by-location) avec `BatimentsUNIL` comme **couche source** et `Communes` comme **couche de jointure**. Choisis le prédicat **est à l'intérieur de** et vérifie que chaque bâtiment reçoit le nom de sa commune.
+Charge la couche `BatimentsUNIL`. Lance l'outil [**Joindre les attributs par localisation**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectorgeneral.html#join-attributes-by-location) avec `BatimentsUNIL` comme **couche source** et `Communes` comme **couche de jointure**. Choisis le prédicat **intersecte** et vérifie que chaque bâtiment reçoit le nom de sa commune.
 
 <details>
 <summary>Solution</summary>
