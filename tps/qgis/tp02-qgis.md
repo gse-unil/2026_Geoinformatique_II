@@ -189,7 +189,7 @@ Tu as déjà visualisé et stylisé des couches dans QGIS. Maintenant, tu vas ap
 La [**Mise en page**](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#overview-of-the-print-layout) (_Print Layout_) est l'espace de QGIS dans lequel tu ajoutes un titre, une légende, une barre d'échelle et une flèche du nord, puis exportes la carte au format PDF ou image.
 :::
 
-4a) Crée une mise en page avec **Projet > Nouvelle mise en page…** et nomme-la `Carte_VD`.
+4a) Crée une mise en page avec **Projet > Nouvelle mise en page…** et nomme-la `Carte_VD_NOM_PRENOM`, en ajoutant ton nom et prénom.
 
 4b) Ajoute une **carte** de la couche **Parcelle** : clique sur **Ajouter une carte**, puis dessine un rectangle sur la page. Le contenu du canevas QGIS apparaît dans ce cadre. 
 
