@@ -50,11 +50,11 @@ Ces outils permettent de sélectionner des entités avec une expression ou selon
 
 Dans cette partie, tu vas délimiter la zone d'étude et en extraire les données utiles. Elle correspond aux districts bernois de _Frutigen-Niedersimmental_ et _Obersimmental-Saanen_.
 
-2a) Sélectionne ces deux districts avec **Sélectionner par expression**, puis exporte les entités sélectionnées dans une nouvelle couche.
+2a) Sélectionne ces deux districts avec **Sélectionner par expression**.
 
 <details>
 <summary>Astuce</summary>
-Ouvre la table attributaire et lance **Sélectionner par expression**, comme dans les TP précédents. Fais ensuite un clic droit sur la couche et choisis **Exporter > Sauvegarder les entités sélectionnées sous…**.
+Ouvre la table attributaire et lance **Sélectionner par expression**, comme dans les TP précédents.
 </details>
 <br>
 
@@ -69,19 +69,18 @@ Ouvre la table attributaire et lance **Sélectionner par expression**, comme dan
 2b) Utilise l'outil [**Regrouper**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectorgeometry.html#dissolve) (_Dissolve_) pour fusionner les deux districts en une seule entité.
 
 <details>
-<summary>Astuce</summary>
-Nomme les couches de sortie de manière explicite, par exemple `Communes_FNOS`, `Batiments_FNOS`, `Foret_FNOS` et `Routes_FNOS`. Ton GeoPackage et ton projet resteront ainsi faciles à comprendre.
-⚠️ **Attention :** n’utilise pas d’espaces ni de caractères accentués dans le nom des couches.
-</details>
-<br>
-
-<details>
 <summary>Solution</summary>
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00002.gif>
 </details>
 <br>
 
-2c) Découpe ensuite `Communes`, `Buildings`, `Foret` et `Roads` selon ce périmètre avec l'outil [**Couper**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#clip) (_Clip_). Utilise le district regroupé comme couche de superposition.
+2c) Découpe ensuite `Communes`, `Buildings`, `Foret` et `Roads` selon ce périmètre avec l'outil [**Couper**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#clip) (_Clip_). Utilise le district regroupé comme couche de superposition. Chaque découpe crée une couche temporaire. Renomme là de manière explicite (par exemple `Communes_Clipped`, `Batiments_Clipped`, `Foret_Clipped` et `Routes_Clipped`) et sauvegarde là dans ton géopackage. Si l'export a été effectué avec succès, tu peux supprimer la couche temporaire correspondante. 
+
+<details>
+<summary>Astuce</summary>
+⚠️ **Attention :** n’utilise pas d’espaces ni de caractères accentués dans le nom des couches.
+</details>
+<br>
 
 <details>
 <summary>Solution</summary>
@@ -124,7 +123,8 @@ Dans cette partie, tu vas utiliser un outil important pour définir l’espace u
 3a) **Zones tampons** : nous voulons délimiter les groupes de bâtiments séparés par moins de 150 m. Utilise deux fois l'outil [**Zone tampon**](https://docs.qgis.org/3.40/fr/docs/gentle_gis_introduction/vector_spatial_analysis_buffers.html#vector-spatial-analysis-buffers) (_Buffer_) :
 
 1. Crée une zone tampon de **+75 m** autour des bâtiments et active **Dissoudre le résultat**. Les zones de deux bâtiments distants de moins de 150 m se rejoindront.
-2. Sur le résultat, crée une seconde zone tampon de **−75 m**. Tu obtiendras la _zone densément bâtie_ (ZDB), avec des limites lissées autour des groupes de bâtiments.
+2. Sur le résultat, crée une seconde zone tampon de **−75 m**. Tu obtiendras la _zone densément bâtie_ (ZDB), avec des limites lissées autour des groupes de bâtiments. Cette étape permet de ramener les contours approximativement à leur position d'origine tout en gardant les "ponts" créés entre les bâtiments les plus proches.
+3. Renomme la couche finale `ZDB` et sauvegarde là en suivant la méthode de la question 2c.
 
 <details>
 <summary>Solution</summary>
@@ -132,7 +132,7 @@ Dans cette partie, tu vas utiliser un outil important pour définir l’espace u
 </details>
 <br>
 
-3b) **Zone tampon autour des routes** : suppose que toutes les routes ont une largeur totale de 12 m. Crée donc une zone tampon de **6 m** de chaque côté des lignes et active **Dissoudre le résultat**.
+3b) **Zone tampon autour des routes** : suppose que toutes les routes ont une largeur totale de 12 m. Crée donc une zone tampon de **6 m** de chaque côté des lignes et active **Dissoudre le résultat**. Renomme la couche obtenue `Roads_6m` et sauvegarde là en suivant la méthode de la question 2c.
 
 <details>
 <summary>Solution</summary>
@@ -146,19 +146,21 @@ Ces outils permettent de superposer plusieurs entités de différentes couches s
 
 Dans cette partie, tu vas définir l'interface habitat-forêt (WUI) avec les outils **Union**, **Différence** et **Intersection**.
 
-4a) **Combinaison des entités** : définis la zone urbaine (ZU) avec l'outil [**Union**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#union), en combinant la ZDB avec la zone tampon des routes. Applique ensuite **Regrouper** au résultat pour obtenir une géométrie sans limites internes inutiles.
+4a) **Combinaison des entités** : définis la zone urbaine (ZU) avec l'outil [**Union**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#union), en combinant la ZDB avec la zone tampon des routes. Applique ensuite **Regrouper** au résultat pour obtenir une géométrie sans limites internes inutiles. Renomme cette couche `ZU` et sauvegarde là en suivant la méthode de la question 2c.
 
 <details>
 <summary>Solution</summary>
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00005.gif>
-Si l'enregistrement échoue à cause du champ `fid`, n'exporte pas ce champ : le GeoPackage créera automatiquement un identifiant unique.
+Pour l'application de la fonction Regrouper, reproduis la solution de la partie 2b. Si l'enregistrement échoue à cause du champ `fid`, n'exporte pas ce champ : le GeoPackage créera automatiquement un identifiant unique.
 </details>
 <br>
 
 4b) **Zone d'interface** : pour cet exercice, utilise une distance conventionnelle de 80 m autour de la zone urbaine afin de définir la WUI. Procède comme suit :
 
-1. Construis une zone tampon de 80 m autour de la ZU et active **Dissoudre le résultat**.
-2. Utilise [**Différence**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#difference) avec la zone tampon comme couche source et la ZU comme couche de superposition. Le résultat est l'anneau situé jusqu'à 80 m de la ZU, sans la ZU elle-même.
+1. Construis une zone tampon de 80 m autour de la ZU et active **Dissoudre le résultat**. Renomme cette couche `ZU_80m` et sauvegarde là en suivant la méthode de la question 2c.
+
+2. Utilise [**Différence**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#difference) avec la zone tampon comme couche source et la ZU comme couche de superposition. Le résultat est l'anneau situé jusqu'à 80 m de la ZU, sans la ZU elle-même. Renomme cette couche `proximi_ZU` et sauvegarde là en suivant la méthode de la question 2c.
+
 
 <details>
 <summary>Solution</summary>
@@ -172,7 +174,8 @@ Si l'enregistrement échoue à cause du champ `fid`, n'exporte pas ce champ : le
 
 [Source](https://www.britannica.com/science/forest-fire)
 
-4c) **Croiser deux couches** : intersecte l'anneau de 80 m avec la surface forestière à l'aide de l'outil [**Intersection**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#intersection). Nomme la couche de sortie `WUI`.
+4c) **Croiser deux couches** : intersecte l'anneau de 80 m avec la surface forestière à l'aide de l'outil [**Intersection**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#intersection). Nomme la couche de sortie `WUI` et sauvegarde là en suivant la méthode de la question 2c.
+
 
 <details>
 <summary>Solution</summary>
@@ -217,7 +220,7 @@ Pour le **défi facultatif**, prolonge le modèle avec les étapes suivantes :
 
 <details>
 <summary>Astuce</summary>
-Lorsque tu ajoutes un algorithme, choisis comme couche d'entrée soit une **Entrée du modèle**, soit la **Sortie d'algorithme** de l'étape précédente. Le modeleur crée automatiquement les liens dans le diagramme.
+Lorsque tu ajoutes un algorithme, choisis comme couche d'entrée soit une entrée du modèle, soit la sortie d'algorithme de l'étape précédente. Le modeleur crée automatiquement les liens dans le diagramme.
 </details>
 <br>
 
