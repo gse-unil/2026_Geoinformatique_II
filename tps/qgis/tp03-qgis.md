@@ -92,25 +92,8 @@ Ouvre la table attributaire et lance **Sélectionner par expression**, comme dan
 
 ![](assets/3_preview_tp3_output.png)
 
-2e) **En utilisant les outils de géotraitement appris jusqu’à présent, réponds aux cinq premières questions sur [Moodle]({{ MOODLE_QUIZ_TP3 }}).**
+2e) **En utilisant les outils de géotraitement appris jusqu’à présent, réponds aux questions 6 à 10 du [Quizz Moodle]({{ MOODLE_QUIZ_TP3 }}).**
 
-<details>
-<summary>Astuce Question 3</summary>
-Utilise l'outil [**Statistiques basiques pour les champs**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoranalysis.html#basic-statistics-for-fields) sur le champ de longueur de la couche des routes découpées. Si ce champ n'existe pas, crée-le d'abord avec la Calculatrice de champs et l'expression `$length`. Consulte ensuite la somme dans le rapport généré.
-</details>
-<br>
-
-<details>
-<summary>Astuce Question 4</summary>
-Consulte la table attributaire de la couche des deux districts regroupés : la question porte sur leur périmètre total.
-</details>
-<br>
-
-<details>
-<summary>Astuce Question 5</summary>
-Commence par sélectionner et extraire la commune de `Wimmis`, comme tu l'as fait pour les districts en 2a. Utilise ensuite **Couper** pour découper la forêt selon cette commune.
-</details>
-<br>
 
 ## 3\. Outils de proximité
 
@@ -151,7 +134,11 @@ Dans cette partie, tu vas définir l'interface habitat-forêt (WUI) avec les out
 <details>
 <summary>Solution</summary>
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00005.gif>
-Pour l'application de la fonction Regrouper, reproduis la solution de la partie 2b. Si l'enregistrement échoue à cause du champ `fid`, n'exporte pas ce champ : le GeoPackage créera automatiquement un identifiant unique.
+Pour l'application de la fonction Regrouper, reproduis la solution de la partie 2b. 
+
+Si l'enregistrement échoue à cause du champ "fid", reproduis la procédure de la vidéo ci-dessous sur ta couche "ZU".
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00008.gif>
+
 </details>
 <br>
 
@@ -246,6 +233,6 @@ Un modèle avec **trois algorithmes connectés et une sortie** suffit pour ce TP
 
 6c) **Empaquette ton projet** selon la méthode du TP1 (§9) : place le projet `.qgz`, le GeoPackage contenant tes couches de sortie et le modèle `.model3` dans un dossier, vérifie le projet, puis compresse le dossier en `nom_prenom_TP3.zip`. Dépose-le sous [Projet_TP3]({{ MOODLE_RENDU_TP3_PROJET }}).
 
-6d) Réponds enfin aux dernières questions du [Quiz_TP3]({{ MOODLE_QUIZ_TP3 }}).
+6d) Réponds enfin à la dernière question du [Quiz_TP3]({{ MOODLE_QUIZ_TP3 }}).
 
 Félicitations pour ta _WUI_ ! Tu apprendras ensuite à créer ta première carte thématique.
