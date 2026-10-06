@@ -74,7 +74,7 @@ Ouvre la table attributaire et lance **Sélectionner par expression**, comme dan
 </details>
 <br>
 
-2c) Découpe ensuite `Communes`, `Buildings`, `Foret` et `Roads` selon ce périmètre avec l'outil [**Couper**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#clip) (_Clip_). Utilise le district regroupé comme couche de superposition. Chaque découpe crée une couche temporaire. Renomme là de manière explicite (par exemple `Communes_Clipped`, `Batiments_Clipped`, `Foret_Clipped` et `Routes_Clipped`) et sauvegarde là dans ton géopackage. Si l'export a été effectué avec succès, tu peux supprimer la couche temporaire correspondante. 
+2c) Découpe ensuite `Communes`, `Buildings`, `Foret` et `Roads` selon ce périmètre avec l'outil [**Couper**](https://docs.qgis.org/3.40/fr/docs/user_manual/processing_algs/qgis/vectoroverlay.html#clip) (_Clip_). Utilise le district regroupé comme couche de superposition. Chaque découpe crée une couche temporaire. Renomme là de manière explicite (par exemple `Communes_Clipped`, `Batiments_Clipped`, `Foret_Clipped` et `Routes_Clipped`) et sauvegarde là dans ton géopackage. Si l'export a été effectué avec succès, tu peux supprimer la couche temporaire correspondante. Profites-en également pour sauvegarder la couche créée à l'étape 2b sous le nom de `District_Dissolved`.
 
 <details>
 <summary>Astuce</summary>
@@ -88,11 +88,7 @@ Ouvre la table attributaire et lance **Sélectionner par expression**, comme dan
 </details>
 <br>
 
-2d) Une fois les couches découpées, ton fond de carte est prêt. Le résultat devrait ressembler à la capture ci-dessous :
-
-![](assets/3_preview_tp3_output.png)
-
-2e) **En utilisant les outils de géotraitement appris jusqu’à présent, réponds aux questions 6 à 10 du [Quizz Moodle]({{ MOODLE_QUIZ_TP3 }}).**
+2d) **En utilisant les outils de géotraitement appris jusqu’à présent, réponds aux questions 6 à 10 du [Quizz Moodle]({{ MOODLE_QUIZ_TP3 }}).**
 
 
 ## 3\. Outils de proximité
@@ -135,10 +131,8 @@ Dans cette partie, tu vas définir l'interface habitat-forêt (WUI) avec les out
 <summary>Solution</summary>
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00005.gif>
 Pour l'application de la fonction Regrouper, reproduis la solution de la partie 2b. 
-
 Si l'enregistrement échoue à cause du champ "fid", reproduis la procédure de la vidéo ci-dessous sur ta couche "ZU".
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00008.gif>
-
 </details>
 <br>
 
@@ -171,6 +165,9 @@ Si l'enregistrement échoue à cause du champ `fid`, n'exporte pas ce champ afin
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00008.gif>
 </details>
 <br>
+
+4d) Réponds enfin à la dernière question du [Quiz_TP3]({{ MOODLE_QUIZ_TP3 }}).
+
 
 ## 5\. Automatiser avec le modeleur graphique
 
@@ -227,12 +224,10 @@ Un modèle avec **trois algorithmes connectés et une sortie** suffit pour ce TP
 
 **Bravo !** Tu as réalisé ton premier projet avec des outils de géotraitement. Il ne te reste plus qu'à préparer la remise :
 
-6a) Crée une [mise en page](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#overview-of-the-print-layout), comme au TP2. Ajoute un titre, ton nom, la date, une légende, une barre d'échelle, une flèche du nord et la source des données : _[swisstopo](https://www.swisstopo.admin.ch/), VECTOR200_. Utilise une palette lisible.
+6a) Crée une carte contenant les couches `WUI`, `ZDB`, `Foret_clipped`, `Roads_clipped` et `District_Dissolved` à l'aide de [l'outil de mise en page de QGIS](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#overview-of-the-print-layout). Fais attention à ce que toutes les couches soient visibles sur la carte et assure toi de respecter la checklist d'habillage cartographique introduite au TP2. Pour les sources des données, tu peux citer le TP3 du livre numérique en précisant la date de consultation, par exemple : « Géoinformatique II, TP3, livre numérique du cours, consulté le 6 octobre 2026 ».
 
-6b) Exporte la carte [au format PDF](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#export-settings), nomme-la `nom_prenom_TP3.pdf`, puis dépose-la dans [Rendu_TP3_Carte_PDF]({{ MOODLE_RENDU_TP3_CARTE }}).
+6b) Exporte la carte [au format PDF](https://docs.qgis.org/3.40/fr/docs/user_manual/print_composer/overview_composer.html#export-settings), nomme-la `NOM_PRENOM_TP3.pdf`, puis dépose-la dans [Rendu_TP3_Carte_PDF]({{ MOODLE_RENDU_TP3_CARTE }}).
 
-6c) **Empaquette ton projet** selon la méthode du TP1 (§9) : place le projet `.qgz`, le GeoPackage contenant tes couches de sortie et le modèle `.model3` dans un dossier, vérifie le projet, puis compresse le dossier en `nom_prenom_TP3.zip`. Dépose-le sous [Projet_TP3]({{ MOODLE_RENDU_TP3_PROJET }}).
-
-6d) Réponds enfin à la dernière question du [Quiz_TP3]({{ MOODLE_QUIZ_TP3 }}).
+6c) **Empaquette ton projet dans un Geopackage** selon la méthode du TP1 (§9). Ton projet doit contenir au minimum les couches `Communes_Clipped`, `Batiments_Clipped`, `Foret_Clipped` et `Routes_Clipped`, `District_Dissolved`, `ZDB`, `ZU`, `WUI`, et les données initiales doivent être incluses dans le géopackage. Place le GeoPackage et le modèle `.model3` dans un dossier nommé `NOM_PRENOM_TP3`, puis compresse le dossier en `NOM_PRENOM_TP3.zip`. Dépose-le sous [Projet_TP3]({{ MOODLE_RENDU_TP3_PROJET }}).
 
 Félicitations pour ta _WUI_ ! Tu apprendras ensuite à créer ta première carte thématique.
