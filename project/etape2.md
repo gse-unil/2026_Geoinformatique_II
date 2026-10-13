@@ -1,24 +1,28 @@
-# Projet individuel - Etape II : Créer son site web (portfolio & projet)
+# Projet individuel - Etape II : Site web, GeoPackage et chaîne de pré-traitements
 
-Cette étape consiste à publier ton portfolio en ligne sous forme de site web. Tu vas forker un modèle prêt à l'emploi, le personnaliser, puis le mettre en ligne gratuitement via GitHub Pages. **Ce même site servira de rendu pour le projet final** — autant bien le configurer dès maintenant.
+Cette étape (semaine 7) comporte trois volets : publier ton site web (portfolio & projet), créer et structurer ton GeoPackage, puis construire ta chaîne de pré-traitements. Elle ne fait pas l'objet d'un rendu intermédiaire, mais **ton site web est le support du rendu final** : il accueillera ton rapport et ton notebook Python maître — autant bien le configurer dès maintenant.
+
+## 1. Créer ton site web (portfolio & projet)
+
+Tu vas forker un modèle prêt à l'emploi, le personnaliser, puis le mettre en ligne gratuitement via GitHub Pages.
 
 La configuration se fera sur GitHub Pages. Toutefois, si vous préférez éviter d’avoir un répertoire GitHub public, vous pouvez utiliser GitLab comme alternative (voir les détails plus bas).
 
-## Objectifs pédagogiques
+### Objectifs pédagogiques
 
 * Configurer GitHub Pages
 * Personnaliser un site avec Markdown
 * Intégrer un notebook Jupyter comme page du site
 * Comprendre la chaîne : fichier `.md` ou `ipynb` → Jupyter Book → site publié
 
-## Concepts clés
+### Concepts clés
 
 * **Markdown** : langage de mise en forme simple (titres avec `#`, listes avec `-`, gras avec `**`). Les fichiers `.md` sont la base du site. [Plus d'information](https://github.com/adam-p/markdown-here/wiki/markdown-cheatsheet).
 * **Jupyter notebook**: Un fichier `.ipynb` est un document Jupyter Notebook utilisé pour le calcul interactif, qui combine du code en direct, des équations, des visualisations et du texte explicatif. [Plus d'information](https://jupyter.org/try-jupyter/lab/).
 * **GitHub Pages** : service gratuit de GitHub qui héberge et publie automatiquement un site statique depuis un répertoire. [Plus d'informations](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages).
 * **Jupyter Book (MyST)** : outil qui transforme des fichiers Markdown et des notebooks Jupyter en site web structuré. Le fichier `myst.yml` contrôle la navigation. [Plus d'information](https://jupyterbook.org).
 
-## Étapes
+### Étapes
 
 **1. Forker le [modèle](https://github.com/gse-unil/2026_modele_portfolio)** : Crée ta propre copie du répertoire sur ton compte GitHub.
 
@@ -45,26 +49,20 @@ Chaque `commit` déclenche automatiquement la mise à jour du site. L'URL est vi
 
 Les étapes complètes pour réaliser ce projet sont disponibles dans le README du [modèle](https://github.com/gse-unil/2026_modele_portfolio).
 
-(tp5-rendus)=
-## Évaluation et rendus
+### Check-list du site
 
-| Activité | Quand ? | Où ? |
-|----------|---------|------|
-| Site publié (lien vers ton portfolio) | à la fin du TP | [Rendu\_TP5]({{ MOODLE_RENDU_TP5 }}) |
+Au rendu final, ton site doit remplir les points suivants :
 
-
-## Critères d'évaluation
-
-| Critère | Détail |
+| Point | Détail |
 |---|---|
 | Répertoire configuré | Fork, Actions et Pages activés, site accessible |
 | Page *À propos* | Présentation personnelle complète |
 | Page *Portfolio* | Contenu pertinent et mis en forme |
-| Projet intégré | Notebook visible et fonctionnel sur le site |
+| Projet intégré | Notebook maître visible et fonctionnel sur le site, rapport et lien vers le projet empaqueté sur la page projet |
 | Navigation | `myst.yml` cohérent avec les pages présentes |
 | Qualité Markdown | Mise en forme soignée, pas de contenu brut |
 
-## Optionnel : GitLab (portfolio privé)
+### Optionnel : GitLab (portfolio privé)
 
 Alternative à GitHub si vous ne souhaitez pas de répertoire public.
 
@@ -74,3 +72,28 @@ Alternative à GitHub si vous ne souhaitez pas de répertoire public.
 * Ajouter les enseignant·e·s dans **Members (role: Reporter)**
 
 Les étapes complètes pour réaliser ce projet sont disponibles dans le README du [modèle](https://github.com/gse-unil/2026_modele_portfolio).
+
+## 2. Créer et structurer ton GeoPackage
+
+Structure les couches de données dans **une seule geodatabase (GeoPackage, `.gpkg`)**, avec des couches préfixées selon leur rôle :
+- `source_` : données sources intactes avant traitement (p. ex. `source_communes`) ;
+- `temp_` : résultats intermédiaires et versions de travail (p. ex. `temp_communes_clip`) ;
+- `input_` : données utilisées comme entrée de la régression ou de la classification, résultant de la chaîne de pré-traitements (p. ex. `input_votations`) ;
+- `results_` : données finales résultant de l'analyse et utilisées pour l'habillage de la carte (p. ex. `results_temperature`).
+
+Les **rasters** (MNT, orthophotos, etc.) sont conservés comme fichiers GeoTIFF à côté du GeoPackage, et zippés lors de l'empaquetage ([étape IV](etape4.md)).
+
+Pour chaque jeu de données, note dès maintenant la source (URL), la licence, la date de téléchargement, le système de coordonnées et la résolution / l'échelle : ces informations iront dans ton `README` et dans ton rapport.
+
+## 3. Construire ta chaîne de pré-traitements
+
+La chaîne de pré-traitements passe des données brutes au **tableau d'analyse** : une ligne par observation, une colonne par variable (la variable à expliquer et les variables explicatives). Elle doit inclure au minimum **trois traitements**, couvrant au moins **deux** catégories d'outils (voir l'[étape I](etape1.md)), et être automatisée, au choix :
+- dans QGIS, avec le **Modeleur graphique** (fichier `.model3`) ;
+- en Python, dans la première partie de ton notebook maître (voir l'[étape III](etape3.md)).
+
+Vérifie bien que :
+- chaque traitement fonctionne ;
+- les données intermédiaires sont enregistrées dans le GeoPackage (couches `temp_`), et le tableau d'analyse dans une couche `input_` ;
+- la chaîne est logique, justifiée et reproductible.
+
+Une chaîne courte mais justifiée et documentée vaut mieux qu'une chaîne longue et fragile.
