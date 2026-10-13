@@ -34,13 +34,10 @@ N'hésite pas à t'inspirer des sources de géodonnées listées dans le syllabu
 
 ## Critères d'évaluation du rendu intermédiaire
 - Le rendu est complet et déposé dans les délais.
-- La question de recherche est claire, détaillée et concrète ; les variables à expliquer et explicatives sont identifiées.
-- Le schéma de la chaîne de pré-traitements et les modèles envisagés sont adéquats.
 - La liste des données sources est fournie et cohérente avec la chaîne de pré-traitements.
-- Le rendu est complet et déposé dans les délais.
 - La question de recherche est claire, détaillée et concrète ; les variables explicatives et à expliquer sont identifiées.
 - La zone d'étude est bien définie et est cohérente avec la question de recherche.
 - La liste de données sources contient un ou plusieurs jeux de données ouverts, dont au moins un géospatial, et est cohérente avec la question de recherche et la chaîne de pré-traitements.
 - Pour chaque jeu de données, la source (URL), la licence, la date de téléchargement, le système de coordonnées et la résolution / l'échelle sont documentés.
-- Le schéma de la chaîne de pré-traitements inclus au moins 3 traitements couvrant au moins 2 des catégories listées dans les exigences du projet.
+- Le schéma de la chaîne de pré-traitements inclut au moins 3 traitements couvrant au moins 2 des catégories listées dans les exigences du projet.
 - La chaîne de pré-traitements et les modèles envisagés sont adaptés pour répondre à la question de recherche.
