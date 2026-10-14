@@ -28,10 +28,12 @@ Tu peux alors lister les jeux de données nécessaires avec, pour chacun :
 - sa résolution ou son échelle ;
 - son rôle dans l'analyse (variable d'entrée, variable à expliquer, variable explicative, habillage de la carte).
 
-Quelques exemples :
+:::{admonition} Quelques exemples
+:class: tip
 - Surfaces de forêt, swissTLM3D, swisstopo, vecteur, https://www.swisstopo.admin.ch/de/geodata/landscape/tlm3d.html, 13.11.2026, MN 95, 1-3m, variable d'entrée.
 - Arbres individuels, Arbres, commune de Lausanne, vecteur, https://viageo.ch/catalogue/donnee/300196, 13.11.2026, MN95, / (saisie manuelle), variable explicative.
 - Altitude, swissALTI3D, swisstopo, raster, https://www.swisstopo.admin.ch/de/geodata/height/alti3d.html, 13.11.2026, MN95, 2m, habillage de la carte.
+:::
 
 N'hésite pas à t'inspirer des sources de géodonnées listées ci-dessous : 
 - [Office fédéral de topographie (Swisstopo)](https://www.swisstopo.admin.ch/fr/home.html)
