@@ -42,13 +42,13 @@ project:
       title: 'Projet individuel'
       children:
         - file: 'project/etape1.md'
-          title: 'Project · Etape I'
+          title: 'Projet · Etape I'
         - file: 'project/etape2.md'
-          title: 'Project · Etape II'
+          title: 'Projet · Etape II'
         - file: 'project/etape3.md'
-          title: 'Project · Etape III'
+          title: 'Projet · Etape III'
         - file: 'project/etape4.md'
-          title: 'Project · Etape IV'
+          title: 'Projet · Etape IV'
         - file: 'tps/python/project_example_landslides.ipynb'
           title: 'Exemple : glissements de terrain'
     
