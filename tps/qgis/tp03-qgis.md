@@ -215,7 +215,8 @@ Lorsque tu ajoutes un algorithme, choisis comme couche d'entrée soit une entré
 
 <details>
 <summary>Solution</summary>
-<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3_009_v2.gif>
+<video src="https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00009_v2.mp4" controls playsinline width="100%"></video>
+
 </details>
 <br>
 
