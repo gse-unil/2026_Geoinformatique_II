@@ -187,6 +187,7 @@ Le **Modeleur graphique** permet de :
 * **Couche vecteur** (polygones) → nomme-la "Districts"
 * **Couche vecteur** (polygones) → nomme-la "Forêt"
 * **Couche vecteur** (polygones) → nomme-la "Bâtiments"
+* **Couche vecteur** (lignes) → nomme-la "Roads"
 
 5c) Pour le **modèle obligatoire**, ajoute les trois premiers algorithmes et définis la forêt découpée comme sortie du modèle :
 1. `Extraire par expression` sur "Districts" → extrait les deux districts
@@ -198,9 +199,11 @@ Pour le **défi facultatif**, prolonge le modèle avec les étapes suivantes :
 4. `Couper` : bâtiments découpés par le district regroupé
 5. `Zone tampon` (+75 m, **Dissoudre le résultat**) sur les bâtiments découpés
 6. `Zone tampon` (−75 m) → ZDB
-7. `Zone tampon` (+80 m, **Dissoudre le résultat**) sur la ZDB → zone de risque
-8. `Différence` : entrée = zone de risque ; superposition = ZDB
-9. `Intersection` : entrée = résultat de la différence ; superposition = forêt découpée → **WUI**
+7. `Zone tampon` (+6 m,  **Dissoudre le résultat**) sur les routes
+8. `Union` : entrée = zone tampon autour des routes ; superposition = ZDB  → ZU
+9. `Zone tampon` (+80 m, **Dissoudre le résultat**) sur la ZU → zone de risque
+10. `Différence` : entrée = zone de risque ; superposition = ZU
+11. `Intersection` : entrée = résultat de la différence ; superposition = forêt découpée → **WUI**
 
 <details>
 <summary>Astuce</summary>
@@ -212,7 +215,7 @@ Lorsque tu ajoutes un algorithme, choisis comme couche d'entrée soit une entré
 
 <details>
 <summary>Solution</summary>
-<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00009.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3_009_v2.gif>
 </details>
 <br>
 
