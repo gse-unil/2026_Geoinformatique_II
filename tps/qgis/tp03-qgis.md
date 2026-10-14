@@ -216,9 +216,7 @@ Lorsque tu ajoutes un algorithme, choisis comme couche d'entrée soit une entré
 <details>
 <summary>Solution</summary>
 Pour pouvoir mettre la vidéo en pause, en plein écran, ou modifier la vitesse de lecture: Clique droit sur la vidéo -> "Afficher les commandes" ou "Afficher les contrôles"
-
-<video src=assets/tp3-00009_v2.mp4 controls playsinline width="100%"></video>
-
+<video src=assets/tp3-00009_v3.mp4 controls playsinline width="100%"></video>
 </details>
 <br>
 
