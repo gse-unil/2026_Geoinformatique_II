@@ -215,7 +215,9 @@ Lorsque tu ajoutes un algorithme, choisis comme couche d'entrée soit une entré
 
 <details>
 <summary>Solution</summary>
-<video src=assets/tp3-00009_v3.mp4 controls playsinline width="100%"></video>
+Pour pouvoir mettre la vidéo en pause, en plein écran, ou modifier la vitesse de lecture: Clique droit sur la vidéo -> "Afficher les commandes" ou "Afficher les contrôles"
+
+<video src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp3/tp3-00009_v2.mp4 controls playsinline width="100%"></video>
 
 </details>
 <br>
