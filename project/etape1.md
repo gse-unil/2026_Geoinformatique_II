@@ -6,22 +6,18 @@ Cette première étape (semaine 6) vise à obtenir une vision d'ensemble de ton 
 ### 1. Définition de la question et des hypothèses de recherche
 
 - Définis une zone d'études (par exemple la Suisse, le Canton du Valais, la commune de Crissier, l'Europe, les rives du Lac de Neuchâtel ...)
-- Formule une question de recherche **claire, détaillée et concrète**, à laquelle un modèle de régression ou une classification peut apporter un élément de réponse. Nous encourageons l’inventivité dans le choix de la question de recherche !
-- Définis le contexte et justifie l'intérêt de ta question de recherche.
-- Présente des hypothèses de recherche adaptées à ta question de recherche.
+- Formule une question de recherche **claire, détaillée et concrète**, à laquelle un modèle de régression ou une classification peut apporter un élément de réponse, et dont les résultats pourront être représentés sous forme de carte. Nous encourageons l’inventivité dans le choix de la question de recherche !
+- Définis le contexte et justifie l'intérêt de ta question de recherche dans ce contexte.
+- Présente des hypothèses de recherche adaptées à ta question de recherche (i.e. les résultats que tu anticipes d'avoir à l'issue de ce projet).
 
 ### 2. Identification et téléchargement des données sources
-Une fois la question de recherche établie, l’étape suivante consiste à identifier les données sources nécessaires à ton analyse.
+Une fois la question de recherche définie, tu peux identifier les données sources nécessaires pour ton projet. Ces données peuvent jouer différents rôles : variable d’entrée, variable à expliquer ou explicative (cf. section 4), ou élément d'habillage de la carte. Pour chaque donnée source, recherche le jeu de données à partir duquel tu pourras télécharger ces informations. Pour ce projet, l’utilisation **d'un ou de plusieurs jeux de données ouverts** est requise, dont **au moins un de nature géospatiale**.
 
-Pour commencer, recense les types d’objets géographiques pertinents pour ton projet (arrêts de bus, communes, sentiers pédestres, écoles, etc.) ainsi que leur primitive géographique (point, ligne ou polygone).
-
-Ensuite, recherche les jeux de données à partir desquels tu pourras télécharger ces informations. Pour ce projet, l’utilisation **d'un ou de plusieurs jeux de données ouverts** est requise, dont **au moins un de nature géospatiale**.
-
-Tu peux alors lister les jeux de données nécessaires avec, pour chacun :
+Tu peux alors lister pour chaque donnée source du projet :
 - de quelles données tu as besoin (souvent une partie du jeu de données) ;
 - le nom de la couche de données ;
 - son fournisseur ;
-- son type (vecteur, raster ou table) ;
+- son type (vecteur, raster ou table) et sa primitive géographique si applicable (points, lignes, polygones) ;
 - son lien public de téléchargement (URL) ;
 - la date de téléchargement ;
 - son système de coordonnées 
@@ -30,8 +26,8 @@ Tu peux alors lister les jeux de données nécessaires avec, pour chacun :
 
 :::{admonition} Quelques exemples
 :class: tip
-- Surfaces de forêt, swissTLM3D, swisstopo, vecteur, https://www.swisstopo.admin.ch/de/geodata/landscape/tlm3d.html, 13.11.2026, MN 95, 1-3m, variable d'entrée.
-- Arbres individuels, Arbres, commune de Lausanne, vecteur, https://viageo.ch/catalogue/donnee/300196, 13.11.2026, MN95, / (saisie manuelle), variable explicative.
+- Surfaces de forêt, swissTLM3D, swisstopo, vecteur (polygones), https://www.swisstopo.admin.ch/de/geodata/landscape/tlm3d.html, 13.11.2026, MN 95, 1-3m, variable d'entrée.
+- Arbres individuels, Arbres, commune de Lausanne, vecteur (points), https://viageo.ch/catalogue/donnee/300196, 13.11.2026, MN95, / (saisie manuelle), variable explicative.
 - Altitude, swissALTI3D, swisstopo, raster, https://www.swisstopo.admin.ch/de/geodata/height/alti3d.html, 13.11.2026, MN95, 2m, habillage de la carte.
 :::
 
@@ -60,18 +56,22 @@ Pour transformer les données brutes en **tableau d'analyse** prêt pour la mod�
 2. Outils de superposition de plusieurs couches (intersect, erase, statistiques zonales, etc.).
 3. Outils d'analyse spatiale (distance, interpolation, surface, hydrologie, densité, analyse de réseau, etc.).
 
-L’ensemble des pré-traitements, ainsi que les données d'entrée (données brutes) et de sortie (données pré-traitées, prêtes à être utilisées par le modèle), doivent être représentés dans un schéma de chaîne de pré-traitements, en respectant la convention graphique suivante :
+L’ensemble des pré-traitements, ainsi que les données d'entrée (données brutes) et de sortie (données pré-traitées, prêtes à être utilisées par le modèle), doivent être représentés dans un schéma de chaîne de pré-traitements. Ce schéma doit inclure la question de recherche (sous forme de titre par exemple) et respecter la convention graphique suivante :
+
 - Ovale bleu = données sources en entrée
 - Ovales verts = données transformées en sortie (intermédiaires ou finales)
 - Rectangles jaunes = opérations de géotraitement 
 
-### 3. Modèle de regression ou de classification
+Pour créer le schéma de la chaîne de pré-traitements, tu peux utiliser des logiciels tels que Inkscape, Adobe Illustrator, Power Point, ou Word, puis l'enregistrer en PDF.
+
+### 4. Modèle de regression ou de classification
 
 La dernière étape de ce projet consiste à appliquer un modèle de régression ou de classification. Ce modèle utilise deux types de variables :
 - **Variable(s) à expliquer** (« sortie ») : La ou les variable(s) que le modèle cherche à prédire.
 - **Variable(s) explicative(s)** (« entrée ») : La ou les variable(s) utilisée(s) pour effecter ces prédictions.
 
-Assure-toi de justifier le choix du modèle retenu en fonction de ta question de recherche et d’indiquer clairement quelles sont les variables explicatives et la variable à expliquer.
+Assure-toi de justifier le choix du modèle retenu en fonction de ta question de recherche et d’indiquer clairement quelles sont les variables explicatives et la variable à expliquer. Indique également comment les résultats seront cartographié pour répondre à ta question de recherche.
+
 
 ## Critères d'évaluation du rendu intermédiaire
 - Le rendu est complet et déposé dans les délais ;
