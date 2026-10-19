@@ -15,7 +15,7 @@ Le notebook maître rassemble toute la partie Python de ton projet. Il doit êtr
 
 | Section | Contenu |
 |---|---|
-| En-tête | question de recherche, hypothèses, variables, tableau des données (source, licence, date de téléchargement, système de coordonnées, résolution), organisation du GeoPackage, instructions pour reproduire le notebook |
+| En-tête | question de recherche, hypothèses, variables, tableau des données (source et lien de téléchargement, licence, date de téléchargement, résolution), organisation du GeoPackage, instructions pour reproduire le notebook |
 | 1. Configuration | imports, chemins relatifs, graine aléatoire |
 | 2. Données sources | chargement des couches `source_` |
 | 3. Analyse exploratoire | cartes, distributions, corrélations |
