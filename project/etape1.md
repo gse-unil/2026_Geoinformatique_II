@@ -21,13 +21,13 @@ Tu peux alors lister pour chaque donnée source du projet :
 - son lien public de téléchargement (URL) ;
 - la date de téléchargement ;
 - son système de coordonnées 
-- sa résolution ou son échelle ;
+- sa résolution ou son échelle (si applicable);
 - son rôle dans l'analyse (variable d'entrée, variable à expliquer, variable explicative, habillage de la carte).
 
 :::{admonition} Quelques exemples
 :class: tip
-- Surfaces de forêt, swissTLM3D, swisstopo, vecteur (polygones), https://www.swisstopo.admin.ch/de/geodata/landscape/tlm3d.html, 13.11.2026, MN 95, 1-3m, variable d'entrée.
-- Arbres individuels, Arbres, commune de Lausanne, vecteur (points), https://viageo.ch/catalogue/donnee/300196, 13.11.2026, MN95, / (saisie manuelle), variable explicative.
+- Surfaces de forêt, swissTLM3D, swisstopo, vecteur (polygones), https://www.swisstopo.admin.ch/de/geodata/landscape/tlm3d.html, 13.11.2026, MN95, 1-3m, variable d'entrée.
+- Arbres individuels, Arbres, commune de Lausanne, vecteur (points), https://viageo.ch/catalogue/donnee/300196, 13.11.2026, MN95, /, variable explicative.
 - Altitude, swissALTI3D, swisstopo, raster, https://www.swisstopo.admin.ch/de/geodata/height/alti3d.html, 13.11.2026, MN95, 2m, habillage de la carte.
 :::
 
