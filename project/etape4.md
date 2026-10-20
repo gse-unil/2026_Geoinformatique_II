@@ -30,7 +30,7 @@ Présente le contexte, les objectifs et ta question de recherche ; mets à jour 
 ### 2.3 Résultats
 Présente tes résultats (au moins une carte, complétée si besoin de graphiques ou de statistiques) et analyse-les au regard de tes objectifs et hypothèses.
 
-**1) Régression spatialisée** : ajuste au moins un modèle de régression ou de classification dont tu cartographies les prédictions sur ta zone d'étude. Si applicable (cf. TP 2), donne ses **intervalles de confiance** (incertitude sur la relation estimée) et ses **intervalles de prédiction** (incertitude sur chaque valeur individuelle prédite).
+**1) Régression spatialisée** : ajuste au moins un modèle de régression ou de classification dont tu cartographies les prédictions sur ta zone d'étude. Donne ses **intervalles de confiance** (incertitude sur la relation estimée) ou ses **intervalles de prédiction** (incertitude sur chaque valeur individuelle prédite) en justifiant ton choix.
 
 **2) Incertitudes** : estime quantitativement les incertitudes de mesure, d'estimation et de visualisation, avec les valeurs et unités pertinentes. Si tes résultats s'écartent de tes attentes, discute en 1–2 phrases des limites des données ou des difficultés techniques rencontrées.
 

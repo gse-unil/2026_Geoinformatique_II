@@ -9,7 +9,7 @@ L'accent est mis sur la pertinence de la démarche et la **reproductibilité** p
 ## Objectifs et exigences
 
 - Choisir et formuler une question de recherche à laquelle une régression peut apporter un élément de réponse, en identifiant la **variable à expliquer** et les **variables explicatives** envisagées.
-- Utiliser **un ou plusieurs jeux de données ouverts**, dont au moins un géospatial, et documenter pour chacun la source (URL), la licence, la date de téléchargement, le système de coordonnées et la résolution / l'échelle.
+- Utiliser **un ou plusieurs jeux de données ouverts**, dont au moins un géospatial, et documenter pour chacun le type de données, son rôle dans l'analyse, la source (URL), la date de téléchargement, le système de coordonnées et la résolution / l'échelle (quand applicable).
 - Construire une chaîne de pré-traitements logique et justifiée (dans QGIS et/ou en Python) pour passer des données brutes à un **tableau d'analyse** prêt pour la modélisation (une ligne par observation, une colonne par variable). Cette chaîne doit inclure au minimum **trois traitements**, couvrant au moins **deux** des catégories suivantes :
   1. outils de préparation, de sélection et de réduction de l'information (clip, sélection spatiale, jointure, reclassifier, merge, dissolve, buffer, etc.) ;
   2. outils de superposition de plusieurs couches (intersect, erase, statistiques zonales, etc.) ;
