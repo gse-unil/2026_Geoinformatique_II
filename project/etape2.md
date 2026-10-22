@@ -105,7 +105,7 @@ Au rendu final, ton site doit remplir les points suivants :
 
 Si tu préfères ne pas avoir un répertoire GitHub public, tu peux dupliquer le modèle de portfolio sur GitLab et restreindre l’accès au répertoire ainsi qu’au site web aux seules personnes invitées.
 
-### 1. Créer un compte GitLab
+### 1. Créer un compte GitLab 
 
 Créer un compte sur : <https://gitlab.com>
 
