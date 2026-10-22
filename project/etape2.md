@@ -1,12 +1,12 @@
 # Projet individuel - Etape II : Création du site web
 
-Cette étape (semaine 7) contient la création et la publication de ton site web (portfolio & projet). Elle ne fait pas l'objet d'un rendu intermédiaire, mais **ton site web est le support du rendu final** : il accueillera ton rapport, ton notebook Python maître, ton géopackage et ton portofolio de comptétence — autant bien le configurer dès maintenant.
+Cette étape (semaine 7) contient la création et la publication de ton site web (portfolio & projet). Elle ne fait pas l'objet d'un rendu intermédiaire, mais **ton site web est le support du rendu final** : il accueillera ton rapport, ton notebook Python maître, ton géopackage et ton portfolio de compétence — autant bien le configurer dès maintenant.
 
 Pour créer ton site web, tu vas forker un modèle prêt à l'emploi, le personnaliser, puis le mettre en ligne gratuitement via GitHub Pages.
 
 La configuration se fera sur GitHub Pages. Toutefois, si vous préférez éviter d’avoir un répertoire GitHub public, vous pouvez utiliser GitLab comme alternative (voir les détails plus bas).
 
-## 1.Objectifs pédagogiques
+## 1. Objectifs pédagogiques
 
 * Configurer GitHub Pages
 * Personnaliser un site avec Markdown
@@ -23,19 +23,31 @@ La configuration se fera sur GitHub Pages. Toutefois, si vous préférez éviter
 
 ## 3. Étapes
 
-### 3.1 - Forker le modèle
+### 3.1 - Créer un compte Github
+Pour commencer, la première étape est de créer un compte [github](https://github.com/).
 
-La première étape consiste à forker le [répertoire source](https://github.com/gse-unil/2026_modele_portfolio). Cette manipulation te permets de créer ta propre copie du répertoire sur ton compte GitHub, et la marche à suivre est expliquée dans la vidéo présente dans le README du modèle.
+### 3.2 - Forker le modèle
 
-### 3.2 - Activer les workflows
+La première étape consiste à forker le [modèle](https://github.com/gse-unil/2026_modele_portfolio), en suivant la procédure ci-dessous. Cette manipulation te permets de créer ta propre copie du répertoire sur ton compte GitHub. 
+
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/projet/etape_II.gif>
+
+
+### 3.3 - Activer les workflows
 
 Quand tu forkes un projet, les tâches automatiques sont bloquées par défaut pour des raisons de sécurité. Activer les workflows permet de relancer ces automatisations sur ton fork. Pour cela, clique sur l'onglet *Actions* puis sur *"I understand my workflows, go ahead and enable them"*.
 
-### 3.3 - Activer GitHub Pages
+### 3.4 - Activer GitHub Pages
 
-Activer GitHub Pages te permets d'indiquer à GitHub que c’est lui qui doit mettre ton site en ligne automatiquement, sans que tu aies à le faire manuellement. pour cela, clique sur *Settings* → *Pages* → source : **GitHub Actions**.
+Activer GitHub Pages te permet d'indiquer à GitHub que c’est lui qui doit mettre ton site en ligne automatiquement, sans que tu aies à le faire manuellement. Pour cela, clique sur *Settings* → *Pages* → source : **GitHub Actions**.
 
-### 3.4 - Personnaliser le contenu
+### 3.7 - Publier le site web
+
+Pour l'instant, ton site n’est pas encore en ligne. Pour le publier, tu dois effectuer une première modification dans le répertoire (par exemple en ajoutant ton nom et prénom) puis la sauvegarder avec un premier `commit`, comme montré dans la vidéo ci-dessous. Tu pourras ensuite accéder à ton site via l’URL disponible dans *Settings* → *Pages*. Si tes modifications n’apparaissent pas immédiatement, c’est tout à fait normal : le déploiement peut prendre quelques minutes.
+
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/projet/etape2-commit.gif>
+
+### 3.8 - Personnaliser le contenu
 
 La structure du site web est la suivante : 
 
@@ -43,21 +55,38 @@ La structure du site web est la suivante :
 |---|---|
 | `content/apropos.md` | Page de présentation |
 | `content/img/ma_photo.png` | Photo (optionnelle) |
-| `content/competences.md` | Portofolio de compétences |
+| `content/competences.md` | Portfolio de compétences |
 | `content/projet.ipynb` | Notebook maitre Python |
 | `content/rapport_final.md` | Notebook maitre Python |
 
-Toutes les fichiers devront être édité pour le rendu final. Tu peux dès maintenant : 
-- Ajouter ton portofolio de compétences (AJOUTER COMMENT) créé dans le précédant cours ;
-- Modifier le fichier apropos.md pour remplir ta page de présentation ;
+Tous les fichiers devront être édités pour le rendu final. Tu peux dès maintenant: 
+- Ajouter ton portfolio de compétences créé dans le précédent cours en remplacent le fichier "portfolio.pdf";
+- Modifier le fichier `apropos.md` pour remplir ta page de présentation ;
 - Ajouter ta photo en remplacant le fichier ma_photo.png (cette étape est optionnelle). 
 
+N'oublie pas de sauvegarder tes modifications en effectuant des `commit` qui déclencheront automatiquement la mise à jour du site.
 
-### 3.5 - Mettre à jour la table des natières
-Pour éditer la table des matières, édites le fichier `myst.yml` en suivant les instructions fournies dans le README du [modèle](https://github.com/gse-unil/2026_modele_portfolio).
 
-### 3.5 - Plublier le site web
-Pour publier et mettre à jour le site web, il faut faire suavegarder tes modification à travers des `commit`, ce qui déclenche automatiquement la mise à jour du site. L'URL du site web est visible dans *Settings → Pages*.
+### 3.9 - Mettre à jour la table des matières (optionel)
+Pour modifier la table des matières, il faut éditer le fichier `myst.yml`, qui contient initialement la structure suivante:
+```
+toc:
+    - file: content/apropos.md
+    - file: content/portfolio.md
+    - file: content/mon_projet.ipynb
+```
+
+Si tu souhaites ajouter une page additionnelle (pour inclure des annexes de ton rapport par exemple), tu peux créer un fichier `content/nom_du_fichier` et l'ajouter dans myst.yml, afin d'obtenir la structure suivante:
+
+```
+toc:
+    - file: content/apropos.md
+    - file: content/portfolio.md
+    - file: content/mon_projet.ipynb
+    - file: content/nom_du_fichier
+```
+
+
 
 ## Check-list du site
 
@@ -72,16 +101,40 @@ Au rendu final, ton site doit remplir les points suivants :
 | Navigation | `myst.yml` cohérent avec les pages présentes |
 | Qualité de la mise en page | Mise en forme soignée |
 
-## Optionnel : GitLab (portfolio privé)
+## Optionnel : utiliser GitLab pour un portfolio plus privé
 
-Alternative à GitHub si vous ne souhaitez pas de répertoire public.
+Si tu préfères ne pas avoir un répertoire GitHub public, tu peux dupliquer le modèle de portfolio sur GitLab et restreindre l’accès au répertoire ainsi qu’au site web aux seules personnes invitées.
 
-* Importer le repo GitHub dans GitLab via **Repository by URL**
-* Mettre le projet en **Private**
-* Activer **Pages → Only project members**
-* Ajouter les enseignant·e·s dans **Members (role: Reporter)**
+### 1. Créer un compte GitLab
 
-Les étapes complètes pour réaliser ce projet sont disponibles dans le README du [modèle](https://github.com/gse-unil/2026_modele_portfolio).
+Créer un compte sur : <https://gitlab.com>
 
+### 2. Dupliquer le modèle de portfolio sur GitLab
+
+1. Dans GitLab, cliquer sur **New project**
+2. Sélectionner **Import project**
+3. Choisir **Repository by URL**
+4. Coller l’URL du répertoire : `https://github.com/gse-unil/2026_modele_portfolio.git`
+5. Choisir un nom de projet (par exemple : `portfolio`)
+6. Définir la visibilité du répertoire sur : `Private`
+7. Cliquer sur **Create project**
+
+### 3. Restreindre l’accès au site web
+
+Pour que seules les personnes autorisées puissent accéder au portfolio :
+
+1. Aller dans **Settings → General**
+2. Ouvrir **Visibility, project features, permissions**
+3. Vérifier que la visibilité du projet est définie sur : `Private`
+4. Dans la section **Pages**, choisir : `Only project members`
+
+### 4. Ajouter les enseignant·e·s au projet
+
+Pour permettre aux enseignant·e·s d’accéder au portfolio :
+
+1. Aller dans **Manage → Members**
+2. Cliquer sur **Invite members**
+3. Ajouter les identifiants GitLab ou adresses email fournis par les enseignant·e·s
+4. Attribuer le rôle : `Reporter`
 
 
