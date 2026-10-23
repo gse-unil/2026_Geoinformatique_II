@@ -1,6 +1,6 @@
 # Projet individuel - Etape II : Création du site web
 
-Cette étape (semaine 7) contient la création et la publication de ton site web (portfolio & projet). Elle ne fait pas l'objet d'un rendu intermédiaire, mais **ton site web est le support du rendu final** : il accueillera ton rapport, ton notebook Python maître, ton géopackage et ton portfolio de compétence — autant bien le configurer dès maintenant.
+Cette étape (semaine 7) contient la création et la publication de ton portfolio sous forme de site web. Elle ne fait pas l'objet d'un rendu intermédiaire, mais **ton site web est le support du rendu final** : il accueillera ton portfolio de compétence, ton rapport contenant un lien OneDrive vers ton géopackage et ton notebook maître en Python.
 
 Pour créer ton site web, tu vas forker un modèle prêt à l'emploi, le personnaliser, puis le mettre en ligne gratuitement via GitHub Pages.
 
@@ -24,11 +24,11 @@ La configuration se fera sur GitHub Pages. Toutefois, si vous préférez éviter
 ## 3. Étapes
 
 ### 3.1 - Créer un compte Github
-Pour commencer, la première étape est de créer un compte [github](https://github.com/).
+Pour commencer, la première étape est de créer un compte [Github](https://github.com/) si tu n'en a pas déjà un.
 
 ### 3.2 - Forker le modèle
 
-La première étape consiste à forker le [modèle](https://github.com/gse-unil/2026_modele_portfolio), en suivant la procédure ci-dessous. Cette manipulation te permets de créer ta propre copie du répertoire sur ton compte GitHub. 
+Pour créer ta propre copie du [répertoire modèle](https://github.com/gse-unil/2026_modele_portfolio), il faut le forker en suivant la procédure ci-dessous.
 
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/projet/etape_II.gif>
 
@@ -43,25 +43,25 @@ Activer GitHub Pages te permet d'indiquer à GitHub que c’est lui qui doit met
 
 ### 3.7 - Publier le site web
 
-Pour l'instant, ton site n’est pas encore en ligne. Pour le publier, tu dois effectuer une première modification dans le répertoire (par exemple en ajoutant ton nom et prénom) puis la sauvegarder avec un premier `commit`, comme montré dans la vidéo ci-dessous. Tu pourras ensuite accéder à ton site via l’URL disponible dans *Settings* → *Pages*. Si tes modifications n’apparaissent pas immédiatement, c’est tout à fait normal : le déploiement peut prendre quelques minutes.
+Pour l'instant, ton site n’est pas encore en ligne. Pour le publier, tu dois effectuer une première modification dans le répertoire (par exemple en ajoutant ton nom et prénom) puis la sauvegarder avec un premier `commit`, comme montré dans la vidéo ci-dessous. Tu pourras ensuite accéder à ton site via l’URL disponible dans *Settings* → *Pages*. Si tes modifications n’apparaissent pas immédiatement sur le site web, c’est tout à fait normal : le déploiement peut prendre quelques minutes.
 
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/projet/etape2-commit.gif>
 
 ### 3.8 - Personnaliser le contenu
 
-La structure du site web est la suivante : 
+Ton portfolio est maintenant publié, et il contient la structure suivante : 
 
 | Fichier | Contenu |
 |---|---|
 | `content/apropos.md` | Page de présentation |
-| `content/img/ma_photo.png` | Photo (optionnelle) |
-| `content/competences.md` | Portfolio de compétences |
+| `content/portfolio.md` | Portfolio de compétences |
 | `content/projet.ipynb` | Notebook maitre Python |
 | `content/rapport_final.md` | Notebook maitre Python |
+| `content/img/ma_photo.png` | Photo |
 
-Tous les fichiers devront être édités pour le rendu final. Tu peux dès maintenant: 
-- Ajouter ton portfolio de compétences créé dans le précédent cours en remplacent le fichier "portfolio.pdf";
-- Modifier le fichier `apropos.md` pour remplir ta page de présentation ;
+Ces fichiers devront être complétés pour le rendu final. Tu peux dès maintenant: 
+- Ajouter ton portfolio de compétences (cf Intervention Lüthi semaine 7) en éditant le fichier `portfolio.md`;
+- Remplir ta page de présentation en éditant le fichier `apropos.md` ;
 - Ajouter ta photo en remplacant le fichier ma_photo.png (cette étape est optionnelle). 
 
 N'oublie pas de sauvegarder tes modifications en effectuant des `commit` qui déclencheront automatiquement la mise à jour du site.
@@ -73,17 +73,19 @@ Pour modifier la table des matières, il faut éditer le fichier `myst.yml`, qui
 toc:
     - file: content/apropos.md
     - file: content/portfolio.md
+    - file: content/rapport_final.md
     - file: content/mon_projet.ipynb
 ```
 
-Si tu souhaites ajouter une page additionnelle (pour inclure des annexes de ton rapport par exemple), tu peux créer un fichier `content/nom_du_fichier` et l'ajouter dans myst.yml, afin d'obtenir la structure suivante:
+Si tu souhaites ajouter une page additionnelle (pour inclure des annexes de ton rapport par exemple), tu peux ajouter un fichier dans le dossier `content` puis éditer le fichier `myst.yml`, afin d'obtenir la structure suivante:
 
 ```
 toc:
     - file: content/apropos.md
     - file: content/portfolio.md
+    - file: content/rapport_final.md
     - file: content/mon_projet.ipynb
-    - file: content/nom_du_fichier
+    - file: content/NOUVEAU_FICHIER.md
 ```
 
 
@@ -95,7 +97,7 @@ Au rendu final, ton site doit remplir les points suivants :
 | Point | Détail |
 |---|---|
 | Répertoire configuré | Fork, Actions et Pages activés, site accessible |
-| Page *À propos* | Présentation personnelle complète |
+| Page *À propos* | Présentation personnelle complète (photo optionelle) |
 | Page *Portfolio* | Contenu pertinent et mis en forme |
 | Projet intégré | Notebook maître visible et fonctionnel sur le site, rapport et lien vers le projet empaqueté sur la page projet |
 | Navigation | `myst.yml` cohérent avec les pages présentes |
