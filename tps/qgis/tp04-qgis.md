@@ -41,7 +41,7 @@ Contrairement aux données vecteur, les fichiers raster peuvent être très volu
 </details>
 <br>
 
-1d) Ajoute d'abord les couches à ton projet. Explore ensuite leur métadonnées : double-clique sur la couche, puis ouvre l'onglet **Information**. Tu peux ensuite utiliser les informations de la bande 4 pour répondre aux questions X à X du [quiz QGIS sur Moodle]({{ MOODLE_QUIZ_TP4 }}). A MODIFIER
+1d) Ajoute d'abord les couches à ton projet. Explore ensuite leur métadonnées : double-clique sur la couche, puis ouvre l'onglet **Information**. Tu peux ensuite utiliser les informations de la bande 4 pour répondre aux 3 premières questions du [quiz QGIS sur Moodle]({{ MOODLE_QUIZ_TP4 }}).
 
 <details>
 <summary>Solution</summary>
@@ -89,7 +89,7 @@ Où R désigne la réflectance spectrale dans la bande rouge (la bande 3 dans le
 
 2d) Calcule le NDVI dans la [**Calculatrice raster**](https://docs.qgis.org/3.44/fr/docs/user_manual/working_with_raster/raster_analysis.html#raster-calculator), en cochant la case `Create on-the-fly raster instead of writing layer to disk`.
 
-2f) Enregistre le NDVI dans un fichier GeoTIFF `NDVI.tif`. Tu l'utiliseras pour la carte finale.
+2f) Enregistre le NDVI dans un fichier GeoTIFF `NDVI.tif`. Tu peux maintenant répondre aux questions 4 et 5 du [quiz QGIS sur Moodle]({{ MOODLE_QUIZ_TP4 }})
 
 <details>
 <summary>Solution</summary>
@@ -136,7 +136,7 @@ Les expressions précédentes n'ont qu'une condition. Dans la Calculatrice raste
 
 `if(("MNT25_Ticino@1" > 600) AND ("MapTicino1990_8classes@1" = 7), 4, "MapTicino1990_8classes@1")` reclasse les ombres (classe 7) en neige (classe 4) au-dessus de 600 m. Si l'une des conditions est fausse, la valeur d'origine est conservée.
 
-3b) Exécute l'expression et enregistre le résultat dans un GeoTIFF nommé `ReClass_MapTicino1990_8classes.tif`. Tu l'utiliseras dans le rendu final.
+3b) Exécute l'expression et enregistre le résultat dans un GeoTIFF nommé `ReClass_MapTicino1990_8classes.tif`. 
 
 <details>
 <summary>Solution</summary>
@@ -190,6 +190,8 @@ Pour estimer l’altitude entre les points en Suisse, utilise l'outil [IDW de QG
 <img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp4/tp4-00006.gif>
 </details>
 <br>
+
+4f) Tu peux enfin répondre à la dernière question du [quiz QGIS sur Moodle]({{ MOODLE_QUIZ_TP4 }}).
 
 ## 5\. Créer les trois cartes de résultats
 
