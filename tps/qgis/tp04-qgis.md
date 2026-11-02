@@ -37,7 +37,7 @@ Contrairement aux données vecteur, les fichiers raster peuvent être très volu
 
 <details>
 <summary>Solution</summary>
-<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp4/tp4-00001.gif>
+<img loading="lazy" src=https://raw.githubusercontent.com/gse-unil/materials_for_2026_Geoinformatique_II/refs/heads/main/tp4/tp4-00001-new.gif>
 </details>
 <br>
 
