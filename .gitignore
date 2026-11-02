@@ -17,3 +17,7 @@ uv.lock
 
 # Virtual environments
 .venv/
+
+# MacOS
+.DS_Store
+
