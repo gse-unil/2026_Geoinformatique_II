@@ -10,7 +10,7 @@ Nos objectifs pédagogiques sont les suivants :
 2. Fusionner des bandes spectrales raster en un seul fichier multibandes
 3. Utiliser la calculatrice raster pour dériver de nouvelles informations
 4. Effectuer une interpolation spatiale (IDW) à partir de données ponctuelles
-5. Réaliser des cartes thématiques raster et empaqueter le projet QGIS
+5. Réaliser une carte thématique raster et empaqueter le projet QGIS
 
 Ce TP n’aurait pas été possible sans les ressources listées ci-dessous :
 
@@ -24,7 +24,7 @@ Ce TP n’aurait pas été possible sans les ressources listées ci-dessous :
 * `Landsat4_1990_194028_bx.tif` : sept fichiers correspondant aux bandes Landsat 4 (b1 : bleu ; b2 : vert ; b3 : rouge ; b4 : proche infrarouge ; b5 : infrarouge moyen 1 ; b6 : thermique ; b7 : infrarouge moyen 2) ;
 * `MNT25_Ticino.tif` : MNT du canton du Tessin, utilisé uniquement pour le reclassement de l'occupation du sol.
 
-1b) Sur QGIS, crée un nouveau projet (*Project → New*) et enregistre le (*Project → Save*) dans ton dossier du TP4 contenant les couches téléchargées à l'étape précédente, avec le nom `NOM_PRENOM_TP3.qgz`. 
+1b) Sur QGIS, crée un nouveau projet (*Project → New*) et enregistre le (*Project → Save*) dans ton dossier du TP4 contenant les couches téléchargées à l'étape précédente, avec le nom `NOM_PRENOM_TP4.qgz`. 
 
 :::{note}
 Dans les autres TPs, nous avions regroupé les couches vecteur et le projet au format .qgz dans un géopackage, ce qui permettait d’avoir un seul fichier contenant l’ensemble des données. Cette semaine, le projet au format .qgz et les couches seront enregistrés séparément, sans passer par un géopackage. 
@@ -183,7 +183,7 @@ Pour estimer l’altitude entre les points en Suisse, utilise l'outil [IDW de QG
 </details>
 <br>
 
-4e) Génère enfin un [**Ombrage**](https://docs.qgis.org/3.44/fr/docs/training_manual/rasters/terrain_analysis.html#follow-along-calculating-a-hillshade) (**_Hillshade_**) de la couche `MNT_IDW`  avec **Raster > Analyse > Ombrage…**. Utilise les paramètres par défaut : facteur Z `1`, azimut `315°` et altitude de la lumière `45°`. Enregistre le résultat dans `Ombrage_IDW.tif`. L'ombrage donne une impression de relief, mais ce n'est pas une représentation 3D.
+4d) Génère enfin un [**Ombrage**](https://docs.qgis.org/3.44/fr/docs/training_manual/rasters/terrain_analysis.html#follow-along-calculating-a-hillshade) (**_Hillshade_**) de la couche `MNT_IDW`  avec **Raster > Analyse > Ombrage…**. Utilise les paramètres par défaut : facteur Z `1`, azimut `315°` et altitude de la lumière `45°`. Enregistre le résultat dans `Ombrage_IDW.tif`. L'ombrage donne une impression de relief, mais ce n'est pas une représentation 3D.
 
 <details>
 <summary>Solution</summary>
@@ -191,24 +191,42 @@ Pour estimer l’altitude entre les points en Suisse, utilise l'outil [IDW de QG
 </details>
 <br>
 
-4f) Tu peux enfin répondre à la dernière question du [quiz QGIS sur Moodle]({{ MOODLE_QUIZ_TP4 }}).
+4e) Tu peux enfin répondre à la dernière question du [quiz QGIS sur Moodle]({{ MOODLE_QUIZ_TP4 }}).
 
-## 5\. Créer les trois cartes de résultats
+## 5\. Création de la carte de résultat
 
-Crée trois [mises en page](https://docs.qgis.org/3.44/fr/docs/user_manual/print_layout/overview_layout.html#overview-of-the-print-layout) : **NDVI**, **occup_sol** et **IDW**. Chacune servira à exporter le résultat correspondant au format PDF.
+Utilise l'outil [mises en page](https://docs.qgis.org/3.44/fr/docs/user_manual/print_layout/overview_layout.html#overview-of-the-print-layout) de QGIS pour créer une carte de la couche d'occupation des sols `ReClass\_MapTicino1990\_8classes`. 
 
-5a) Crée un [thème de couches](https://docs.qgis.org/3.44/fr/docs/user_manual/introduction/general_tools.html#map-themes) pour chaque résultat, puis associe le thème correspondant à l'élément carte de chaque mise en page. Pour la carte **IDW**, affiche le MNT interpolé et superpose l'ombrage avec une transparence adaptée. Verrouille enfin les couches et les styles de chaque élément carte afin qu'un changement dans le canevas ne modifie pas les autres mises en page.
+La carte doit contenir une couleur différente pour chaque type d'occupation du sol. Pour cela, il faut modifier la symbologie de la couche et choisir le type de symbologie `Paletted/Unique values`, puis cliquer sur `Classify`. Toujours dans l'onglet symbologie, renomme ensuite chaque classe. Pour rappel la catégorisation des couches d'occupation du sol est la suivante : 
 
-5b) Pour la carte concernant l’occupation du sol, insère une [légende](https://docs.qgis.org/3.44/fr/docs/user_manual/print_layout/layout_items/layout_legend.html) qui illustre les 8 classes. Utilise un [rendu de classification paletté](https://docs.qgis.org/3.44/fr/docs/user_manual/working_with_raster/raster_properties.html#paletted-unique-values) sur la couche `ReClass\_MapTicino1990\_8classes` pour que chaque classe ait sa propre couleur.
+| Valeur | Catégorie |
+|--------|--------|
+| 1 | Forêt |
+| 2 | Prés |
+| 3 | Eau |
+| 4 | Neige |
+| 5 | Sols nus |
+| 6 | Aires urbaines |
+| 7 | Nuages |
+| 8 | Ombres |
 
-5c) Pour chaque carte, ajoute les éléments essentiels : barre d'échelle, flèche du nord, titre, nom et prénom, date, et sources des données.
+Enfin, vérifie que ta carte contienne tous les éléments de la checklist d'habillage de carte : barre d'échelle, flèche du nord, titre, ton nom et prénom, date, et sources des données.
+
+<details>
+<summary>Astuce</summary>
+L'outil [thème de carte](https://docs.qgis.org/3.44/fr/docs/user_manual/introduction/general_tools.html#map-themes) te permet d'enregistrer et de restaurer en un clic la configuration de ton affichage (couches visibles, symbologie, légende…). Il est donc très utile pour naviguer entre plusieurs cartes. Il n'est pas obligatoire de l'utiliser pour ce TP, mais il pourra t’être utile pour ton projet !
+</details>
+<br>
+
 
 ## 6\. Rendus et paquetage du projet
 
-6a) Regroupe les trois cartes dans le fichier `nom_prenom_cartes_TP4.pdf`, puis dépose-le dans [Rendus_Cartes_TP4]({{ MOODLE_RENDU_TP4_CARTES }}). Consulte la grille d'évaluation avant la remise. Depuis chaque mise en page, utilise **Mise en page > Exporter au format PDF…** ; fusionne ensuite les trois PDF si nécessaire.
+6a) Sauvegarde la carte au format PDF et nomme-là `nom_prenom_TP4.pdf`. Dépose ensuite ce fichier dans [Rendus_Cartes_TP4]({{ MOODLE_RENDU_TP4_CARTES }}).
+
+Pour ce dernier TP, le projet devra être rendu sous forme de lien vers un fichier OneDrive.
 
 6b) Crée un dossier `nom_prenom_TP4` contenant le projet `.qgz` et les GeoTIFF suivants : `merged-landsat4-1990`, `NDVI`, `ReClass_MapTicino1990_8classes`, `MNT_IDW` et `Ombrage_IDW`. Rouvre le projet pour vérifier les chemins, puis compresse le dossier en `nom_prenom_TP4.zip`.
 
-6c) Copie le fichier `.zip` de la machine virtuelle sur ton OneDrive et crée un lien de partage.
+6c) Copie le fichier `.zip` sur ton OneDrive et crée un lien de partage (si besoin, un tutoriel est disponible dans le cours de la troisième semaine (sur Moodle).
 
 6d) Soumets le lien de partage dans [Rendus_projet_TP4]({{ MOODLE_RENDU_TP4_PROJET }}) et vérifie que l'archive porte bien le nom `nom_prenom_TP4.zip`.
