@@ -13,7 +13,7 @@ Structure les couches de données dans **une seule geodatabase (GeoPackage, `.gp
 - `input` : données utilisées comme entrée de la régression ou de la classification, résultant de la chaîne de pré-traitements (p. ex. `votations`) ;
 - `results` : données finales résultant de l'analyse et utilisées pour l'habillage de la carte (p. ex. `temperature`).
 
-Les **rasters** (MNT, orthophotos, etc.) sont conservés comme fichiers GeoTIFF à côté du GeoPackage, et zippés lors de l'empaquetage ([étape IV](etape4.md)).
+Les **rasters** (MNT, orthophotos, etc.) sont conservés comme fichiers GeoTIFF à côté du GeoPackage, et zippés lors de l'empaquetage ([étape IV](etape4.md)). 
 
 Pour rappel, il est nécessaire de documenter dans le rapport final chaque donnée source du projet avec :
 - le nom de la couche de données ;
